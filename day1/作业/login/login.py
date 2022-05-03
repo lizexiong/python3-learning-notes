@@ -23,7 +23,6 @@ while count_name <3:
         if username != db_name :                                                           #判断,输入的用户名是否存在acccount里面，如果没有，那么退出这次循环，并且count_name计数器+1
             print ('not user')
             count_name +=1
-            break
         else:                                                                              #尽然不是用户不存在，那么就是存在，开始下一步
             for i in db_lock.readlines():                                                  #判断account_lock，判断用户是否被锁定
                 db_lock_name = i.strip()
