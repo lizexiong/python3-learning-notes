@@ -36,6 +36,7 @@ frontend mysql
         default_backend mysqlserver
 
 backend mysqlserver
+		server mysql100 50.50.50.50 weight 50 maxcoon 50 
 		server mysql10 10.10.10.10 weight 10 maxcoon 10 
         server mysql1 10.1.1.110:3306 weight 20 maxconn 300
         server mysql2 10.1.1.120:3306 weight 10 maxconn 200
