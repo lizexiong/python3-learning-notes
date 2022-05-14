@@ -1,0 +1,83 @@
+__author__ = 'Administrator'
+
+
+#!/usr/bin/env python3
+
+#迭代器
+# class MyNumbers:
+#   def __iter__(self):
+#     self.a = 1
+#     return self
+#
+#   def __next__(self):
+#     x = self.a
+#     self.a += 1
+#     return x
+#
+# myclass = MyNumbers()
+# myiter = iter(myclass)
+#
+# print(next(myiter))
+# print(next(myiter))
+# print(next(myiter))
+# print(next(myiter))
+# print(next(myiter))
+
+#生成器实例
+# def cash_out(amount):
+#     while amount >0:
+#         amount -= 100
+#         print ('amount',amount)
+#         yield 100
+#
+#
+# cash = cash_out(500)
+# print (type(cash))
+#
+#
+# print (cash.__next__())
+# print (cash.__next__())
+# print ("我要去干点别的事情")
+# print (cash.__next__())
+# print (cash.__next__())
+# print (cash.__next__())
+# print (cash.__next__()) #第六次会报错
+
+
+#使用yield实现单线程中的异步并发效果
+# import time
+# def consumer(name):
+#     print ("%s 准备吃包子了" %name)
+#     while True:
+#         baozi = yield
+#         print ("第[%s]包子来了,被[%s]吃了!" %(baozi,name))
+#
+# def producer(name):
+#     c = consumer("A")                           #定义了2个消费者
+#     c2 = consumer('B')
+#     c.__next__()                                #这里的next就是为了打印 准备吃包子了这句话，碰到yield就返回了
+#     c2.__next__()
+#     print ("开始做包子了")
+#     for i in range(1,6):
+#         time.sleep(1)
+#         print ("开始做包子")
+#         '''
+#         #yield不仅可以返回值，还可以接受值，就是通过send给他，
+#         看到    baozi=yield了吗，就是通过这个特殊用法，首先send把只给yield，然后yield赋值给baozi。
+#         所以这里yield不是返回值，而是接受值。 简单来说如果不是这种方式，yield后面的很难会print出来,yield无法直接赋值
+#         '''
+#         c.send(i)
+#         c2.send(i)
+#
+# producer('lizexiong')
+
+
+# def test(a):
+#     a-=1
+#     yield
+#     print ('after',a)
+#
+# b= test(10)
+# print (b.__next__())
+# print (b.__next__())
+
