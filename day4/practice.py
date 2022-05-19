@@ -81,3 +81,44 @@ __author__ = 'Administrator'
 # print (b.__next__())
 # print (b.__next__())
 
+
+#递归练习
+#
+# def calc(n):
+#     print ('before',n)
+#     if n/2 > 1:
+#         calc(n/2)
+#
+#     print ('after',n)
+#     return n
+# calc(10)
+
+
+# def func(arg1,arg2,stop):
+#     if  arg1 == 0:
+#         print (arg1,arg2)
+#     arg3 = arg1 + arg2
+#     print (arg3)
+#     if arg3 < stop:
+#         func(arg2,arg3,stop)
+#
+# func(0,1,30)
+
+
+#二分算法
+def num_serarch(data,find):
+    mid = int(len(data)/2)
+    if len(data) >=1:
+        if find > data[mid]:
+            print ("data mid right %s" %mid)
+            num_serarch(data[mid:],find)
+        elif find < data[mid]:
+            print ("data mid left %s" %mid)
+            num_serarch(data[:mid],find)
+        else:
+            print ("num is %s" %find)
+    else:
+        print ("not found")
+
+data = list(range(1,500000,3))
+num_serarch(data,10000)
