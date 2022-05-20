@@ -106,19 +106,53 @@ __author__ = 'Administrator'
 
 
 #二分算法
-def num_serarch(data,find):
-    mid = int(len(data)/2)
-    if len(data) >=1:
-        if find > data[mid]:
-            print ("data mid right %s" %mid)
-            num_serarch(data[mid:],find)
-        elif find < data[mid]:
-            print ("data mid left %s" %mid)
-            num_serarch(data[:mid],find)
-        else:
-            print ("num is %s" %find)
-    else:
-        print ("not found")
+# def num_serarch(data,find):
+#     mid = int(len(data)/2)
+#     if len(data) >=1:
+#         if find > data[mid]:
+#             print ("data mid right %s" %mid)
+#             num_serarch(data[mid:],find)
+#         elif find < data[mid]:
+#             print ("data mid left %s" %mid)
+#             num_serarch(data[:mid],find)
+#         else:
+#             print ("num is %s" %find)
+#     else:
+#         print ("not found")
+#
+# data = list(range(1,500000,3))
+# num_serarch(data,10000)
+import sys
 
-data = list(range(1,500000,3))
-num_serarch(data,10000)
+#二维数组翻转
+data = [[col for col in range(4)] for row in range(4)]
+
+
+'''
+#原始数据[[0, 1, 2, 3], [0, 1, 2, 3], [0, 1, 2, 3], [0, 1, 2, 3]]
+
+[0, 1, 2, 3]
+[0, 1, 2, 3]
+[0, 1, 2, 3]
+[0, 1, 2, 3]
+
+[0, 0, 0, 0]
+[1, 1, 1, 1]
+[2, 2, 2, 2]
+[3, 3, 3, 3]
+'''
+
+
+for r_index,row in enumerate(data):                 #该enumerate()方法将一个计数器添加到一个可迭代对象并返回它（枚举对象）。
+    # print (r_index)
+    for i in range(r_index,len(row)):
+        tmp = data[i][r_index]
+
+        data[i][r_index] = row[i]
+
+        data[r_index][i] = tmp
+
+    for r in data:print(r)
+
+
+
