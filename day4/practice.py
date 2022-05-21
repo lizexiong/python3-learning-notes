@@ -155,4 +155,13 @@ for r_index,row in enumerate(data):                 #该enumerate()方法将一�
     for r in data:print(r)
 
 
+#上面的方式使用了类似算法的办法，还有一种更简单取消的办法,具体的逻辑只能自己看代码理会。
+
+data = [[col for col in range(4)] for row in range(4)]
+for i in range(len(data)):
+    a = [data[i][i] for row in range(4)]
+
+#为什么说这种方式是取巧，因为这种方式等于直接输出了
+
+
 
