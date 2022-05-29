@@ -32,20 +32,31 @@ def verify():
     elif len(LeftBracket) < len(RightBracket):
         print ("多了一个右括号")
 
+
+def test2(test2):
+    if re.search('\*',test2):
+        print (re.split('\*',test2))
+
+
+
 def test(User):
-    str = re.findall("\((.+?)\)",User)
+    str = re.findall(".+?\(.+?\)",User)
+    print (str)
 
     for i in str:
-        InnerStr = re.findall("\((.+?)\(",i)
-        if InnerStr is not None:
-            print (InnerStr)
+        InnerStr = re.findall("\((.+?)\)",i)
+        if i is not None:
+            #print ("InnerStr",InnerStr)
+            for k in InnerStr:
+                print (k)
         else:
             print ("None")
 
 
 
-test(UserInput)
-
+#
+# test(UserInput)
+test2('9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 ')
 
 
 
