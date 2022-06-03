@@ -30,15 +30,47 @@ def verify():
         print ("多了一个右括号")
 
 
-def Mul(math):
+def Cal(math):
 
-    MulMath = re.search('\d+\*\d+',math)
-    if MulMath is not None:
-        MultiplyResult = str(int(re.split('\*',MulMath.group())[0]) * int(re.split('\*',MulMath.group())[1]))
-        ComMulMath = re.escape(MulMath.group())
-        FormulaToReplace = re.sub(ComMulMath,MultiplyResult,math)
-        # print (FormulaToReplace)
-        Mul(FormulaToReplace)
+    nlms = re.search('\/|\*|\+|/-',math)
+    if nlms is None:
+        print ("math",math)
+
+
+    MulOrDiv = re.search('\/|\*',math)
+    #print (math)
+    if MulOrDiv is not None:
+        if MulOrDiv.group() == "*":
+            #MulMath = re.search('\d+ ?\* ?\d+',math)
+            MulMath = re.search('\d+(\.\d+)? ?\* ?\d+(\.\d+)?',math)
+            MultiplyResult = str(float(re.split('\*',MulMath.group())[0]) * float(re.split('\*',MulMath.group())[1]))
+            ComMulMath = re.escape(MulMath.group())
+            FormulaToReplace = re.sub(ComMulMath,MultiplyResult,math)
+
+            Cal(FormulaToReplace)
+        elif MulOrDiv.group() == "/":
+            DivMath = re.search('\d+(\.\d+)? ?\/ ?\d+(\.\d+)?',math)
+            DirResult = str(float(re.split('\/',DivMath.group())[0]) / float(re.split('\/',DivMath.group())[1]))
+            ComMulMath = re.escape(DivMath.group())
+            FormulaToReplace = re.sub(ComMulMath,DirResult,math)
+            Cal(FormulaToReplace)
+
+    else:
+        AddOrSub = re.search('\+|\-',math)
+        if AddOrSub is not None:
+            if AddOrSub.group() == "+":
+                AddMath = re.search('\d+(\.\d+)? ?\+ ?\d+(\.\d+)?',math)
+                AddtiplyResult = str(float(re.split('\+',AddMath.group())[0]) + float(re.split('\+',AddMath.group())[1]))
+                ComMulMath = re.escape(AddMath.group())
+                FormulaToReplace = re.sub(ComMulMath,AddtiplyResult,math)
+
+            elif AddOrSub.group() == "-":
+                SubMath = re.search('\d+(\.\d+)? ?\- ?\d+(\.\d+)?',math)
+                SubResult = str(float(re.split('\-',SubMath.group())[0]) - float(re.split('\-',SubMath.group())[1]))
+                ComMulMath = re.escape(SubMath.group())
+                FormulaToReplace = re.sub(ComMulMath,SubResult,math)
+            Cal(FormulaToReplace)
+
 
 
 
@@ -57,10 +89,12 @@ def test(User):
 
 
 # test(UserInput)
-Mul('9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 ')
+# Cal('9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 ')
 
+li = Cal('9-3.3333333333333335 + 2.3333333333333335*99/4*2998 +10 * 568/14')
+print ('li',li)
 
-
+# Cal(' 9-3.3333333333333335 + 7 /3*24.75*2998 +10 * 40.57142857142857')
 
 
 
