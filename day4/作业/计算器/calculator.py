@@ -31,70 +31,69 @@ def verify():
 
 
 def Cal(math):
-
     nlms = re.search('\/|\*|\+|/-',math)
-    if nlms is None:
-        print ("math",math)
+    if nlms is not None:
+        MulOrDiv = re.search('\/|\*',math)
+        if MulOrDiv is not None:
+            if MulOrDiv.group() == "*":
+                #MulMath = re.search('\d+ ?\* ?\d+',math)
+                MulMath = re.search('\d+(\.\d+)? ?\* ?\d+(\.\d+)?',math)
+                MultiplyResult = str(float(re.split('\*',MulMath.group())[0]) * float(re.split('\*',MulMath.group())[1]))
+                ComMulMath = re.escape(MulMath.group())
+                ToReplace = re.sub(ComMulMath,MultiplyResult,math)
 
+            elif MulOrDiv.group() == "/":
+                DivMath = re.search('\d+(\.\d+)? ?\/ ?\d+(\.\d+)?',math)
+                DirResult = str(float(re.split('\/',DivMath.group())[0]) / float(re.split('\/',DivMath.group())[1]))
+                ComDivMath = re.escape(DivMath.group())
+                ToReplace = re.sub(ComDivMath,DirResult,math)
+            return Cal(ToReplace)
 
-    MulOrDiv = re.search('\/|\*',math)
-    #print (math)
-    if MulOrDiv is not None:
-        if MulOrDiv.group() == "*":
-            #MulMath = re.search('\d+ ?\* ?\d+',math)
-            MulMath = re.search('\d+(\.\d+)? ?\* ?\d+(\.\d+)?',math)
-            MultiplyResult = str(float(re.split('\*',MulMath.group())[0]) * float(re.split('\*',MulMath.group())[1]))
-            ComMulMath = re.escape(MulMath.group())
-            FormulaToReplace = re.sub(ComMulMath,MultiplyResult,math)
+        else:
+            AddOrSub = re.search('\+|\-',math)
+            if AddOrSub is not None:
+                if AddOrSub.group() == "+":
+                    AddMath = re.search('\d+(\.\d+)? ?\+ ?\d+(\.\d+)?',math)
+                    AddtiplyResult = str(float(re.split('\+',AddMath.group())[0]) + float(re.split('\+',AddMath.group())[1]))
+                    ComAddMath = re.escape(AddMath.group())
+                    ToReplace = re.sub(ComAddMath,AddtiplyResult,math)
 
-            Cal(FormulaToReplace)
-        elif MulOrDiv.group() == "/":
-            DivMath = re.search('\d+(\.\d+)? ?\/ ?\d+(\.\d+)?',math)
-            DirResult = str(float(re.split('\/',DivMath.group())[0]) / float(re.split('\/',DivMath.group())[1]))
-            ComMulMath = re.escape(DivMath.group())
-            FormulaToReplace = re.sub(ComMulMath,DirResult,math)
-            Cal(FormulaToReplace)
-
+                elif AddOrSub.group() == "-":
+                    SubMath = re.search('\d+(\.\d+)? ?\- ?\d+(\.\d+)?',math)
+                    SubResult = str(float(re.split('\-',SubMath.group())[0]) - float(re.split('\-',SubMath.group())[1]))
+                    ComSubMath = re.escape(SubMath.group())
+                    ToReplace = re.sub(ComSubMath,SubResult,math)
+                return Cal(ToReplace)
     else:
-        AddOrSub = re.search('\+|\-',math)
-        if AddOrSub is not None:
-            if AddOrSub.group() == "+":
-                AddMath = re.search('\d+(\.\d+)? ?\+ ?\d+(\.\d+)?',math)
-                AddtiplyResult = str(float(re.split('\+',AddMath.group())[0]) + float(re.split('\+',AddMath.group())[1]))
-                ComMulMath = re.escape(AddMath.group())
-                FormulaToReplace = re.sub(ComMulMath,AddtiplyResult,math)
+        return (math)
 
-            elif AddOrSub.group() == "-":
-                SubMath = re.search('\d+(\.\d+)? ?\- ?\d+(\.\d+)?',math)
-                SubResult = str(float(re.split('\-',SubMath.group())[0]) - float(re.split('\-',SubMath.group())[1]))
-                ComMulMath = re.escape(SubMath.group())
-                FormulaToReplace = re.sub(ComMulMath,SubResult,math)
-            Cal(FormulaToReplace)
+def MainLogic(User):
+    # str = re.findall(".+?\(.+?\)",User)
+    # print (str)
 
-
-
-
-def test(User):
-    str = re.findall(".+?\(.+?\)",User)
+    # for i in str:
+    #     InnerStr = re.findall("\((.+?)\)",i)
+    #     if i is not None:
+    #         for k in InnerStr:
+    #             print (k)
+    #     else:
+    #         print ("None")
+    UserHandle = User.replace(' ','')
+    print (UserHandle)
+    str = re.findall("\(\-?(?:\d+(?:\/|\*|\+|\-)\d+(?:\/|\*|\+|\-)?\d?)+\)",UserHandle)
     print (str)
 
-    for i in str:
-        InnerStr = re.findall("\((.+?)\)",i)
-        if i is not None:
-            #print ("InnerStr",InnerStr)
-            for k in InnerStr:
-                print (k)
-        else:
-            print ("None")
 
 
-# test(UserInput)
-# Cal('9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 ')
 
-li = Cal('9-3.3333333333333335 + 2.3333333333333335*99/4*2998 +10 * 568/14')
-print ('li',li)
 
-# Cal(' 9-3.3333333333333335 + 7 /3*24.75*2998 +10 * 40.57142857142857')
+#test = Cal('9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 ')
+# test = Cal('-4*3')
+# print (test)
+
+
+MainLogic(UserInput)
+
 
 
 

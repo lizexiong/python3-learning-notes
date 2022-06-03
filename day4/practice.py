@@ -83,7 +83,7 @@ __author__ = 'Administrator'
 
 
 #递归练习
-#
+
 # def calc(n):
 #     print ('before',n)
 #     if n/2 > 1:
@@ -91,8 +91,8 @@ __author__ = 'Administrator'
 #
 #     print ('after',n)
 #     return n
-# calc(10)
-
+# test = calc(10)
+# print (test)
 
 # def func(arg1,arg2,stop):
 #     if  arg1 == 0:
@@ -125,41 +125,41 @@ __author__ = 'Administrator'
 import sys
 
 #二维数组翻转
-data = [[col for col in range(4)] for row in range(4)]
-
-
-'''
-#原始数据[[0, 1, 2, 3], [0, 1, 2, 3], [0, 1, 2, 3], [0, 1, 2, 3]]
-
-[0, 1, 2, 3]
-[0, 1, 2, 3]
-[0, 1, 2, 3]
-[0, 1, 2, 3]
-
-[0, 0, 0, 0]
-[1, 1, 1, 1]
-[2, 2, 2, 2]
-[3, 3, 3, 3]
-'''
-
-
-for r_index,row in enumerate(data):                 #该enumerate()方法将一个计数器添加到一个可迭代对象并返回它（枚举对象）。
-    # print (r_index)
-    for i in range(r_index,len(row)):
-        tmp = data[i][r_index]
-
-        data[i][r_index] = row[i]
-
-        data[r_index][i] = tmp
-
-    for r in data:print(r)
-
-
-#上面的方式使用了类似算法的办法，还有一种更简单取消的办法,具体的逻辑只能自己看代码理会。
-
-data = [[col for col in range(4)] for row in range(4)]
-for i in range(len(data)):
-    a = [data[i][i] for row in range(4)]
+# data = [[col for col in range(4)] for row in range(4)]
+#
+#
+# '''
+# #原始数据[[0, 1, 2, 3], [0, 1, 2, 3], [0, 1, 2, 3], [0, 1, 2, 3]]
+#
+# [0, 1, 2, 3]
+# [0, 1, 2, 3]
+# [0, 1, 2, 3]
+# [0, 1, 2, 3]
+#
+# [0, 0, 0, 0]
+# [1, 1, 1, 1]
+# [2, 2, 2, 2]
+# [3, 3, 3, 3]
+# '''
+#
+#
+# for r_index,row in enumerate(data):                 #该enumerate()方法将一个计数器添加到一个可迭代对象并返回它（枚举对象）。
+#     # print (r_index)
+#     for i in range(r_index,len(row)):
+#         tmp = data[i][r_index]
+#
+#         data[i][r_index] = row[i]
+#
+#         data[r_index][i] = tmp
+#
+#     for r in data:print(r)
+#
+#
+# #上面的方式使用了类似算法的办法，还有一种更简单取消的办法,具体的逻辑只能自己看代码理会。
+#
+# data = [[col for col in range(4)] for row in range(4)]
+# for i in range(len(data)):
+#     a = [data[i][i] for row in range(4)]
 
 #为什么说这种方式是取巧，因为这种方式等于直接输出了
 
