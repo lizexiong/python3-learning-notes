@@ -1,9 +1,6 @@
 __author__ = 'Administrator'
 
 
-
-
-
 import re
 
 UserInput = """1 - 2 * ( (60-30 +(-40/5) * (9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (-4*3)/ (16-3*2) )"""
@@ -33,9 +30,15 @@ def verify():
         print ("多了一个右括号")
 
 
-def test2(test2):
-    if re.search('\*',test2):
-        print (re.split('\*',test2))
+def Mul(math):
+
+    MulMath = re.search('\d+\*\d+',math)
+    if MulMath is not None:
+        MultiplyResult = str(int(re.split('\*',MulMath.group())[0]) * int(re.split('\*',MulMath.group())[1]))
+        ComMulMath = re.escape(MulMath.group())
+        FormulaToReplace = re.sub(ComMulMath,MultiplyResult,math)
+        # print (FormulaToReplace)
+        Mul(FormulaToReplace)
 
 
 
@@ -53,10 +56,8 @@ def test(User):
             print ("None")
 
 
-
-#
 # test(UserInput)
-test2('9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 ')
+Mul('9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 ')
 
 
 
