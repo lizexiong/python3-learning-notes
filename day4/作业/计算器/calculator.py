@@ -79,10 +79,8 @@ def MainLogic(User):
     #     else:
     #         print ("None")
     UserHandle = User.replace(' ','')
-    print (UserHandle)
-    str = re.findall("\(\-?(?:\d+(?:\/|\*|\+|\-)\d+(?:\/|\*|\+|\-)?\d?)+\)",UserHandle)
-    print (str)
-
+    str = re.search("\(\-?(?:\d+(?:\.\d+)?(?:\/|\*|\+|\-)\\d+(?:\.\d+)?(?:\/|\*|\+|\-)?\d?(?:\.\d?)?)+\)",UserHandle)
+    print (str.group())
 
 
 
@@ -92,7 +90,8 @@ def MainLogic(User):
 # print (test)
 
 
-MainLogic(UserInput)
+#MainLogic(UserInput)
+MainLogic('1 - 2 * ( (60-30 +(-40/5) * (9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (-4*3.1)/ (16-3*2.2) )')
 
 
 
