@@ -31,7 +31,8 @@ def verify():
 
 
 def Cal(math):
-    nlms = re.search('\/|\*|\+|/-',math)
+    print (math)
+    nlms = re.search('\/|\*|\+|\-',math)
     if nlms is not None:
         MulOrDiv = re.search('\/|\*',math)
         if MulOrDiv is not None:
@@ -59,7 +60,8 @@ def Cal(math):
                     ToReplace = re.sub(ComAddMath,AddtiplyResult,math)
 
                 elif AddOrSub.group() == "-":
-                    SubMath = re.search('\d+(\.\d+)? ?\- ?\d+(\.\d+)?',math)
+                    SubMath = re.search('\d+(\.\d+)?\-\d+(\.\d+)?',math)
+                    #print (SubMath.group())
                     SubResult = str(float(re.split('\-',SubMath.group())[0]) - float(re.split('\-',SubMath.group())[1]))
                     ComSubMath = re.escape(SubMath.group())
                     ToReplace = re.sub(ComSubMath,SubResult,math)
@@ -69,20 +71,22 @@ def Cal(math):
 
 def MainLogic(User):
     # str = re.findall(".+?\(.+?\)",User)
-    # print (str)
-
-    # for i in str:
-    #     InnerStr = re.findall("\((.+?)\)",i)
-    #     if i is not None:
-    #         for k in InnerStr:
-    #             print (k)
-    #     else:
-    #         print ("None")
     UserHandle = User.replace(' ','')
-    str = re.search("\(\-?(?:\d+(?:\.\d+)?(?:\/|\*|\+|\-)\\d+(?:\.\d+)?(?:\/|\*|\+|\-)?\d?(?:\.\d?)?)+\)",UserHandle)
-    print (str.group())
+    brackets = re.search("\(\-?(?:\d+(?:\.\d+)?(?:\/|\*|\+|\-)\d+(?:\.\d+)?(?:\/|\*|\+|\-)?\d?(?:\.\d+)?)+\)",UserHandle)
+    if brackets is not None:
+        #BracketsInner = re.search('\-?(\d+(\.\d+)?(\/|\*|\+|\-)\d+(\.\d+)?(\/|\*|\+|\-)?\d?(\.\d?)?)+',brackets.group())
+        BracketsInner = re.findall('\((.+?)\)',brackets.group())
+        # print (BracketsInner[0])
+        FormulaComputing = Cal(BracketsInner[0])
+        ComBracketsMath = re.escape(brackets.group())
+        ToReplace = re.sub(ComBracketsMath,FormulaComputing,UserHandle)
+        # print (ToReplace)
+        return MainLogic(ToReplace)
+    else:
+        print("u",User)
+        #(MainLogic(User))
 
-
+        pass
 
 
 #test = Cal('9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 ')
@@ -91,9 +95,9 @@ def MainLogic(User):
 
 
 #MainLogic(UserInput)
-MainLogic('1 - 2 * ( (60-30 +(-40/5) * (9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (-4*3.1)/ (16-3*2.2) )')
-
-
-
+#MainLogic('1 - 2 * ( (60-30 +(40/5) * (9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (4*3.1)/ (16-3*2.2) )')
+test = MainLogic('1 - 2 * ( (60-30 +8.0 * (9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (4*3.1)/ (16-3*2.2) )')
+#Cal('9-2*5/3+7/3*99/4*2998+10*568/14')
+print (test)
 
 
