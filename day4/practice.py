@@ -164,4 +164,7 @@ import sys
 #为什么说这种方式是取巧，因为这种方式等于直接输出了
 
 
-
+import re
+str = '1+1'
+test = re.findall('(?:\d+)?\+?(?:\d+)?',str)
+print (test)
