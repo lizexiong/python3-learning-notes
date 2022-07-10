@@ -3,10 +3,10 @@ __author__ = 'Administrator'
 
 # import json
 # dic = {'lizexiong': 'lizexiong1234'}
-# with open('UserDB', 'a', encoding='utf-8') as f:
+# with open('StoreUserDB', 'a', encoding='utf-8') as f:
 #     json.dump(dic, f)
 #     f.flush()
-# with open('UserDB', 'r', encoding='utf-8') as f1:
+# with open('StoreUserDB', 'r', encoding='utf-8') as f1:
 #     d = json.load(f1)
 #     print(d)
 
@@ -14,12 +14,12 @@ __author__ = 'Administrator'
 
 # import json
 # dic = {'lizexiong': 'lizexiong1234'}
-# with open('UserDB', 'a', encoding='utf-8') as f:
+# with open('StoreUserDB', 'a', encoding='utf-8') as f:
 #     for i in range(3):
 #         json.dump(dic, f)
 #         f.write('\n')
 #         f.flush()
-# with open('UserDB', 'r', encoding='utf-8') as f1:
+# with open('StoreUserDB', 'r', encoding='utf-8') as f1:
 #     for j in f1:
 #         print(json.loads(j), type(json.loads(j)))    # 这里我们是对字符串操作，而不是文件，所以需要使用loads而不是load
 
