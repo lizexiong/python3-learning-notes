@@ -3,13 +3,21 @@
 
 
 from taobao.template.ShoppingList import ProductList
+from taobao.databases.StoreUserDBHandler import StoreUserInfo
 
 
 
 
+#购买和退订商品
+def Buy(num,inc=None):
+    if ProductList.get(num):
+        FromDBStoreUserInfo = StoreUserInfo()
+        print (FromDBStoreUserInfo)
+    else:
+        print("没有这个商品")
 
-def Buy(test):
-    print (ProductList)
+
+
 
 # #购买和退订商品
 # def Buy(num,inc=None):

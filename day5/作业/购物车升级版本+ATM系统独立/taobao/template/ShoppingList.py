@@ -9,10 +9,10 @@ __author__ = 'Administrator'
 
 #商品列表
 ProductList = {
-    '1':{"name":"huawei",'price':'5000','sum':10,'num':10},
-    '2':{"name":"apple",'price':'1000','sum':15,'num':0},
-    '3':{"name":"sanxing",'price':'4000','sum':20,'num':20},
-    '4':{"name":"xiaomi",'price':'1000','sum':10,'num':10},
+    1:{"name":"huawei",'price':'5000','sum':10,'num':10},
+    2:{"name":"apple",'price':'1000','sum':15,'num':0},
+    3:{"name":"sanxing",'price':'4000','sum':20,'num':20},
+    4:{"name":"xiaomi",'price':'1000','sum':10,'num':10},
 }
 
 
