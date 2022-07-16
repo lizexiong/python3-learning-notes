@@ -34,8 +34,9 @@ def Buy(num,user,inc=None):
                         break
                     else:
                         print("您的购物车没有这么多商品，请重新输入")
-                except ValueError as err:
-                    print (err)
+                except:
+                    print ("输入了可能不存在商品,请重新输入")
+                    break
         elif inc == None:
             while True:
                 try:
@@ -55,8 +56,10 @@ def Buy(num,user,inc=None):
                             break
                     else:
                         print ("商品数量不够,请重新购买")
-                except ValueError as err:
-                    print (err)
+                        break
+                except :
+                    print ("输入了可能不存在商品,请重新输入")
+                    break
     else:
         print("没有这个商品")
 

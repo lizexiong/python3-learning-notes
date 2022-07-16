@@ -34,7 +34,7 @@ if __name__ == "__main__":
                         Balance = int(UserWallet) - int(BankUserInDb[UserName]['useamount'])
                         ShoppingList(UserName,UserWallet,Balance,0)
                         ProductListdynamics(ProductList)
-                        UserChoice = input('请选择菜单 ：输入商品编号 | 购物车(c) | 余额充值(r) | 结帐(b) | 退出(q) : ')
+                        UserChoice = input('请选择菜单 ：输入商品编号 | 购物车(c) | 余额充值(r) | 结帐(b) | 信用卡管理(x)| 退出(q) : ')
                         if UserChoice.isdigit():
                             UserChoice = int(UserChoice)
                             Buy(UserChoice,UserName,)
@@ -48,6 +48,8 @@ if __name__ == "__main__":
                         elif UserChoice == 'b':
                             pass
                             #CloseAnAccount()
+                        elif UserChoice == 'x':
+                            pass
                         elif UserChoice == 'q':
                             print ("退出系统")
                             sys.exit()

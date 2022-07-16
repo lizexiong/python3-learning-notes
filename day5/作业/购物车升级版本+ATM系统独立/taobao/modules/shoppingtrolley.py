@@ -28,7 +28,7 @@ def ShoppingTrolley(user):
         else:
             print ("请输入正确的选择")
 
-            ShoppingTrolley()
+            ShoppingTrolley(user)
     else:
         print ("购物车没有任何信息")
         UserInc = input("按任意键返回主菜单")
