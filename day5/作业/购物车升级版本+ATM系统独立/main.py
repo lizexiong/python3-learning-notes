@@ -8,6 +8,7 @@ import sys,json,os
 from taobao.template.ShoppingList import ShoppingList,ProductListdynamics,ProductList,ProductListNum
 from taobao.databases.StoreUserDBHandler import StoreUserInfo
 from taobao.modules.buy import Buy
+from taobao.modules.shoppingtrolley import ShoppingTrolley
 
 from bank.databases.BankUserDBHandler import BankUserInfo
 
@@ -36,10 +37,10 @@ if __name__ == "__main__":
                         UserChoice = input('请选择菜单 ：输入商品编号 | 购物车(c) | 余额充值(r) | 结帐(b) | 退出(q) : ')
                         if UserChoice.isdigit():
                             UserChoice = int(UserChoice)
-                            Buy(UserChoice)
+                            Buy(UserChoice,UserName,)
                             continue
                         elif UserChoice == 'c':
-                            #ShoppingTrolley()
+                            ShoppingTrolley(UserName)
                             continue
                         elif UserChoice == 'r':
                             #UserPayment()

@@ -15,6 +15,8 @@ ProductList = {
     4:{"name":"xiaomi",'price':'1000','sum':10,'num':10},
 }
 
+UserShoppingTrolley={}       #全局变量，用来判断用户购物车是否有东西
+
 
 #用户信息显示模块
 def ShoppingList(username,wallet,balance,shoping_cart=0):
@@ -35,6 +37,5 @@ ProductListNum=dict()      #全局变量，存储新的ProductList信息，包�
 def ProductListdynamics(ProductList):
     print('     =================================================================================')
     print('%-4s %-5s  %-15s  %-10s  %-10s  %-10s' % (' ','编号','商品名称','商品价格(元)','商品总数量(个)','商品剩余数量(个)'))
-    i=1 #商品编号
     for ProductKey,ProductValue in ProductList.items():
         print('%-5s %-5s  %-20s  %-20d  %-20d  %-10d' % (' ',ProductKey,ProductValue['name'],int(ProductValue['price']),int(ProductValue['sum']),int(ProductValue['num'])))
