@@ -8,6 +8,7 @@ from bank.databases.BankUserDBHandler import BankUserInfo
 from bank.modules.BankLogicHandler import CloseAnAccount               #不能再调用了，不然就调用循环了
 
 #用户购物车,可以写入本地，但是为了测试，需要每次重启程序后不保存，所以写成一个全局变量
+global UserShoppingTrolley
 UserShoppingTrolley=dict()
 
 
