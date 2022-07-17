@@ -7,8 +7,8 @@ import sys,json,os
 
 from taobao.template.ShoppingList import ShoppingList,ProductListdynamics,ProductList,ProductListNum
 from taobao.databases.StoreUserDBHandler import StoreUserInfo
-from taobao.modules.buy import Buy
-from taobao.modules.shoppingtrolley import ShoppingTrolley
+from taobao.modules.StoreHandler import Buy,ShoppingTrolley
+from bank.modules.BankLogicHandler import UserMainInterface,CloseAnAccount
 
 from bank.databases.BankUserDBHandler import BankUserInfo
 
@@ -31,7 +31,7 @@ if __name__ == "__main__":
                     while True:
                         BankUserInDb = BankUserInfo()
                         UserWallet = BankUserInDb[UserName]['wallet']
-                        Balance = int(UserWallet) - int(BankUserInDb[UserName]['useamount'])
+                        Balance = int(UserWallet) - int(BankUserInDb[UserName]['useruseamount'])
                         ShoppingList(UserName,UserWallet,Balance,0)
                         ProductListdynamics(ProductList)
                         UserChoice = input('请选择菜单 ：输入商品编号 | 购物车(c) | 余额充值(r) | 结帐(b) | 信用卡管理(x)| 退出(q) : ')
@@ -46,10 +46,9 @@ if __name__ == "__main__":
                             #UserPayment()
                             continue
                         elif UserChoice == 'b':
-                            pass
-                            #CloseAnAccount()
+                            CloseAnAccount(UserName)
                         elif UserChoice == 'x':
-                            pass
+                            UserMainInterface(UserName)
                         elif UserChoice == 'q':
                             print ("退出系统")
                             sys.exit()
