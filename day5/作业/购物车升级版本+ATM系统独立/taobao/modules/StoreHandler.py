@@ -21,6 +21,7 @@ def Buy(num,user,inc=None):
         # for ProductNum,ProductInfo in ProductList.items():
         ProductPrice = ProductList[num]['price']
         ProductName = ProductList[num]['name']
+        UserShoppingCart = FromDBBankUserInfo[user]['usershoppingcart']
         if inc == 'delete':
             while True:
                 try:
@@ -46,6 +47,7 @@ def Buy(num,user,inc=None):
                         PutInShoppingtrolley = input("是否放入购物车y/n")
                         if PutInShoppingtrolley == "y":
                             ProductList[num]['num'] = ProductList[num]['num'] - UserAdd
+                            print (UserShoppingTrolley)
                             if UserShoppingTrolley.get(num):
                                 UserShoppingTrolley[num]['buy'] = UserShoppingTrolley[num]['buy'] + UserAdd
                             else:
