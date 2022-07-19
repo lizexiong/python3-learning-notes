@@ -21,13 +21,10 @@ def Buy(num,user,inc=None):
         FromDBBankUserInfo = BankUserInfo()
         FromDBStoreUserInfo = StoreUserInfo()
         UserWallet = FromDBBankUserInfo[user]['wallet']
-        # for ProductNum,ProductInfo in ProductList.items():
         ProductPrice = ProductList[num]['price']
         ProductName = ProductList[num]['name']
-        #StoreProductList('write',num,'usershoppingcart',)               #写入用户购物车
-        print (FromDBStoreUserInfo[user]['usershoppingcart'],type(FromDBStoreUserInfo[user]['usershoppingcart']))
-        UserShoppingCart = eval(FromDBStoreUserInfo[user]['usershoppingcart'])
-        print (UserShoppingCart)
+        UserShoppingCart = eval(str(FromDBStoreUserInfo[user]['usershoppingcart']))
+        #print (UserShoppingCart)
         if inc == 'delete':
             while True:
                 try:
@@ -55,11 +52,13 @@ def Buy(num,user,inc=None):
                         if PutInShoppingtrolley == "y":
                             ProductListNum = ProductListNum - UserAdd
                             StoreProductList('write',num,'num',ProductListNum)
-                            if UserShoppingCart.get(num,None):
-                                UserShoppingTrolley[num]['buy'] = UserShoppingTrolley[num]['buy'] + UserAdd
+                            if UserShoppingCart.get(num):
+                                UserShoppingCart[num]['buy'] = UserShoppingCart[num]['buy'] + int(UserAdd)
+                                UserShoppingTrolleyTmp[num] = {'name': ProductName, 'price': ProductPrice,'buy': UserShoppingCart[num]['buy']}
                             else:
                                 UserShoppingTrolleyTmp[num] = {'name':ProductName, 'price': ProductPrice, 'buy': int(UserAdd)}
-                                StoreUserInfo('write', user, 'usershoppingcart',UserShoppingTrolleyTmp)
+                            UserShoppingCart.update(UserShoppingTrolleyTmp)
+                            StoreUserInfo('write', user, 'usershoppingcart', UserShoppingCart)
                             print("已将商品加入购物车,可以进入购物车查看")
                             break
                         else:
