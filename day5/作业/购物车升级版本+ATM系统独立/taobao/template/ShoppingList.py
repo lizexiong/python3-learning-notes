@@ -23,7 +23,6 @@ def ShoppingList(username,wallet,balance,shoping_cart=0):
     print (ShoppingListStr)
 
 
-ProductListNum=dict()      #全局变量，存储新的ProductList信息，包括编号
 #商品动态信息
 def ProductListdynamics(ProductList):
     print('     =================================================================================')

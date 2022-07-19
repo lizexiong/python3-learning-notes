@@ -1,31 +1,33 @@
 
 
 
-
+import json
 
 from taobao.dbhelper.StoreDBHandler import StoreProductList,StoreUserInfo
 from bank.dbhelper.BankDBHandler import BankUserInfo
 from bank.modules.BankLogicHandler import CloseAnAccount               #不能再调用了，不然就调用循环了
 
 #用户购物车,可以写入本地，但是为了测试，需要每次重启程序后不保存，所以写成一个全局变量
-global UserShoppingTrolley
+
 UserShoppingTrolley=dict()
 
 
 
 #购买和退订商品
 def Buy(num,user,inc=None):
+    UserShoppingTrolleyTmp = dict()
     ProductList = StoreProductList()
     if ProductList.get(num):
         FromDBBankUserInfo = BankUserInfo()
         FromDBStoreUserInfo = StoreUserInfo()
-        print (FromDBStoreUserInfo)
         UserWallet = FromDBBankUserInfo[user]['wallet']
         # for ProductNum,ProductInfo in ProductList.items():
         ProductPrice = ProductList[num]['price']
         ProductName = ProductList[num]['name']
-        StoreProductList('write',num,'usershoppingcart',)               #写入用户购物车
-        #UserShoppingCart = FromDBStoreUserInfo[user]['usershoppingcart']
+        #StoreProductList('write',num,'usershoppingcart',)               #写入用户购物车
+        print (FromDBStoreUserInfo[user]['usershoppingcart'],type(FromDBStoreUserInfo[user]['usershoppingcart']))
+        UserShoppingCart = eval(FromDBStoreUserInfo[user]['usershoppingcart'])
+        print (UserShoppingCart)
         if inc == 'delete':
             while True:
                 try:
@@ -46,20 +48,18 @@ def Buy(num,user,inc=None):
         elif inc == None:
             while True:
                 #try:
-                    print (ProductList)
                     UserAdd = int(input("请输入要购买的商品数量"))
                     ProductListNum = int(ProductList[num]['num'])
                     if ProductListNum >= UserAdd:
                         PutInShoppingtrolley = input("是否放入购物车y/n")
                         if PutInShoppingtrolley == "y":
                             ProductListNum = ProductListNum - UserAdd
-                            print ("ProductListNum",ProductListNum)
-                            StoreProductList('write',num,'buy',ProductListNum)
-                            if UserShoppingTrolley.get(num):
+                            StoreProductList('write',num,'num',ProductListNum)
+                            if UserShoppingCart.get(num,None):
                                 UserShoppingTrolley[num]['buy'] = UserShoppingTrolley[num]['buy'] + UserAdd
                             else:
-                                UserShoppingTrolley[num] = {'name':ProductName, 'price': ProductPrice, 'buy': int(UserAdd)}
-                            print (UserShoppingTrolley)
+                                UserShoppingTrolleyTmp[num] = {'name':ProductName, 'price': ProductPrice, 'buy': int(UserAdd)}
+                                StoreUserInfo('write', user, 'usershoppingcart',UserShoppingTrolleyTmp)
                             print("已将商品加入购物车,可以进入购物车查看")
                             break
                         else:
