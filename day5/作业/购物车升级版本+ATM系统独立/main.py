@@ -3,14 +3,13 @@ __author__ = 'Administrator'
 
 
 
-import sys,json,os
+import sys
 
-from taobao.template.ShoppingList import ShoppingList,ProductListdynamics,ProductList,ProductListNum
-from taobao.databases.StoreUserDBHandler import StoreUserInfo
+from taobao.template.ShoppingList import ShoppingList,ProductListdynamics
+from taobao.dbhelper.StoreDBHandler import StoreProductList,StoreUserInfo
 from taobao.modules.StoreHandler import Buy,ShoppingTrolley
 from bank.modules.BankLogicHandler import UserMainInterface,CloseAnAccount
-
-from bank.databases.BankUserDBHandler import BankUserInfo
+from bank.dbhelper.BankDBHandler import BankUserInfo
 
 if __name__ == "__main__":
     count_pass = 0
@@ -33,10 +32,12 @@ if __name__ == "__main__":
                         UserWallet = BankUserInDb[UserName]['wallet']
                         Balance = int(UserWallet) - int(BankUserInDb[UserName]['useruseamount'])
                         ShoppingList(UserName,UserWallet,Balance,0)
+
+                        ProductList=StoreProductList()
                         ProductListdynamics(ProductList)
                         UserChoice = input('请选择菜单 ：输入商品编号 | 购物车(c) | 余额充值(r) | 结帐(b) | 信用卡管理(x)| 退出(q) : ')
                         if UserChoice.isdigit():
-                            UserChoice = int(UserChoice)
+                            UserChoice = UserChoice
                             Buy(UserChoice,UserName,)
                             continue
                         elif UserChoice == 'c':

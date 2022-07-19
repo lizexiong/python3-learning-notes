@@ -8,10 +8,10 @@
 
 
 import os,sys
-from bank.databases.BankUserDBHandler import BankUserInfo
+from bank.dbhelper.BankDBHandler import BankUserInfo
 
 #from taobao.modules.StoreHandler import ShoppingTrolley         #这里不能导入了,因为StoreHandler也会调用这里的模块，就造成了循环，导入就会报错,具体原因见
-from taobao.template.ShoppingList import UserShoppingTrolley
+
 
 
 

@@ -2,9 +2,9 @@
 
 
 
-from taobao.template.ShoppingList import ProductList,UserShoppingTrolley
-from taobao.databases.StoreUserDBHandler import StoreUserInfo
-from bank.databases.BankUserDBHandler import BankUserInfo
+
+from taobao.dbhelper.StoreDBHandler import StoreProductList,StoreUserInfo
+from bank.dbhelper.BankDBHandler import BankUserInfo
 from bank.modules.BankLogicHandler import CloseAnAccount               #不能再调用了，不然就调用循环了
 
 #用户购物车,可以写入本地，但是为了测试，需要每次重启程序后不保存，所以写成一个全局变量
@@ -15,13 +15,17 @@ UserShoppingTrolley=dict()
 
 #购买和退订商品
 def Buy(num,user,inc=None):
+    ProductList = StoreProductList()
     if ProductList.get(num):
         FromDBBankUserInfo = BankUserInfo()
+        FromDBStoreUserInfo = StoreUserInfo()
+        print (FromDBStoreUserInfo)
         UserWallet = FromDBBankUserInfo[user]['wallet']
         # for ProductNum,ProductInfo in ProductList.items():
         ProductPrice = ProductList[num]['price']
         ProductName = ProductList[num]['name']
-        UserShoppingCart = FromDBBankUserInfo[user]['usershoppingcart']
+        StoreProductList('write',num,'usershoppingcart',)               #写入用户购物车
+        #UserShoppingCart = FromDBStoreUserInfo[user]['usershoppingcart']
         if inc == 'delete':
             while True:
                 try:
@@ -41,13 +45,16 @@ def Buy(num,user,inc=None):
                     break
         elif inc == None:
             while True:
-                try:
+                #try:
+                    print (ProductList)
                     UserAdd = int(input("请输入要购买的商品数量"))
-                    if ProductList[num]['num'] >= UserAdd:
+                    ProductListNum = int(ProductList[num]['num'])
+                    if ProductListNum >= UserAdd:
                         PutInShoppingtrolley = input("是否放入购物车y/n")
                         if PutInShoppingtrolley == "y":
-                            ProductList[num]['num'] = ProductList[num]['num'] - UserAdd
-                            print (UserShoppingTrolley)
+                            ProductListNum = ProductListNum - UserAdd
+                            print ("ProductListNum",ProductListNum)
+                            StoreProductList('write',num,'buy',ProductListNum)
                             if UserShoppingTrolley.get(num):
                                 UserShoppingTrolley[num]['buy'] = UserShoppingTrolley[num]['buy'] + UserAdd
                             else:
@@ -60,9 +67,10 @@ def Buy(num,user,inc=None):
                     else:
                         print ("商品数量不够,请重新购买")
                         break
-                except :
-                    print ("输入了可能不存在商品,请重新输入")
-                    break
+                # except :
+                #     print (error)
+                #     print ("输入了可能不正常的指令")
+                #     break
     else:
         print("没有这个商品")
 
