@@ -13,14 +13,19 @@ from bank.modules.BankLogicHandler import CloseAnAccount               #不能�
 def Buy(num,user,inc=None):
     UserShoppingTrolleyTmp = dict()
     ProductList = StoreProductList()
-    print (ProductList)
     if ProductList.get(num):
         FromDBBankUserInfo = BankUserInfo()
         FromDBStoreUserInfo = StoreUserInfo()
         UserWallet = FromDBBankUserInfo[user]['wallet']
         ProductPrice = ProductList[num]['price']
         ProductName = ProductList[num]['name']
-        UserShoppingCart = eval(str(FromDBStoreUserInfo[user]['usershoppingcart']))
+
+        UserShoppingCart = FromDBStoreUserInfo[user]['usershoppingcart']
+        if UserShoppingCart != "":
+            UserShoppingCart = eval(str(FromDBStoreUserInfo[user]['usershoppingcart']))
+        else:
+            UserShoppingCart = {}
+
         if inc == 'delete':
             while True:
                 try:
@@ -42,7 +47,7 @@ def Buy(num,user,inc=None):
                     break
         elif inc == None:
             while True:
-                #try:
+                try:
                     UserAdd = int(input("请输入要购买的商品数量"))
                     ProductListNum = int(ProductList[num]['num'])
                     if ProductListNum >= UserAdd:
@@ -50,11 +55,13 @@ def Buy(num,user,inc=None):
                         if PutInShoppingtrolley == "y":
                             ProductListNum = ProductListNum - UserAdd
                             StoreProductList('write',num,'num',ProductListNum)
-                            if UserShoppingCart.get(num):
+
+                            if UserShoppingCart.get(num,None):
                                 UserShoppingCart[num]['buy'] = UserShoppingCart[num]['buy'] + int(UserAdd)
                                 UserShoppingTrolleyTmp[num] = {'name': ProductName, 'price': ProductPrice,'buy': UserShoppingCart[num]['buy']}
                             else:
                                 UserShoppingTrolleyTmp[num] = {'name':ProductName, 'price': ProductPrice, 'buy': int(UserAdd)}
+                                print (UserShoppingTrolleyTmp)
                             UserShoppingCart.update(UserShoppingTrolleyTmp)
                             StoreUserInfo('write', user, 'usershoppingcart', UserShoppingCart)
                             print("已将商品加入购物车,可以进入购物车查看")
@@ -64,10 +71,9 @@ def Buy(num,user,inc=None):
                     else:
                         print ("商品数量不够,请重新购买")
                         break
-                # except :
-                #     print (error)
-                #     print ("输入了可能不正常的指令")
-                #     break
+                except :
+                    print ("输入了可能不正常的指令")
+                    break
     else:
         print("没有这个商品")
 
@@ -78,8 +84,9 @@ def ShoppingTrolley(user):
     print (" *************************************欢迎进入购物车**************************************")
     ProductList = StoreProductList()
     FromDBStoreUserInfo = StoreUserInfo()
-    UserShoppingCart = eval(str(FromDBStoreUserInfo[user]['usershoppingcart']))
-    if UserShoppingCart:                                                                                                                  #如果购物车列表里面存在商品才会展示购物车
+    UserShoppingCart = FromDBStoreUserInfo[user]['usershoppingcart']
+    if UserShoppingCart :                                                                                                                  #如果购物车列表里面存在商品才会展示购物车
+        UserShoppingCart = eval(str(FromDBStoreUserInfo[user]['usershoppingcart']))
         print('%-4s %-5s  %-15s  %-10s  %-10s  %-10s' % (' ','编号','商品名称','商品价格(元)','商品剩余数量(个)','商品已买数量(个)'))
         for k,v in UserShoppingCart.items():                                                                                              #开始循环购物车
             print('%-5s %-5s  %-20s  %-20d  %-15d  %-10d' % (' ',k,UserShoppingCart[k]['name'],int(UserShoppingCart[k]['price']),int(ProductList[k]['num']),int(UserShoppingCart[k]['buy'])))      #这里的总商品数用的ProductList的，BuyShoppingTrolley字典没有存储总商品数量

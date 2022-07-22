@@ -7,8 +7,8 @@ import sys
 
 from taobao.template.ShoppingList import ShoppingList,ProductListdynamics
 from taobao.dbhelper.StoreDBHandler import StoreProductList,StoreUserInfo
-from taobao.modules.StoreHandler import Buy,ShoppingTrolley
-from bank.modules.BankLogicHandler import UserMainInterface,CloseAnAccount
+from taobao.modules.StoreLogicHandler import Buy,ShoppingTrolley
+from bank.modules.BankLogicHandler import UserMainInterface,UserPay,CloseAnAccount
 from bank.dbhelper.BankDBHandler import BankUserInfo
 
 if __name__ == "__main__":
@@ -35,7 +35,7 @@ if __name__ == "__main__":
 
                         ProductList=StoreProductList()
                         ProductListdynamics(ProductList)
-                        UserChoice = input('请选择菜单 ：输入商品编号 | 购物车(c) | 余额充值(r) | 结帐(b) | 信用卡管理(x)| 退出(q) : ')
+                        UserChoice = input('请选择菜单 ：输入商品编号 | 购物车(c) | 余额充值(r) | 结帐(b) | 查看消费记录(f) | 信用卡管理(x)| 退出(q) : ')
                         if UserChoice.isdigit():
                             UserChoice = UserChoice
                             Buy(UserChoice,UserName,)
@@ -44,10 +44,12 @@ if __name__ == "__main__":
                             ShoppingTrolley(UserName)
                             continue
                         elif UserChoice == 'r':
-                            #UserPayment()
+                            UserPay(UserName)
                             continue
                         elif UserChoice == 'b':
                             CloseAnAccount(UserName)
+                        elif UserChoice == 'f':
+                            pass
                         elif UserChoice == 'x':
                             UserMainInterface(UserName)
                         elif UserChoice == 'q':
