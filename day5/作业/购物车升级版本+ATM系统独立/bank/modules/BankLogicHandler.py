@@ -22,7 +22,7 @@ def UserMainInterface(user):
         FromBankUserInfo = BankUserInfo()
         print("欢迎进入银行系统".center(117, '*'))
         print ("用户:",user,"信用额度:",FromBankUserInfo[user]['wallet'],"已使用:",FromBankUserInfo[user]['useruseamount'],"现金：",FromBankUserInfo[user]['cash'])
-        print ('请选择菜单 ：输入选择  | 余额充值(1) | 结帐(2) | 提现(3) |转账(4) | 查看账单(5) | 还款(6) | ATM操作日志(7)| 退出(q) : ')
+        print ('请选择菜单 ：输入选择  | 余额充值(1) | 结帐(2) | 提现(3) |转账(4) | 查看账单(5) | 还款(6) | ATM操作日志(7) | 退出(q) : ')
         try:
             UserChoice = input("请输入需要的操作")
         except:
@@ -33,6 +33,10 @@ def UserMainInterface(user):
             CloseAnAccount(user)
         elif UserChoice == "3":
             WithdraDeposit(user)
+        elif UserChoice == "4":
+            TransferAccounts(user)
+        elif UserChoice == "6":
+            pass
         elif UserChoice == "q":
             break
 
@@ -104,5 +108,45 @@ def WithdraDeposit(user):
     else:
         return
 
-def TransferAccounts(user,touser):
+def TransferAccounts(user):
+    ToAccount = input("请输入对方帐号")
+    FromBankUserInfo = BankUserInfo()
+    if FromBankUserInfo.get(ToAccount):
+        TransferMoney = int(input("请输入要转账的金额"))
+        UserBalance = BankUserInfo()[user]['wallet'] - BankUserInfo()[user]['useruseamount']
+        if TransferMoney < UserBalance:
+            BankUserInfo('write',user,'useruseamount',BankUserInfo()[user]['useruseamount']+TransferMoney)
+            BankUserInfo('write',ToAccount,'wallet',BankUserInfo()[ToAccount]['wallet'] + TransferMoney)
+            UserBalance = BankUserInfo()[user]['wallet'] - BankUserInfo()[user]['useruseamount']
+            print ("转账成功%d,可用余额%d"%(TransferMoney,UserBalance))
+        else:
+            print ("余额不足,请重新选择")
+    else:
+        print ("没有这个帐号名")
+        return
+
+def Repayment(user):
     pass
+
+def CreditCardManagerment():
+    AllUserInfo = BankUserInfo()
+    print("信用卡后台管理".center(117, '*'))
+    print('%-4s %-10s  %-10s  %-10s  %-10s' % (' ', '姓名', '总额度', '已使用金额', '状态'))
+    for name,info in AllUserInfo.items():
+        print('%-4s %-10s  %-15s  %-10s  %-10s' % (' ', name, info['wallet'], info['useruseamount'], info['lock']))
+    print('请选择菜单 ：输入选择  | 冻结信用卡账户(1) | 解冻信用卡账户(2)')
+    UserChoice = input("请输入需要的操作:")
+    if UserChoice == "1":
+        UserCreditAccount = input("请输入需要冻结的信用卡账户名称")
+        UserCreditAccountStatus = BankUserInfo()[UserCreditAccount]['lock']
+        if UserCreditAccountStatus == "True":
+            print ("%s信用卡已经是冻结状态"%UserCreditAccount)
+        else:
+            BankUserInfo('write',UserCreditAccount,'lock','False')
+    elif UserChoice == "2":
+        UserCreditAccount = input("请输入需要解冻的信用卡账户名称")
+        UserCreditAccountStatus = BankUserInfo()[UserCreditAccount]['lock']
+        if UserCreditAccountStatus == "False":
+            print ("%s信用卡已经是解冻状态"%UserCreditAccount)
+        else:
+            BankUserInfo('write',UserCreditAccount,'lock','True')
