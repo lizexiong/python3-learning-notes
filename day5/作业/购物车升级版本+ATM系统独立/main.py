@@ -53,7 +53,7 @@ if __name__ == "__main__":
                         elif UserChoice == 'x':
                             UserMainInterface(UserName)
                         elif UserChoice == 'z':
-                            CreditCardManagerment()
+                            CreditCardManagerment(UserName)
                         elif UserChoice == 'q':
                             print ("退出系统")
                             sys.exit()

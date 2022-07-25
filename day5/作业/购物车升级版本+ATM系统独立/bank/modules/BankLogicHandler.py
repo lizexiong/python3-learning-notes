@@ -128,29 +128,40 @@ def TransferAccounts(user):
 def Repayment(user):
     pass
 
-def CreditCardManagerment():
-    AllUserInfo = BankUserInfo()
-    print("信用卡后台管理".center(117, '*'))
-    print('%-4s %-10s  %-10s  %-10s  %-10s' % (' ', '姓名', '总额度', '已使用金额', '状态'))
-    for name,info in AllUserInfo.items():
-        print('%-4s %-10s  %-15s  %-10s  %-10s' % (' ', name, info['wallet'], info['useruseamount'], info['lock']))
-    print('请选择菜单 ：输入选择  | 冻结信用卡账户(1) | 解冻信用卡账户(2)')
-    UserChoice = input("请输入需要的操作:")
-    if UserChoice == "1":
-        UserCreditAccount = input("请输入需要冻结的信用卡账户名称")
-        if AllUserInfo.get(UserCreditAccount,None):
-            UserCreditAccountStatus = BankUserInfo()[UserCreditAccount]['lock']
-            if UserCreditAccountStatus == "True":
-                print ("%s信用卡已经是冻结状态"%UserCreditAccount)
+def CreditCardManagerment(user):
+    while True:
+        IsAdmin = BankUserInfo()[user]['privilege']
+        if IsAdmin == "admin":
+            AllUserInfo = BankUserInfo()
+            print("信用卡后台管理".center(117, '*'))
+            print('%-4s %-10s  %-10s  %-10s  %-10s' % (' ', '姓名', '总额度', '已使用金额', '状态'))
+            for name,info in AllUserInfo.items():
+                info['lock'] = '正常' if info['lock'] == "False" else "冻结"
+                print('%-4s %-10s  %-15s  %-10s  %-10s' % (' ', name, info['wallet'], info['useruseamount'],info['lock']))
+            print('请选择菜单 ：输入选择  | 冻结信用卡账户(1) | 解冻信用卡账户(2)| 任意键退出信用卡管理')
+            UserChoice = input("请输入需要的操作:")
+            if UserChoice == "1" or UserChoice == "2":
+                UserCreditAccount = input("请输入需要'冻结/解冻'的信用卡账户名称")
+                if AllUserInfo.get(UserCreditAccount,None):
+                    UserCreditAccountStatus = BankUserInfo()[UserCreditAccount]['lock']
+                    if UserChoice == "1":
+                        if UserCreditAccountStatus == "True":
+                            print ("%s信用卡已经是冻结状态"%UserCreditAccount)
+                        else:
+                            BankUserInfo('write',UserCreditAccount,'lock','True')
+                            print ("账户已冻结，返回信用卡管理账户查看")
+                    elif UserChoice == "2":
+                        if UserCreditAccountStatus == "False":
+                            print ("%s信用卡已经是解冻状态"%UserCreditAccount)
+                        else:
+                            BankUserInfo('write',UserCreditAccount,'lock','False')
+                    else:
+                        break
+                else:
+                    print ("没有这个账户")
             else:
-                BankUserInfo('write',UserCreditAccount,'lock','True')
-                print ("账户已冻结，返回信用卡管理账户查看")
+                break
         else:
-            print ("没有这个账户")
-    elif UserChoice == "2":
-        UserCreditAccount = input("请输入需要解冻的信用卡账户名称")
-        UserCreditAccountStatus = BankUserInfo()[UserCreditAccount]['lock']
-        if UserCreditAccountStatus == "False":
-            print ("%s信用卡已经是解冻状态"%UserCreditAccount)
-        else:
-            BankUserInfo('write',UserCreditAccount,'lock','False')
+            print ("该用户为普通用户，没有权限，返回商城首页")
+            input("输入任意键退出")
+            break
