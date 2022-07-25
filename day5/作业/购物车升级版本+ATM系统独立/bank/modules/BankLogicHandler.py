@@ -138,15 +138,19 @@ def CreditCardManagerment():
     UserChoice = input("请输入需要的操作:")
     if UserChoice == "1":
         UserCreditAccount = input("请输入需要冻结的信用卡账户名称")
-        UserCreditAccountStatus = BankUserInfo()[UserCreditAccount]['lock']
-        if UserCreditAccountStatus == "True":
-            print ("%s信用卡已经是冻结状态"%UserCreditAccount)
+        if AllUserInfo.get(UserCreditAccount,None):
+            UserCreditAccountStatus = BankUserInfo()[UserCreditAccount]['lock']
+            if UserCreditAccountStatus == "True":
+                print ("%s信用卡已经是冻结状态"%UserCreditAccount)
+            else:
+                BankUserInfo('write',UserCreditAccount,'lock','True')
+                print ("账户已冻结，返回信用卡管理账户查看")
         else:
-            BankUserInfo('write',UserCreditAccount,'lock','False')
+            print ("没有这个账户")
     elif UserChoice == "2":
         UserCreditAccount = input("请输入需要解冻的信用卡账户名称")
         UserCreditAccountStatus = BankUserInfo()[UserCreditAccount]['lock']
         if UserCreditAccountStatus == "False":
             print ("%s信用卡已经是解冻状态"%UserCreditAccount)
         else:
-            BankUserInfo('write',UserCreditAccount,'lock','True')
+            BankUserInfo('write',UserCreditAccount,'lock','False')
