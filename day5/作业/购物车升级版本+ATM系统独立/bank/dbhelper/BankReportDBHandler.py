@@ -29,8 +29,12 @@ def TransactionRecord(action=None,time=None,user=None,num=None,type=None,product
 
             try:
                 UserDbInfo = AllDbInfo[user]
-
-            except:
+                print (UserDbInfo)
+                UserDbInfo[user] = {
+                    {'num': 1, 'type': type, 'product': product, 'price': price, 'buy': buy, 'orderid': OrderId,
+                           'time': OrderTime}}
+            except Exception as e:
+                print (e)
                 UserDbInfo = {user:{'num':num,'type':type,'product':product,'price':price,'buy':buy,'orderid':OrderId,'time':OrderTime}}
             AllDbInfo.update(UserDbInfo)
             db_write.write(json.dumps(AllDbInfo))
