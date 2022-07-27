@@ -61,7 +61,6 @@ def Buy(num,user,inc=None):
                                 UserShoppingTrolleyTmp[num] = {'name': ProductName, 'price': ProductPrice,'buy': UserShoppingCart[num]['buy']}
                             else:
                                 UserShoppingTrolleyTmp[num] = {'name':ProductName, 'price': ProductPrice, 'buy': int(UserAdd)}
-                                print (UserShoppingTrolleyTmp)
                             UserShoppingCart.update(UserShoppingTrolleyTmp)
                             StoreUserInfo('write', user, 'usershoppingcart', UserShoppingCart)
                             print("已将商品加入购物车,可以进入购物车查看")

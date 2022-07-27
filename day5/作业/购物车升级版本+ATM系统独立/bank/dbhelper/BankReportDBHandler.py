@@ -25,23 +25,22 @@ def TransactionRecord(action=None,time=None,user=None,num=None,type=None,product
             try:
                 AllDbInfo = json.loads(db_read.read())
             except:
-                AllDbInfo = {}
+                AllDbInfo = {user:{}}
 
-            try:
-                UserDbInfo = AllDbInfo[user]
-                print (UserDbInfo)
-                UserDbInfo[user] = {
-                    {'num': 1, 'type': type, 'product': product, 'price': price, 'buy': buy, 'orderid': OrderId,
-                           'time': OrderTime}}
-            except Exception as e:
-                print (e)
-                UserDbInfo = {user:{'num':num,'type':type,'product':product,'price':price,'buy':buy,'orderid':OrderId,'time':OrderTime}}
-            AllDbInfo.update(UserDbInfo)
+            # try:
+            UserDbInfo = AllDbInfo[user]
+            AllDbInfo[user][OrderId]={'num': 2, 'type': type, 'product': product, 'price': price, 'buy': buy, 'orderid': OrderId,'time': OrderTime}
+                # AllDbInfo[user].update({'num': 2, 'type': type, 'product': product, 'price': price, 'buy': buy, 'orderid': OrderId,'time': OrderTime})
+
+            # except Exception as e:
+            #     print (e)
+            #     AllDbInfo = {user:{'num':num,'type':type,'product':product,'price':price,'buy':buy,'orderid':OrderId,'time':OrderTime}}
+            #     # AllDbInfo.update(UserDbInfo)
             db_write.write(json.dumps(AllDbInfo))
     os.rename('../databases/BankReportDB', '../databases/BankReportDBTMP')
     os.rename('../databases/BankReportDBBak', '../databases/BankReportDB')
     os.remove('../databases/BankReportDBTMP')
 
 
-TransactionRecord(action='write',user='lizexiong')
+TransactionRecord(action='write',user='wuxinzhe')
  
