@@ -3,7 +3,7 @@
 
 
 
-import json
+import json,os
 
 
 def TransactionRecord(action=None,time=None,user=None,num=None,type=None,product=None,price=None,buy=None):
@@ -16,13 +16,27 @@ def TransactionRecord(action=None,time=None,user=None,num=None,type=None,product
             elif type == "atm":
                 pass
         elif action == "write":
+            import random,time
+            RandomNum = str(random.randint(1000000000,9999999999))
+            OrderTimePrefix = str(time.strftime("%Y%m%d%H%M%S", time.localtime()))
+            OrderId = OrderTimePrefix + RandomNum
+            OrderTime = str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+
             try:
-                ALLDbInfo = json.loads(db_read.read())[user]
+                AllDbInfo = json.loads(db_read.read())
             except:
-                ALLDbInfo = {user:{'num':num,'type':type,'product':product,'price':price,'buy':buy}}
-            print (ALLDbInfo)
-            #ALLDbInfo[user][num] = num
-            db_write.write(json.dumps(ALLDbInfo))
+                AllDbInfo = {}
+
+            try:
+                UserDbInfo = AllDbInfo[user]
+
+            except:
+                UserDbInfo = {user:{'num':num,'type':type,'product':product,'price':price,'buy':buy,'orderid':OrderId,'time':OrderTime}}
+            AllDbInfo.update(UserDbInfo)
+            db_write.write(json.dumps(AllDbInfo))
+    os.rename('../databases/BankReportDB', '../databases/BankReportDBTMP')
+    os.rename('../databases/BankReportDBBak', '../databases/BankReportDB')
+    os.remove('../databases/BankReportDBTMP')
 
 
 TransactionRecord(action='write',user='lizexiong')
