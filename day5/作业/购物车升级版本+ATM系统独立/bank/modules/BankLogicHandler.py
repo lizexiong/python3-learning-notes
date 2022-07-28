@@ -9,6 +9,7 @@
 
 import os,sys
 from bank.dbhelper.BankDBHandler import BankUserInfo
+from bank.dbhelper.BankReportHandler import TransactionRecord
 from taobao.dbhelper.StoreDBHandler import StoreProductList,StoreUserInfo
 
 #from taobao.modules.StoreHandler import ShoppingTrolley         #这里不能导入了,因为StoreHandler也会调用这里的模块，就造成了循环，导入就会报错,具体原因见
@@ -75,7 +76,7 @@ def CloseAnAccount(user):
             if UserResidue >= SumCommodityList:                                                                                              #对比用户金钱是否比商品总价多
                 NowUserUse = UserAmount + SumCommodityList
                 BankUserInfo('write',user,'useruseamount',NowUserUse)                                                                                          #如果用户金钱比商品总价多，那么调用算账模块
-                report()
+                TransactionRecord(action='write',type="None",user=user,**UserShoppingCart)
                 print ("你的商品需要%s购买,余额将剩余%s"%(SumCommodityList,UserWallet - NowUserUse))
                 StoreUserInfo('write',user,'usershoppingcart','')                                                                        #并且清空购物车
             else:

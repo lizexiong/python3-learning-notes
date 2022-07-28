@@ -6,7 +6,7 @@
 import json,os
 
 
-def TransactionRecord(action=None,time=None,user=None,num=None,type=None,product=None,price=None,buy=None):
+def TransactionRecord(action=None,time='None',user=None,type=None,**usershoppingcart):
     with open('../databases/BankReportDB', 'r+') as db_read, open('../databases/BankReportDBBak', 'w+') as db_write:
         if action == "read":
             if type == None:
@@ -24,12 +24,15 @@ def TransactionRecord(action=None,time=None,user=None,num=None,type=None,product
 
             try:
                 AllDbInfo = json.loads(db_read.read())
-            except:
+            except Exception as e:
                 AllDbInfo = {user:{}}
 
             # try:
             UserDbInfo = AllDbInfo[user]
-            AllDbInfo[user][OrderId]={'num': 2, 'type': type, 'product': product, 'price': price, 'buy': buy, 'orderid': OrderId,'time': OrderTime}
+
+            for i in usershoppingcart.values():
+                print (i)
+                #AllDbInfo[user][OrderId]={'num': 2, 'type': type, 'product': i[product], 'price': price, 'buy': buy, 'time': OrderTime}
                 # AllDbInfo[user].update({'num': 2, 'type': type, 'product': product, 'price': price, 'buy': buy, 'orderid': OrderId,'time': OrderTime})
 
             # except Exception as e:
@@ -42,5 +45,5 @@ def TransactionRecord(action=None,time=None,user=None,num=None,type=None,product
     os.remove('../databases/BankReportDBTMP')
 
 
-TransactionRecord(action='write',user='wuxinzhe')
+TransactionRecord(action='write',user='wuxinzhe',**usershoppingcart=)
  
