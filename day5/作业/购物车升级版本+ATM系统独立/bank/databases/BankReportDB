@@ -1,2 +1,1 @@
-{"lizexiong": {"202207290018506790993055": {"num": "1", "type": "bill", "product": "huawei", "price": "5000", "buy": 10, "time": "2022-07-29 00:18:50"}}}
-{"lizexiong": {"202207290018506790993055": {"num": "3", "type": "bill", "product": "sanxing", "price": "4000", "buy": 2, "time": "2022-07-29 00:18:50"}}}
+{"wuxinzhe": {}, "202207292044399773963384": {"3": {"type": "bill", "product": "sanxing", "price": "4000", "buy": 1, "time": "2022-07-29 20:44:39"}, "4": {"type": "bill", "product": "xiaomi", "price": "1000", "buy": 1, "time": "2022-07-29 20:44:39"}}}

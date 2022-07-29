@@ -23,34 +23,29 @@ def TransactionRecord(action=None,user=None,type=None,**usershoppingcart):
             try:
                 AllDbInfo = json.loads(db_read.read())
             except Exception as e:
-                AllDbInfo = {user:{}}
+                AllDbInfo = {"user":}
 
-            # try:
-            # UserDbInfo = AllDbInfo[user]
+            try:
+                UserDbInfo = json.loads(db_read.read())[user]
+            except Exception as e:
+                UserDbInfo[user] = None
 
+
+            TmpUserInfo={}
             for num,property in usershoppingcart.items():
-                UserDbInfo = AllDbInfo[user]
-                print (UserDbInfo)  #这里有问题，怎么让订单在一张里面展示
-                if UserDbInfo == '':
-                    AllDbInfo[user][OrderId]={'num': num, 'type': type, 'product': property['name'], 'price': property['price'], 'buy': property['buy'], 'time': OrderTime}
+                if TmpUserInfo.get(OrderId,None):
+                    TmpUserInfo[OrderId].update({num: {'type': type, 'product': property['name'],
+                                                       'price': property['price'], 'buy': property['buy'],
+                                                       'time': OrderTime}})
                 else:
-                    TmpOder = {OrderId:{'num': num, 'type': type, 'product': property['name'], 'price': property['price'], 'buy': property['buy'], 'time': OrderTime}}
-
-            AllDbInfo[user].update(TmpOder)
+                    TmpUserInfo[OrderId] = {num: {'type': type, 'product': property['name'], 'price': property['price'],
+                                                  'buy': property['buy'], 'time': OrderTime}}
+            LastUserDbInfo = UserDbInfo.update(TmpUserInfo)
+            print (LastUserDbInfo)
+            AllDbInfo[user].update(LastUserDbInfo)
             db_write.write(json.dumps(AllDbInfo))
-                # AllDbInfo[user].update({'num': 2, 'type': type, 'product': product, 'price': price, 'buy': buy, 'orderid': OrderId,'time': OrderTime})
-
-            # except Exception as e:
-            #     print (e)
-            #     AllDbInfo = {user:{'num':num,'type':type,'product':product,'price':price,'buy':buy,'orderid':OrderId,'time':OrderTime}}
-            #     # AllDbInfo.update(UserDbInfo)
-
     os.rename('bank/databases/BankReportDB', 'bank/databases/BankReportDBTMP')
     os.rename('bank/databases/BankReportDBBak', 'bank/databases/BankReportDB')
     os.remove('bank/databases/BankReportDBTMP')
 
-# usershoppingcart={"1": {"name": "huawei", "price": "5000", "buy": 1}}
-#
-# #TransactionRecord(action='write',user='wuxinzhe',**usershoppingcart)
-# TransactionRecord(action='read',user='wuxinzhe',**usershoppingcart)
  
