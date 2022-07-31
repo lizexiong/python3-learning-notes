@@ -1,1 +1,1 @@
-{"lizexiong": {"password": "1", "lock": "False", "usershoppingcart": {"1": {"name": "huawei", "price": "5000", "buy": 1}}}, "wuxinzhe": {"password": "1", "lock": "False", "usershoppingcart": {"4": {"name": "xiaomi", "price": "1000", "buy": 1}, "3": {"name": "sanxing", "price": "4000", "buy": 1}}}}
+{"lizexiong": {"password": "1", "lock": "False", "usershoppingcart": ""}, "wuxinzhe": {"password": "1", "lock": "False", "usershoppingcart": ""}}

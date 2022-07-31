@@ -6,7 +6,7 @@
 import json,os
 
 
-def TransactionRecord(action=None,user=None,type=None,**usershoppingcart):
+def TransactionRecord(action='read',user=None,type=None,**useroperationrecords):
     with open('bank/databases/BankReportDB', 'r+') as db_read, open('bank/databases/BankReportDBBak', 'w+') as db_write:
         if action == "read":
             try:
@@ -23,26 +23,40 @@ def TransactionRecord(action=None,user=None,type=None,**usershoppingcart):
             try:
                 AllDbInfo = json.loads(db_read.read())
             except Exception as e:
-                AllDbInfo = {"user":}
+                AllDbInfo= dict()
 
-            try:
-                UserDbInfo = json.loads(db_read.read())[user]
-            except Exception as e:
-                UserDbInfo[user] = None
+            if AllDbInfo is not None:
+                try:
+                    UserDbInfo = AllDbInfo[user]
+                except Exception as e:
+                    AllDbInfo[user] = {}
+                    UserDbInfo = {}
+            else:
+                AllDbInfo[user] = {}
 
 
-            TmpUserInfo={}
-            for num,property in usershoppingcart.items():
-                if TmpUserInfo.get(OrderId,None):
-                    TmpUserInfo[OrderId].update({num: {'type': type, 'product': property['name'],
-                                                       'price': property['price'], 'buy': property['buy'],
-                                                       'time': OrderTime}})
-                else:
-                    TmpUserInfo[OrderId] = {num: {'type': type, 'product': property['name'], 'price': property['price'],
-                                                  'buy': property['buy'], 'time': OrderTime}}
-            LastUserDbInfo = UserDbInfo.update(TmpUserInfo)
-            print (LastUserDbInfo)
-            AllDbInfo[user].update(LastUserDbInfo)
+            for num,property in useroperationrecords.items():
+
+                if type == "bill":
+                    if UserDbInfo.get(OrderId,None):
+                        UserDbInfo[OrderId].update({num: {'type': type, 'product': property['name'],
+                                                           'price': property['price'], 'buy': property['buy'],
+                                                           'time': OrderTime}})
+                    else:
+                        UserDbInfo[OrderId] = {num: {'type': type, 'product': property['name'], 'price': property['price'],
+                                                      'buy': property['buy'], 'time': OrderTime}}
+                elif type == "transferaccounts":
+                    if UserDbInfo.get(OrderId, None):
+                        UserDbInfo[OrderId].update({'type': type, 'transfermoney': useroperationrecords['transfermoney'],'touser':useroperationrecords['touser'],'userbalance':useroperationrecords['userbalance'],'time': OrderTime})
+                    else:
+                        UserDbInfo[OrderId] = {'type': type, 'transfermoney': useroperationrecords['transfermoney'],'touser':useroperationrecords['touser'],'userbalance':useroperationrecords['userbalance'],'time': OrderTime}
+                elif type == "atm":
+                    if UserDbInfo.get(OrderId, None):
+                        UserDbInfo[OrderId].update({'type': type, 'amount': useroperationrecords['amount'],'userbalance':useroperationrecords['userbalance'],'time': OrderTime})
+                    else:
+                        UserDbInfo[OrderId] = {'type': type, 'amount': useroperationrecords['amount'],'userbalance':useroperationrecords['userbalance'],'time': OrderTime}
+
+            AllDbInfo[user].update(UserDbInfo)
             db_write.write(json.dumps(AllDbInfo))
     os.rename('bank/databases/BankReportDB', 'bank/databases/BankReportDBTMP')
     os.rename('bank/databases/BankReportDBBak', 'bank/databases/BankReportDB')

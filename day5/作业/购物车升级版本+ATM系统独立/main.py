@@ -7,7 +7,7 @@ import sys
 
 from taobao.template.ShoppingList import ShoppingList,ProductListdynamics
 from taobao.dbhelper.StoreDBHandler import StoreProductList,StoreUserInfo
-from taobao.modules.StoreLogicHandler import Buy,ShoppingTrolley
+from taobao.modules.StoreLogicHandler import Buy,ShoppingTrolley,ExpenseCalendar
 from bank.modules.BankLogicHandler import UserMainInterface,UserPay,CloseAnAccount,CreditCardManagerment
 from bank.dbhelper.BankDBHandler import BankUserInfo
 
@@ -49,7 +49,7 @@ if __name__ == "__main__":
                         elif UserChoice == 'b':
                             CloseAnAccount(UserName)
                         elif UserChoice == 'f':
-                            pass
+                            ExpenseCalendar(UserName)
                         elif UserChoice == 'x':
                             UserMainInterface(UserName)
                         elif UserChoice == 'z':

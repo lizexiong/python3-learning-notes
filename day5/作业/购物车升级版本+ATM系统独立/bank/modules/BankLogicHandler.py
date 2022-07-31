@@ -36,8 +36,12 @@ def UserMainInterface(user):
             WithdraDeposit(user)
         elif UserChoice == "4":
             TransferAccounts(user)
+        elif UserChoice == "5":
+            BankExpenseCalendar(user)
         elif UserChoice == "6":
             pass
+        elif UserChoice == "7":
+            AtmLog(user)
         elif UserChoice == "q":
             break
 
@@ -103,7 +107,12 @@ def WithdraDeposit(user):
         if UserCash <= UserBalance:
             UseUseAmount = BankUserInfo()[user]['useruseamount'] + UserCash
             BankUserInfo('write',user,'useruseamount',UseUseAmount)
+            UserCash = BankUserInfo()[user]['cash'] + UserCash
             BankUserInfo('write', user, 'cash', UserCash)
+            WithdrawalAmount = int(BankUserInfo()[user]['wallet'] / 2)
+            UserBalance = BankUserInfo()[user]['wallet'] - BankUserInfo()[user]['useruseamount']                 #因为需要获取最新余额写入数据库
+            UserOperationRecords = {"amount":UserCash,"userbalance":UserBalance}
+            TransactionRecord(action='write', type="atm", user=user, **UserOperationRecords)
         else:
             print ("可提现额度不足,返回主界面")
             return
@@ -120,7 +129,10 @@ def TransferAccounts(user):
             BankUserInfo('write',user,'useruseamount',BankUserInfo()[user]['useruseamount']+TransferMoney)
             BankUserInfo('write',ToAccount,'wallet',BankUserInfo()[ToAccount]['wallet'] + TransferMoney)
             UserBalance = BankUserInfo()[user]['wallet'] - BankUserInfo()[user]['useruseamount']
+            UserOperationRecords = {"transfermoney":TransferMoney,'touser':ToAccount,'userbalance':UserBalance}
+            TransactionRecord(action='write', type="transferaccounts", user=user, **UserOperationRecords)
             print ("转账成功%d,可用余额%d"%(TransferMoney,UserBalance))
+
         else:
             print ("余额不足,请重新选择")
     else:
@@ -167,3 +179,43 @@ def CreditCardManagerment(user):
             print ("该用户为普通用户，没有权限，返回商城首页")
             input("输入任意键退出")
             break
+
+def AtmLog(user):
+    print(" *************************************历史账单管理界面**************************************")
+    print('%-4s %-25s  %-20s  %-10s   %-10s ' % (' ', '时间', '地点', '剩余余额', '提现金额'))
+    SinleUserAtmInfo = TransactionRecord('read',user)[user]
+
+    for ordernum, orderinfo in SinleUserAtmInfo.items():
+        if orderinfo['type'] == "atm":
+            print('%-4s %-25s  %-22s  %-13s   %-10s ' % (
+            ' ', SinleUserAtmInfo[ordernum]['time'],'上海398',SinleUserAtmInfo[ordernum]['userbalance'], SinleUserAtmInfo[ordernum]['amount'], ))
+        else:
+            pass
+        input("按任意键退出")
+        break
+    else:
+        print("用户没有消费记录")
+
+def BankExpenseCalendar(user):
+    SinleUserBillInfo = TransactionRecord('read',user)[user]
+    if SinleUserBillInfo is not None:
+        print (" *************************************信用卡历史账单管理界面**************************************")
+        print('%-4s %-25s  %-20s  %-10s  %-10s  %-10s' % (' ', '订单号', '订单时间','商品名称', '商品价格(元)',  '商品购买数量(个)',))
+
+    for ordernum, orderinfo in SinleUserBillInfo.items():
+        count = 0
+        TotalPriceCalc = []
+        for num, info in orderinfo.items():
+            if info['type'] == "bill":
+                TotalPriceCalc.append(int(info['price']) * int(info['buy']))
+                if count < 1:
+                    print('%-4s %-25s  %-25s  %-15s  %-15s  %-10s' % (
+                        ' ', ordernum, info['time'], info['product'], info['price'], info['buy'],))
+                else:
+                    print('%-4s %-25s  %-25s  %-15s  %-15s  %-10s' % (
+                        ' ', ' ' * 25, ' ' * 20, info['product'], info['price'], info['buy'],))
+                count += 1
+            else:
+                pass
+        print('%-87s %-1s %-25s ' % (' ', '总价:', sum(TotalPriceCalc)))
+        input("按任意键退出")

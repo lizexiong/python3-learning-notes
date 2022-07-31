@@ -5,9 +5,8 @@ import json
 
 from taobao.dbhelper.StoreDBHandler import StoreProductList,StoreUserInfo
 from bank.dbhelper.BankDBHandler import BankUserInfo
+from bank.dbhelper.BankReportDBHandler import TransactionRecord
 from bank.modules.BankLogicHandler import CloseAnAccount               #不能再调用了，不然就调用循环了
-
-
 
 #购买和退订商品
 def Buy(num,user,inc=None):
@@ -112,3 +111,29 @@ def ShoppingTrolley(user):
         UserInc = input("按任意键返回主菜单")
         if UserInc:
             return
+
+def ExpenseCalendar(user):
+    SinleUserBillInfo = TransactionRecord('read',user)[user]
+    if SinleUserBillInfo is not None:
+        print (" *************************************历史账单管理界面**************************************")
+        print('%-4s %-25s  %-20s  %-10s  %-10s  %-10s' % (' ', '订单号', '订单时间','商品名称', '商品价格(元)',  '商品购买数量(个)',))
+
+        for ordernum,orderinfo in SinleUserBillInfo.items():
+            count = 0
+            TotalPriceCalc = []
+            for num,info in orderinfo.items():
+                if info['type'] == "bill":
+                    TotalPriceCalc.append(int(info['price']) * int(info['buy']))
+                    if count <1 :
+                        print('%-4s %-25s  %-25s  %-15s  %-15s  %-10s' % (
+                        ' ', ordernum,info['time'], info['product'], info['price'], info['buy'], ))
+                    else:
+                        print('%-4s %-25s  %-25s  %-15s  %-15s  %-10s' % (
+                        ' ', ' '*25, ' '*20,info['product'], info['price'], info['buy'], ))
+                    count +=1
+                else:
+                    pass
+            print ('%-87s %-1s %-25s ' % (' ','总价:',sum(TotalPriceCalc)))
+            input("按任意键退出")
+    else:
+        print ("用户没有消费记录")
