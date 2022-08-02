@@ -185,17 +185,27 @@ def AtmLog(user):
     print('%-4s %-25s  %-20s  %-10s   %-10s ' % (' ', '时间', '地点', '剩余余额', '提现金额'))
     SinleUserAtmInfo = TransactionRecord('read',user)[user]
 
-    import datetime
+    from datetime import datetime
 
-    today = datetime.date.today()
-    AMonthAgo = datetime.timedelta(days=30)
+    today = datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M:%S")
+    import datetime
+    beforeday = datetime.timedelta(days=30)
+    LastMonth = today - beforeday
+    print (LastMonth)
+
+
+    #
+    # today = datetime.date.today()
+    #
+    # AMonthAgo = datetime.timedelta(days=30)
     # LastMonth = (today - AMonthAgo).strftime("%Y%m%d")
     # Strtoday = datetime.date.today().strftime("%Y%m%d")
-    LastMonth = (today - AMonthAgo)
-    print (LastMonth)
+    # LastMonth = (today - AMonthAgo)
     for ordernum, orderinfo in SinleUserAtmInfo.items():
         from datetime import datetime
         billtime = datetime.strptime(orderinfo['time'], "%Y-%m-%d %H:%M:%S")
+        print (billtime)
+
 
 
     for ordernum, orderinfo in SinleUserAtmInfo.items():
