@@ -227,29 +227,63 @@ def BankExpenseCalendar(user):
     if SinleUserALlInfo is not None:
         print('%-4s %-25s  %-20s  %-10s  %-10s  %-10s' % (' ', '订单号', '订单时间','类型','操作', '消费金额'))
 
-    AllPriceSum = []
+    UserInputTime = input("请输入要查询的日期：如2022-01,不输入默认查询最近一个月")
 
+    import datetime
+
+    if UserInputTime != "" and re.match('\d{4}-\d{1,2}',UserInputTime):
+        NowToday = datetime.datetime.strptime(UserInputTime + "-" + "15" + " " + "00:00:00", "%Y-%m-%d %H:%M:%S")
+    elif UserInputTime == "":
+        NowToday = datetime.datetime.now()
+    else:
+        print ("日期输入错误，返回")
+        return
+
+    #print (NowToday)
+    LastOneMonth = NowToday - datetime.timedelta(days=30)
+    NowYearMonth = str(NowToday)[0:7]
+    # NowMonth = str(Nowtoday)[5:7]
+    LastYearMonth = str(LastOneMonth)[0:7]
+    #EndDate = NowYearMonth + "-" + "15" + " " + "00:00:00"
+    EndDate = datetime.datetime.strptime(NowYearMonth + "-" + "15" + " " + "00:00:00", "%Y-%m-%d %H:%M:%S")
+    #StartDate = LastYearMonth + "-" + "15" + " " + "00:00:00"
+    StartDate = datetime.datetime.strptime(LastYearMonth + "-" + "15" + " " + "00:00:00", "%Y-%m-%d %H:%M:%S")
+
+    #print ("start:",StartDate,"end:",EndDate)
+#start 2022-07-15 00:00:00 end 2022-08-15 00:00:00
+
+
+    AllPriceSum = []
+    count = 0
     for ordernum, orderinfo in SinleUserALlInfo.items():
-        count = 0
         SinleOrderPriceSum = []
         #print (ordernum,orderinfo)
         for num,info in orderinfo.items():
+            billtime = datetime.datetime.strptime(info['time'], "%Y-%m-%d %H:%M:%S")
+            # print ("billtime",billtime,"StartDate",StartDate,"EndDate",EndDate)
+            if StartDate <= billtime <= EndDate:
+                #print("billtime", billtime, "StartDate", StartDate, "EndDate", EndDate)
+                if info['type'] == "bill":
+                    SinleOrderChildPriceSum = int(info['price']) * int(info['buy'])
+                    AllPriceSum.append(SinleOrderChildPriceSum)
+                    SinleOrderPriceSum.append(SinleOrderChildPriceSum)
+                elif info['type'] == "atm":
+                    AllPriceSum.append(info['usercash'])
+                elif info['type'] == "transferaccounts":
+                    AllPriceSum.append(info['transfermoney'])
+                count += 1
+
+        if StartDate <= billtime <= EndDate:
             if info['type'] == "bill":
-                SinleOrderChildPriceSum = int(info['price']) * int(info['buy'])
-                AllPriceSum.append(SinleOrderChildPriceSum)
-                SinleOrderPriceSum.append(SinleOrderChildPriceSum)
+                print('%-4s %-25s  %-25s  %-10s  %-10s  %-10s' % (' ', ordernum, info['time'], '账单', '购物', sum(SinleOrderPriceSum)))
             elif info['type'] == "atm":
-                AllPriceSum.append(info['usercash'])
+                print('%-4s %-25s  %-25s  %-10s  %-10s  %-10s' % (' ', ordernum, info['time'], 'atm操作', '提现', info['usercash']))
             elif info['type'] == "transferaccounts":
-                AllPriceSum.append(info['transfermoney'])
+                print('%-4s %-25s  %-25s  %-10s  %-11s  %-10s' % (' ', ordernum, info['time'], '转账', info['touser'], info['transfermoney']))
 
-
-        if info['type'] == "bill":
-            print('%-4s %-25s  %-25s  %-10s  %-10s  %-10s' % (' ', ordernum, info['time'], '账单', '购物', sum(SinleOrderPriceSum)))
-        elif info['type'] == "atm":
-            print('%-4s %-25s  %-25s  %-10s  %-10s  %-10s' % (' ', ordernum, info['time'], 'atm操作', '提现', info['usercash']))
-        elif info['type'] == "transferaccounts":
-            print('%-4s %-25s  %-25s  %-10s  %-11s  %-10s' % (' ', ordernum, info['time'], '转账', info['touser'], info['transfermoney']))
         # print (SinleOrderPriceSum)
-    print ('%-72s %-1s %-1s ' %('','本月账单共计:',sum(AllPriceSum)))
+    if count >= 1:
+        print ('%-72s %-1s %-1s ' %('','本月账单共计:',sum(AllPriceSum)))
+    else:
+        print ("该月没有账单")
 
