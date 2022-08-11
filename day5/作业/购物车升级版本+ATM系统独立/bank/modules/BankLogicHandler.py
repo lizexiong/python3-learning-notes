@@ -7,7 +7,7 @@
 
 
 
-import os,sys
+import os,sys,re
 from bank.dbhelper.BankDBHandler import BankUserInfo
 from bank.dbhelper.BankReportDBHandler import TransactionRecord
 from taobao.dbhelper.StoreDBHandler import StoreProductList,StoreUserInfo
@@ -107,11 +107,11 @@ def WithdraDeposit(user):
         if UserCash <= UserBalance:
             UseUseAmount = BankUserInfo()[user]['useruseamount'] + UserCash
             BankUserInfo('write',user,'useruseamount',UseUseAmount)
-            UserCash = BankUserInfo()[user]['cash'] + UserCash
-            BankUserInfo('write', user, 'cash', UserCash)
+            NewUserCash = BankUserInfo()[user]['cash'] + UserCash
+            BankUserInfo('write', user, 'cash', NewUserCash)
             WithdrawalAmount = int(BankUserInfo()[user]['wallet'] / 2)
             UserBalance = BankUserInfo()[user]['wallet'] - BankUserInfo()[user]['useruseamount']                 #因为需要获取最新余额写入数据库
-            UserOperationRecords = {"amount":UserCash,"userbalance":UserBalance}
+            UserOperationRecords = {'1':{"usercash":UserCash,"userbalance":UserBalance}}
             TransactionRecord(action='write', type="atm", user=user, **UserOperationRecords)
         else:
             print ("可提现额度不足,返回主界面")
@@ -129,7 +129,7 @@ def TransferAccounts(user):
             BankUserInfo('write',user,'useruseamount',BankUserInfo()[user]['useruseamount']+TransferMoney)
             BankUserInfo('write',ToAccount,'wallet',BankUserInfo()[ToAccount]['wallet'] + TransferMoney)
             UserBalance = BankUserInfo()[user]['wallet'] - BankUserInfo()[user]['useruseamount']
-            UserOperationRecords = {"transfermoney":TransferMoney,'touser':ToAccount,'userbalance':UserBalance}
+            UserOperationRecords = {"1":{"transfermoney":TransferMoney,'touser':ToAccount,'userbalance':UserBalance}}
             TransactionRecord(action='write', type="transferaccounts", user=user, **UserOperationRecords)
             print ("转账成功%d,可用余额%d"%(TransferMoney,UserBalance))
 
@@ -181,64 +181,75 @@ def CreditCardManagerment(user):
             break
 
 def AtmLog(user):
+    import re
     print(" *************************************历史账单管理界面**************************************")
-    print('%-4s %-25s  %-20s  %-10s   %-10s ' % (' ', '时间', '地点', '剩余余额', '提现金额'))
+    # print('%-4s %-25s  %-20s  %-10s   %-10s ' % (' ', '时间', '地点', '剩余余额', '提现金额'))
     SinleUserAtmInfo = TransactionRecord('read',user)[user]
-
-    from datetime import datetime
-
-    today = datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M:%S")
-    import datetime
-    beforeday = datetime.timedelta(days=30)
-    LastMonth = today - beforeday
-    print (LastMonth)
-
-
-    #
-    # today = datetime.date.today()
-    #
-    # AMonthAgo = datetime.timedelta(days=30)
-    # LastMonth = (today - AMonthAgo).strftime("%Y%m%d")
-    # Strtoday = datetime.date.today().strftime("%Y%m%d")
-    # LastMonth = (today - AMonthAgo)
+    UserInputTime = input("请输入要查询的日期：如2022-01-01,不输入默认查询最近一个月")
+    print('%-4s %-25s  %-20s  %-10s   %-10s ' % (' ', '时间', '地点', '剩余余额', '提现金额'))
+    count = 0
     for ordernum, orderinfo in SinleUserAtmInfo.items():
-        from datetime import datetime
-        billtime = datetime.strptime(orderinfo['time'], "%Y-%m-%d %H:%M:%S")
-        print (billtime)
+        import datetime
+        Nowtoday = datetime.datetime.now()
+        LastOneMonth = Nowtoday - datetime.timedelta(days=30)
 
+        for num,info in orderinfo.items():
+            if UserInputTime != "" and re.match('\d{4}-\d{1,2}',UserInputTime):
+                if  re.match(UserInputTime,info['time']) and info['type'] == "atm" :
+                    print('%-4s %-25s  %-22s  %-13s   %-10s ' % (
+                        ' ', info['time'], '上海398', info['userbalance'],
+                        info['usercash'],))
+                    count += 1
+                else:
+                    pass
+            elif UserInputTime == "":
+                billtime = datetime.datetime.strptime(info['time'], "%Y-%m-%d %H:%M:%S")
+                if Nowtoday >= billtime >= LastOneMonth and info['type'] == "atm":
+                    print('%-4s %-25s  %-22s  %-13s   %-10s ' % (
+                        ' ', info['time'], '上海398', info['userbalance'],
+                        info['usercash'],))
+                    count += 1
+                else:
+                    pass
+            else:
+                print ("输入错误,退出atm账单查询")
+                return
 
+    if count == 0:
+        print ("该月没有atm提现记录")
+    input("按任意键退出")
 
-    for ordernum, orderinfo in SinleUserAtmInfo.items():
-        if orderinfo['type'] == "atm":
-            print('%-4s %-25s  %-22s  %-13s   %-10s ' % (
-            ' ', SinleUserAtmInfo[ordernum]['time'],'上海398',SinleUserAtmInfo[ordernum]['userbalance'], SinleUserAtmInfo[ordernum]['amount'], ))
-        else:
-            pass
-        input("按任意键退出")
-        break
-    else:
-        print("用户没有消费记录")
 
 def BankExpenseCalendar(user):
-    SinleUserBillInfo = TransactionRecord('read',user)[user]
-    if SinleUserBillInfo is not None:
-        print (" *************************************信用卡历史账单管理界面**************************************")
-        print('%-4s %-25s  %-20s  %-10s  %-10s  %-10s' % (' ', '订单号', '订单时间','商品名称', '商品价格(元)',  '商品购买数量(个)',))
+    SinleUserALlInfo = TransactionRecord('read',user)[user]
+    # UserInputTime = input("请输入要查询的日期：如2022-01,不输入默认查询最近一个月")
+    print(" *************************************信用卡历史账单管理界面**************************************")
+    if SinleUserALlInfo is not None:
+        print('%-4s %-25s  %-20s  %-10s  %-10s  %-10s' % (' ', '订单号', '订单时间','类型','操作', '消费金额'))
 
-    for ordernum, orderinfo in SinleUserBillInfo.items():
+    AllPriceSum = []
+
+    for ordernum, orderinfo in SinleUserALlInfo.items():
         count = 0
-        TotalPriceCalc = []
-        for num, info in orderinfo.items():
+        SinleOrderPriceSum = []
+        #print (ordernum,orderinfo)
+        for num,info in orderinfo.items():
             if info['type'] == "bill":
-                TotalPriceCalc.append(int(info['price']) * int(info['buy']))
-                if count < 1:
-                    print('%-4s %-25s  %-25s  %-15s  %-15s  %-10s' % (
-                        ' ', ordernum, info['time'], info['product'], info['price'], info['buy'],))
-                else:
-                    print('%-4s %-25s  %-25s  %-15s  %-15s  %-10s' % (
-                        ' ', ' ' * 25, ' ' * 20, info['product'], info['price'], info['buy'],))
-                count += 1
-            else:
-                pass
-        print('%-87s %-1s %-25s ' % (' ', '总价:', sum(TotalPriceCalc)))
-        input("按任意键退出")
+                SinleOrderChildPriceSum = int(info['price']) * int(info['buy'])
+                AllPriceSum.append(SinleOrderChildPriceSum)
+                SinleOrderPriceSum.append(SinleOrderChildPriceSum)
+            elif info['type'] == "atm":
+                AllPriceSum.append(info['usercash'])
+            elif info['type'] == "transferaccounts":
+                AllPriceSum.append(info['transfermoney'])
+
+
+        if info['type'] == "bill":
+            print('%-4s %-25s  %-25s  %-10s  %-10s  %-10s' % (' ', ordernum, info['time'], '账单', '购物', sum(SinleOrderPriceSum)))
+        elif info['type'] == "atm":
+            print('%-4s %-25s  %-25s  %-10s  %-10s  %-10s' % (' ', ordernum, info['time'], 'atm操作', '提现', info['usercash']))
+        elif info['type'] == "transferaccounts":
+            print('%-4s %-25s  %-25s  %-10s  %-11s  %-10s' % (' ', ordernum, info['time'], '转账', info['touser'], info['transfermoney']))
+        # print (SinleOrderPriceSum)
+    print ('%-72s %-1s %-1s ' %('','本月账单共计:',sum(AllPriceSum)))
+

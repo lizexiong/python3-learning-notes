@@ -113,13 +113,15 @@ def ShoppingTrolley(user):
             return
 
 def ExpenseCalendar(user):
+    import re
     SinleUserBillInfo = TransactionRecord('read',user)[user]
+    print (SinleUserBillInfo)
     if SinleUserBillInfo is not None:
         print (" *************************************历史账单管理界面**************************************")
         print('%-4s %-25s  %-20s  %-10s  %-10s  %-10s' % (' ', '订单号', '订单时间','商品名称', '商品价格(元)',  '商品购买数量(个)',))
-
+        count = 0
         for ordernum,orderinfo in SinleUserBillInfo.items():
-            count = 0
+
             TotalPriceCalc = []
             for num,info in orderinfo.items():
                 if info['type'] == "bill":
@@ -133,7 +135,11 @@ def ExpenseCalendar(user):
                     count +=1
                 else:
                     pass
-            print ('%-87s %-1s %-25s ' % (' ','总价:',sum(TotalPriceCalc)))
-            input("按任意键退出")
+            if count >= 1:
+                print ('%-87s %-1s %-25s ' % (' ','总价:',sum(TotalPriceCalc)))
+                count = 0
+
     else:
         print ("用户没有消费记录")
+
+    input("按任意键退出")
