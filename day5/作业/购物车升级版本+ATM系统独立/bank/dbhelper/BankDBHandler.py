@@ -15,7 +15,6 @@
 
 import json,os,sys
 
-
 def BankUserInfo(action='read',username="None",parameter="None",parameter_value="None"):
     with open('bank/databases/BankUserDB', 'r+') as db_read,open('bank/databases/BankUserDBBak','w+') as db_write:
         if action == "read":

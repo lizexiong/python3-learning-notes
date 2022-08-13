@@ -37,7 +37,7 @@ def UserMainInterface(user):
         elif UserChoice == "4":
             TransferAccounts(user)
         elif UserChoice == "5":
-            BankExpenseCalendar(user)
+            BankExpenseCalendar(user,'write')
         elif UserChoice == "6":
             pass
         elif UserChoice == "7":
@@ -95,7 +95,8 @@ def CloseAnAccount(user):
             return
 
 def WithdraDeposit(user):
-    WithdrawalAmount = int(BankUserInfo()[user]['wallet'] / 2)
+    print (BankUserInfo()[user]['wallet'])
+    WithdrawalAmount = int(BankUserInfo()[user]['wallet']) / 2
     UserBalance = BankUserInfo()[user]['wallet'] - BankUserInfo()[user]['useruseamount']
     if UserBalance >= WithdrawalAmount:
         print("您提现最高额度为%d,目前可提现余额为%d" %(WithdrawalAmount,WithdrawalAmount))
@@ -220,7 +221,7 @@ def AtmLog(user):
     input("按任意键退出")
 
 
-def BankExpenseCalendar(user):
+def BankExpenseCalendar(user,action):
     SinleUserALlInfo = TransactionRecord('read',user)[user]
     # UserInputTime = input("请输入要查询的日期：如2022-01,不输入默认查询最近一个月")
     print(" *************************************信用卡历史账单管理界面**************************************")
@@ -230,7 +231,6 @@ def BankExpenseCalendar(user):
     UserInputTime = input("请输入要查询的日期：如2022-01,不输入默认查询最近一个月")
 
     import datetime
-
     if UserInputTime != "" and re.match('\d{4}-\d{1,2}',UserInputTime):
         NowToday = datetime.datetime.strptime(UserInputTime + "-" + "15" + " " + "00:00:00", "%Y-%m-%d %H:%M:%S")
     elif UserInputTime == "":
@@ -252,7 +252,6 @@ def BankExpenseCalendar(user):
     #print ("start:",StartDate,"end:",EndDate)
 #start 2022-07-15 00:00:00 end 2022-08-15 00:00:00
 
-
     AllPriceSum = []
     count = 0
     for ordernum, orderinfo in SinleUserALlInfo.items():
@@ -273,17 +272,26 @@ def BankExpenseCalendar(user):
                     AllPriceSum.append(info['transfermoney'])
                 count += 1
 
-        if StartDate <= billtime <= EndDate:
+        if StartDate <= billtime <= EndDate and action=='write':
             if info['type'] == "bill":
                 print('%-4s %-25s  %-25s  %-10s  %-10s  %-10s' % (' ', ordernum, info['time'], '账单', '购物', sum(SinleOrderPriceSum)))
             elif info['type'] == "atm":
                 print('%-4s %-25s  %-25s  %-10s  %-10s  %-10s' % (' ', ordernum, info['time'], 'atm操作', '提现', info['usercash']))
             elif info['type'] == "transferaccounts":
                 print('%-4s %-25s  %-25s  %-10s  %-11s  %-10s' % (' ', ordernum, info['time'], '转账', info['touser'], info['transfermoney']))
-
         # print (SinleOrderPriceSum)
+
+
     if count >= 1:
         print ('%-72s %-1s %-1s ' %('','本月账单共计:',sum(AllPriceSum)))
+
+        try:
+            UserCreditBill =  BankUserInfo()[user]['creditcardbill']['NowYearMonth']
+        except Exception as e:
+            UserCreditBill['creditcardbill'] = ['creditcardbill']['NowYearMonth']
+
+        #BankUserInfo('write',user,'creditcardbill',{NowYearMonth:{"total":sum(AllPriceSum)}})
+
     else:
         print ("该月没有账单")
 
