@@ -7,15 +7,12 @@
 
 
 
-import os,sys,re
+import os,sys,re,datetime
 from bank.dbhelper.BankDBHandler import BankUserInfo
 from bank.dbhelper.BankReportDBHandler import TransactionRecord
 from taobao.dbhelper.StoreDBHandler import StoreProductList,StoreUserInfo
 
 #from taobao.modules.StoreHandler import ShoppingTrolley         #这里不能导入了,因为StoreHandler也会调用这里的模块，就造成了循环，导入就会报错,具体原因见
-
-
-
 
 def UserMainInterface(user):
     print ("*" * 121)
@@ -39,12 +36,11 @@ def UserMainInterface(user):
         elif UserChoice == "5":
             BankExpenseCalendar(user,'write')
         elif UserChoice == "6":
-            pass
+            Repayment(user)
         elif UserChoice == "7":
             AtmLog(user)
         elif UserChoice == "q":
             break
-
 
 #用户充值模块，这个不多做解释
 def UserPay(user):
@@ -95,9 +91,8 @@ def CloseAnAccount(user):
             return
 
 def WithdraDeposit(user):
-    print (BankUserInfo()[user]['wallet'])
     WithdrawalAmount = int(BankUserInfo()[user]['wallet']) / 2
-    UserBalance = BankUserInfo()[user]['wallet'] - BankUserInfo()[user]['useruseamount']
+    UserBalance = int(BankUserInfo()[user]['wallet']) - int(BankUserInfo()[user]['useruseamount'])
     if UserBalance >= WithdrawalAmount:
         print("您提现最高额度为%d,目前可提现余额为%d" %(WithdrawalAmount,WithdrawalAmount))
     else:
@@ -108,10 +103,10 @@ def WithdraDeposit(user):
         if UserCash <= UserBalance:
             UseUseAmount = BankUserInfo()[user]['useruseamount'] + UserCash
             BankUserInfo('write',user,'useruseamount',UseUseAmount)
-            NewUserCash = BankUserInfo()[user]['cash'] + UserCash
+            NewUserCash = int(BankUserInfo()[user]['cash']) + UserCash
             BankUserInfo('write', user, 'cash', NewUserCash)
-            WithdrawalAmount = int(BankUserInfo()[user]['wallet'] / 2)
-            UserBalance = BankUserInfo()[user]['wallet'] - BankUserInfo()[user]['useruseamount']                 #因为需要获取最新余额写入数据库
+            WithdrawalAmount = int(BankUserInfo()[user]['wallet']) / 2
+            UserBalance = int(BankUserInfo()[user]['wallet']) - int(BankUserInfo()[user]['useruseamount'])                 #因为需要获取最新余额写入数据库
             UserOperationRecords = {'1':{"usercash":UserCash,"userbalance":UserBalance}}
             TransactionRecord(action='write', type="atm", user=user, **UserOperationRecords)
         else:
@@ -125,11 +120,11 @@ def TransferAccounts(user):
     FromBankUserInfo = BankUserInfo()
     if FromBankUserInfo.get(ToAccount):
         TransferMoney = int(input("请输入要转账的金额"))
-        UserBalance = BankUserInfo()[user]['wallet'] - BankUserInfo()[user]['useruseamount']
+        UserBalance = int(BankUserInfo()[user]['wallet']) - int(BankUserInfo()[user]['useruseamount'])
         if TransferMoney < UserBalance:
-            BankUserInfo('write',user,'useruseamount',BankUserInfo()[user]['useruseamount']+TransferMoney)
-            BankUserInfo('write',ToAccount,'wallet',BankUserInfo()[ToAccount]['wallet'] + TransferMoney)
-            UserBalance = BankUserInfo()[user]['wallet'] - BankUserInfo()[user]['useruseamount']
+            BankUserInfo('write',user,'useruseamount',int(BankUserInfo()[user]['useruseamount'])+int(TransferMoney))
+            BankUserInfo('write',ToAccount,'wallet',int(BankUserInfo()[ToAccount]['wallet']) + int(TransferMoney))
+            UserBalance = int(BankUserInfo()[user]['wallet']) - int(BankUserInfo()[user]['useruseamount'])
             UserOperationRecords = {"1":{"transfermoney":TransferMoney,'touser':ToAccount,'userbalance':UserBalance}}
             TransactionRecord(action='write', type="transferaccounts", user=user, **UserOperationRecords)
             print ("转账成功%d,可用余额%d"%(TransferMoney,UserBalance))
@@ -139,9 +134,6 @@ def TransferAccounts(user):
     else:
         print ("没有这个帐号名")
         return
-
-def Repayment(user):
-    pass
 
 def CreditCardManagerment(user):
     while True:
@@ -185,7 +177,11 @@ def AtmLog(user):
     import re
     print(" *************************************历史账单管理界面**************************************")
     # print('%-4s %-25s  %-20s  %-10s   %-10s ' % (' ', '时间', '地点', '剩余余额', '提现金额'))
-    SinleUserAtmInfo = TransactionRecord('read',user)[user]
+    try:
+        SinleUserAtmInfo = TransactionRecord('read',user)[user]
+    except:
+        print ("当前用户没有atm取现记录")
+        return
     UserInputTime = input("请输入要查询的日期：如2022-01-01,不输入默认查询最近一个月")
     print('%-4s %-25s  %-20s  %-10s   %-10s ' % (' ', '时间', '地点', '剩余余额', '提现金额'))
     count = 0
@@ -220,24 +216,31 @@ def AtmLog(user):
         print ("该月没有atm提现记录")
     input("按任意键退出")
 
-
-def BankExpenseCalendar(user,action):
-    SinleUserALlInfo = TransactionRecord('read',user)[user]
-    # UserInputTime = input("请输入要查询的日期：如2022-01,不输入默认查询最近一个月")
-    print(" *************************************信用卡历史账单管理界面**************************************")
-    if SinleUserALlInfo is not None:
-        print('%-4s %-25s  %-20s  %-10s  %-10s  %-10s' % (' ', '订单号', '订单时间','类型','操作', '消费金额'))
-
-    UserInputTime = input("请输入要查询的日期：如2022-01,不输入默认查询最近一个月")
-
-    import datetime
-    if UserInputTime != "" and re.match('\d{4}-\d{1,2}',UserInputTime):
-        NowToday = datetime.datetime.strptime(UserInputTime + "-" + "15" + " " + "00:00:00", "%Y-%m-%d %H:%M:%S")
-    elif UserInputTime == "":
-        NowToday = datetime.datetime.now()
-    else:
-        print ("日期输入错误，返回")
+def BankExpenseCalendar(user,action="read"):
+    try:
+        SinleUserALlInfo = TransactionRecord('read',user)[user]
+    except:
+        print ("当前用户没有账单")
         return
+    # UserInputTime = input("请输入要查询的日期：如2022-01,不输入默认查询最近一个月")
+    if action == "write":
+        print(" *************************************信用卡历史账单管理界面**************************************")
+        if SinleUserALlInfo is not None:
+            print('%-4s %-25s  %-20s  %-10s  %-10s  %-10s' % (' ', '订单号', '订单时间','类型','操作', '消费金额'))
+
+
+        UserInputTime = input("请输入要查询的日期：如2022-01,不输入默认查询最近一个月")
+
+
+        if UserInputTime != "" and re.match('\d{4}-\d{1,2}',UserInputTime):
+            NowToday = datetime.datetime.strptime(UserInputTime + "-" + "15" + " " + "00:00:00", "%Y-%m-%d %H:%M:%S")
+        elif UserInputTime == "":
+            NowToday = datetime.datetime.now()
+        else:
+            print ("日期输入错误，返回")
+            return
+    else:
+        NowToday = datetime.datetime.now()
 
     #print (NowToday)
     LastOneMonth = NowToday - datetime.timedelta(days=30)
@@ -281,17 +284,54 @@ def BankExpenseCalendar(user,action):
                 print('%-4s %-25s  %-25s  %-10s  %-11s  %-10s' % (' ', ordernum, info['time'], '转账', info['touser'], info['transfermoney']))
         # print (SinleOrderPriceSum)
 
-
     if count >= 1:
         print ('%-72s %-1s %-1s ' %('','本月账单共计:',sum(AllPriceSum)))
-
+        UserCreditCardBill = BankUserInfo()[user]['creditcardbill']
         try:
-            UserCreditBill =  BankUserInfo()[user]['creditcardbill']['NowYearMonth']
+            UserCreditCardBill[NowYearMonth]
+            UserCreditBillCurrent =BankUserInfo()[user]['creditcardbill']
         except Exception as e:
-            UserCreditBill['creditcardbill'] = ['creditcardbill']['NowYearMonth']
-
-        #BankUserInfo('write',user,'creditcardbill',{NowYearMonth:{"total":sum(AllPriceSum)}})
-
+            UserCreditBillCurrent = {NowYearMonth:{}}
+        UserCreditBillCurrent[NowYearMonth]['bill'] = sum(AllPriceSum)
+        BankUserInfo('write',user,'creditcardbill',UserCreditBillCurrent)
     else:
         print ("该月没有账单")
 
+def Repayment(user):
+    UserRepaymentInformation = BankUserInfo()[user]['creditcardbill']
+    BankExpenseCalendar(user)       #自动默认查询当月账单
+    NowToday = datetime.datetime.now()
+    NowYearMonth = str(NowToday)[0:7]
+
+    try:
+        UserTotalBillMonth = BankUserInfo()[user]['creditcardbill'][NowYearMonth]['bill']
+    except Exception as e:
+        UserTotalBillMonth = 0
+        print ("没有发现信用卡账单，返回")
+        return
+
+    try:
+        UserRepayment = BankUserInfo()[user]['creditcardbill'][NowYearMonth]['userrepayment']
+    except Exception as e:
+        UserRepayment = 0
+
+    print ("本月账单总金额:",UserTotalBillMonth,"本月已还金额：",UserRepayment,"本月剩余未还:",int(UserTotalBillMonth)-int(UserRepayment))
+    UserChoice = input("请输入需要还款的金额:(仅支持还款当月账单)")
+    if UserChoice != "":
+        UserCreditCardBill = BankUserInfo()[user]['creditcardbill']
+
+        try:
+            UserCreditCardBill[NowYearMonth]
+            UserRepaymentCurrent = BankUserInfo()[user]['creditcardbill']
+            try:
+                UserRepayment = BankUserInfo()[user]['creditcardbill'][NowYearMonth]['userrepayment']
+            except Exception as e:
+                UserRepayment = 0
+        except Exception as e:
+            UserRepaymentCurrent ={NowYearMonth: {}}
+
+        UserRepaymentCurrent[NowYearMonth]['userrepayment'] =  int(UserChoice) + int(UserRepayment)
+        BankUserInfo('write',user,'creditcardbill',UserRepaymentCurrent)
+    else:
+        print ("输入为空,返回信用卡管理主界面")
+        return

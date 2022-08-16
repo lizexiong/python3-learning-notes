@@ -75,7 +75,6 @@ def Buy(num,user,inc=None):
     else:
         print("没有这个商品")
 
-
 #购物车界面以及购物车逻辑
 def ShoppingTrolley(user):
     #os.system('clean')

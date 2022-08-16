@@ -1,1 +1,1 @@
-{"lizexiong":{"wallet":1000000,"useruseamount":0,"cash":0,"privilege":"admin","lock":"False"}}
+{"lizexiong": {"wallet": 1000001, "useruseamount": 45000, "cash": 30000, "privilege": "admin", "lock": "False", "creditcardbill": {"2022-08": {"bill": 158100, "userrepayment": 1100}}}, "wuxinzhe": {"wallet": "100", "useruseamount": 3, "cash": 1, "privilege": "user", "lock": "False", "creditcardbill": {"2022-08": {"bill": 2}}}}
