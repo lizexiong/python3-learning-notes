@@ -6,7 +6,7 @@ __author__ = 'Administrator'
 from taobao.modules.Login import Login
 
 if __name__ == "__main__":
-    Login()
+    Login()                 #登录入口主函数，一切都是从这里开始的
 
 
 

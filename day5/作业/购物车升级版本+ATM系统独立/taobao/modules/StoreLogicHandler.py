@@ -10,7 +10,9 @@ from bank.modules.BankLogicHandler import CloseAnAccount               #不能�
 
 #购买和退订商品
 def Buy(num,user,inc=None):
+    #
     UserShoppingTrolleyTmp = dict()
+    #调用dbhelpler函数,获取所有的商品信息
     ProductList = StoreProductList()
     if ProductList.get(num):
         FromDBBankUserInfo = BankUserInfo()
