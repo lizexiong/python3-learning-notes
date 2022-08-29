@@ -6,7 +6,7 @@
 import json,os,sys
 
 #淘宝商城的用户信息写入查询模块,直接调用数据库交互
-#淘宝的数据库交互模块不太智能,数据库所需要的用户信息以及字段必须存在,否则就会报错,该问题在银行的db处理模块得到解决
+#淘宝的数据库交互模块不太智能,数据库所需要的用户信息以及字段必须存在,否则就会报错,该问题在银行的账单处理模块得到解决
 def StoreUserInfo(action='read',username="None",parameter="None",parameter_value="None"):
     with open('taobao/databases/StoreUserDB', 'r+') as db_read,open('taobao/databases/StoreUserDBBak','w+') as db_write:
         if action == "read":
