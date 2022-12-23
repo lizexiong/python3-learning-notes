@@ -5,6 +5,7 @@
 
 import json
 from conf import setting
+from module.common import write_file
 
 
 def AppendDB(contant,filename):
@@ -17,7 +18,7 @@ def AppendDB(contant,filename):
             f.write(json.dumps(contant))
             f.write("\n")
     except Exception as e:
-        pass
+        write_file(e, 'error', setting.LOG_PATH + "/sql.log")
 
 #从指定数据库文件中读取数据
 def LoadDataFromDB(tablename):
@@ -30,7 +31,7 @@ def LoadDataFromDB(tablename):
         with open(tablename,"r+") as f:
             return json.load(f)
     except Exception as e:
-        pass
+        write_file(e, 'error', setting.LOG_PATH + "/sql.log")
 
 #从指定数据库修改数据
 def ModifyDB(name,key,value,filename):
@@ -44,11 +45,11 @@ def ModifyDB(name,key,value,filename):
         with open(filename,"r+") as r:
             ALlInfo = json.load(r)
     except Exception as e:
-        pass
+        write_file(e, 'error', setting.LOG_PATH + "/sql.log")
 
     try:
         with open(filename,"w+") as w:
             ALlInfo[name][key] = value
             w.write(json.dumps(ALlInfo))
     except Exception as e:
-        pass
+        write_file(e, 'error', setting.LOG_PATH + "/sql.log")

@@ -1,1 +1,1 @@
-{"wuxinzhe": {"type": "staff", "age": "29", "money": "100", "vit": 201, "sleeping": "False", "sleeptime": "2022-12-15 02:24:36"}}
+{"lizexiong": {"type": "staff", "age": "29", "money": 110, "vit": 60, "sleeping": "True", "sleeptime": "2022-12-23 22:32:41", "working": "False"}, "yongweijun": {"type": "staff", "age": "32", "money": "100", "vit": 5, "sleeping": "True", "sleeptime": "2022-12-23 18:00:31", "working": "False"}}
