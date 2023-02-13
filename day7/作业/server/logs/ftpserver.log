@@ -1,0 +1,510 @@
+
+2023-02-02 19:49:29 - info - client ('127.0.0.1', 11125) connected 
+2023-02-02 19:49:29 - error - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2023-02-02 19:50:47 - info - client ('127.0.0.1', 11189) connected 
+2023-02-02 19:50:47 - error - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2023-02-02 19:51:22 - info - client ('127.0.0.1', 11215) connected 
+2023-02-02 19:51:22 - error - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2023-02-02 19:51:44 - info - client ('127.0.0.1', 11227) connected 
+2023-02-02 19:51:44 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2023-02-02 19:54:26 - info - client ('127.0.0.1', 11623) connected 
+2023-02-02 19:54:26 - error - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2023-02-02 20:29:46 - info - client ('127.0.0.1', 13157) connected 
+2023-02-02 20:29:46 - error - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2023-02-02 20:33:20 - info - client ('127.0.0.1', 13307) connected 
+2023-02-02 20:33:20 - error - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2023-02-02 20:48:40 - info - client ('127.0.0.1', 14348) connected 
+2023-02-02 20:48:40 - error - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2023-02-02 20:49:27 - info - client ('127.0.0.1', 14378) connected 
+2023-02-02 20:49:27 - error - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2023-02-02 20:53:12 - info - client ('127.0.0.1', 14831) connected 
+2023-02-02 20:53:12 - error - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2023-02-02 20:59:46 - info - client ('127.0.0.1', 1223) connected 
+2023-02-02 20:59:46 - error - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2023-02-02 21:44:45 - info - client ('127.0.0.1', 11575) connected 
+2023-02-02 21:44:45 - info - client ('127.0.0.1', 11575) disconnected 
+2023-02-02 22:21:22 - info - client ('127.0.0.1', 13031) connected 
+2023-02-02 22:21:28 - info - client ('127.0.0.1', 13031) send command auth lizexiong bc73186fbd51c667953b93ba2a60aa79638a9bd6cea7d53285192174 
+2023-02-02 22:21:28 - info - command auth lizexiong bc73186fbd51c667953b93ba2a60aa79638a9bd6cea7d53285192174 function not found 
+2023-02-02 22:23:07 - info - client ('127.0.0.1', 13082) connected 
+2023-02-02 22:23:10 - info - client ('127.0.0.1', 13082) send command auth lizexiong bc73186fbd51c667953b93ba2a60aa79638a9bd6cea7d53285192174 
+2023-02-02 22:23:10 - info - command auth lizexiong bc73186fbd51c667953b93ba2a60aa79638a9bd6cea7d53285192174 function not found 
+2023-02-02 22:26:32 - info - client ('127.0.0.1', 13225) connected 
+2023-02-02 22:26:36 - info - client ('127.0.0.1', 13225) send command auth lizexiong bc73186fbd51c667953b93ba2a60aa79638a9bd6cea7d53285192174 
+2023-02-02 22:26:36 - info - command auth lizexiong bc73186fbd51c667953b93ba2a60aa79638a9bd6cea7d53285192174 function not found 
+2023-02-02 22:28:07 - info - client ('127.0.0.1', 13271) connected 
+2023-02-02 22:28:10 - info - client ('127.0.0.1', 13271) send command auth lizexiong bc73186fbd51c667953b93ba2a60aa79638a9bd6cea7d53285192174 
+2023-02-02 22:28:10 - info - command auth lizexiong bc73186fbd51c667953b93ba2a60aa79638a9bd6cea7d53285192174 function not found 
+2023-02-02 22:29:37 - info - client ('127.0.0.1', 13337) connected 
+2023-02-02 22:29:41 - info - client ('127.0.0.1', 13337) send command auth lizexiong bc73186fbd51c667953b93ba2a60aa79638a9bd6cea7d53285192174 
+2023-02-02 22:29:41 - info - command auth lizexiong bc73186fbd51c667953b93ba2a60aa79638a9bd6cea7d53285192174 function not found 
+2023-02-02 22:31:36 - info - client ('127.0.0.1', 13440) connected 
+2023-02-02 22:31:40 - info - client ('127.0.0.1', 13440) send command auth lizexiong bc73186fbd51c667953b93ba2a60aa79638a9bd6cea7d53285192174 
+2023-02-02 22:31:40 - info - command auth lizexiong bc73186fbd51c667953b93ba2a60aa79638a9bd6cea7d53285192174 function not found 
+2023-02-02 22:33:13 - info - client ('127.0.0.1', 13491) connected 
+2023-02-02 22:33:17 - info - client ('127.0.0.1', 13491) send command auth lizexiong bc73186fbd51c667953b93ba2a60aa79638a9bd6cea7d53285192174 
+2023-02-02 22:33:17 - info - command auth lizexiong bc73186fbd51c667953b93ba2a60aa79638a9bd6cea7d53285192174 function not found 
+2023-02-02 22:35:46 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2023-02-02 22:35:46 - info - client ('127.0.0.1', 13600) connected 
+2023-02-02 22:35:50 - info - client ('127.0.0.1', 13600) send command auth 
+2023-02-02 22:35:50 - error - 'Users' object has no attribute 'User' 
+2023-02-02 22:38:21 - info - client ('127.0.0.1', 13683) connected 
+2023-02-02 22:38:25 - info - client ('127.0.0.1', 13683) send command auth 
+2023-02-02 22:38:25 - error - 'Users' object has no attribute 'User' 
+2023-02-02 22:40:25 - info - client ('127.0.0.1', 13789) connected 
+2023-02-02 22:40:43 - info - client ('127.0.0.1', 13798) connected 
+2023-02-02 22:40:46 - info - client ('127.0.0.1', 13798) send command auth 
+2023-02-02 22:40:46 - error - 'Users' object has no attribute 'name' 
+2023-02-02 22:42:30 - info - client ('127.0.0.1', 13854) connected 
+2023-02-02 22:42:34 - info - client ('127.0.0.1', 13854) send command auth 
+2023-02-02 22:42:34 - error - 'Users' object has no attribute 'User' 
+2023-02-02 22:43:00 - info - client ('127.0.0.1', 13867) connected 
+2023-02-02 22:43:02 - info - client ('127.0.0.1', 13867) send command auth 
+2023-02-02 22:43:02 - error - 'Users' object has no attribute 'User' 
+2023-02-02 22:43:29 - info - client ('127.0.0.1', 13881) connected 
+2023-02-02 22:43:32 - info - client ('127.0.0.1', 13881) send command auth 
+2023-02-02 22:43:32 - error - 'Users' object has no attribute 'User' 
+2023-02-02 22:44:34 - info - client ('127.0.0.1', 13924) connected 
+2023-02-02 22:44:37 - info - client ('127.0.0.1', 13924) send command auth 
+2023-02-02 22:44:37 - error - 'Users' object has no attribute 'User' 
+2023-02-02 22:49:20 - info - client ('127.0.0.1', 14085) connected 
+2023-02-02 22:49:24 - info - client ('127.0.0.1', 14085) send command auth 
+2023-02-02 22:49:24 - error - 'Users' object has no attribute 'User' 
+2023-02-02 22:50:29 - info - client ('127.0.0.1', 14145) connected 
+2023-02-02 22:50:32 - info - client ('127.0.0.1', 14145) send command auth 
+2023-02-02 22:50:32 - error - 'Users' object has no attribute 'User' 
+2023-02-02 22:51:16 - info - client ('127.0.0.1', 14167) connected 
+2023-02-02 22:51:18 - info - client ('127.0.0.1', 14167) send command auth 
+2023-02-02 22:51:18 - error - 'Users' object has no attribute 'User' 
+2023-02-02 22:52:17 - info - client ('127.0.0.1', 14200) connected 
+2023-02-02 22:52:21 - info - client ('127.0.0.1', 14200) send command auth 
+2023-02-02 22:52:21 - error - 'Users' object has no attribute 'User' 
+2023-02-02 22:52:28 - info - client ('127.0.0.1', 14205) connected 
+2023-02-02 22:52:31 - info - client ('127.0.0.1', 14205) send command auth 
+2023-02-02 22:52:31 - error - 'Users' object has no attribute 'User' 
+2023-02-02 22:53:02 - info - client ('127.0.0.1', 14221) connected 
+2023-02-02 22:53:04 - info - client ('127.0.0.1', 14221) send command auth 
+2023-02-02 22:53:04 - error - 'Users' object has no attribute 'User' 
+2023-02-02 22:54:01 - info - client ('127.0.0.1', 14346) connected 
+2023-02-02 22:54:04 - info - client ('127.0.0.1', 14346) send command auth 
+2023-02-02 22:54:04 - error - 'Users' object has no attribute 'User' 
+2023-02-02 22:55:16 - info - client ('127.0.0.1', 14408) connected 
+2023-02-02 22:55:19 - info - client ('127.0.0.1', 14408) send command auth 
+2023-02-02 22:55:19 - error - 'Users' object has no attribute 'User' 
+2023-02-02 22:55:38 - info - client ('127.0.0.1', 14420) connected 
+2023-02-02 22:55:42 - info - client ('127.0.0.1', 14420) send command auth 
+2023-02-02 22:55:42 - error - 'Users' object has no attribute 'User' 
+2023-02-02 22:58:45 - info - client ('127.0.0.1', 14621) connected 
+2023-02-02 22:58:48 - info - client ('127.0.0.1', 14621) send command auth 
+2023-02-02 22:58:48 - error - 'Users' object has no attribute 'User' 
+2023-02-02 22:59:47 - info - client ('127.0.0.1', 14706) connected 
+2023-02-02 22:59:50 - info - client ('127.0.0.1', 14706) send command auth 
+2023-02-02 22:59:50 - error - 'Users' object has no attribute 'User' 
+2023-02-02 23:00:49 - info - client ('127.0.0.1', 14785) connected 
+2023-02-02 23:00:51 - info - client ('127.0.0.1', 14785) send command auth 
+2023-02-02 23:00:51 - error - 'Users' object has no attribute 'User' 
+2023-02-02 23:02:47 - info - client ('127.0.0.1', 14872) connected 
+2023-02-02 23:02:49 - info - client ('127.0.0.1', 14872) send command auth 
+2023-02-02 23:02:49 - info - client ('127.0.0.1', 14872) disconnected 
+2023-02-02 23:04:08 - info - client ('127.0.0.1', 14954) connected 
+2023-02-02 23:04:10 - info - client ('127.0.0.1', 14954) send command auth 
+2023-02-02 23:04:10 - info - client ('127.0.0.1', 14954) disconnected 
+2023-02-02 23:04:29 - info - client ('127.0.0.1', 14979) connected 
+2023-02-02 23:04:32 - info - client ('127.0.0.1', 14979) send command auth 
+2023-02-02 23:04:32 - info - client ('127.0.0.1', 14979) disconnected 
+2023-02-02 23:05:18 - info - client ('127.0.0.1', 1045) connected 
+2023-02-02 23:05:28 - info - client ('127.0.0.1', 1057) connected 
+2023-02-02 23:05:31 - info - client ('127.0.0.1', 1057) send command auth 
+2023-02-02 23:05:31 - info - client ('127.0.0.1', 1057) disconnected 
+2023-02-03 02:21:14 - info - client ('172.21.168.1', 11261) connected 
+2023-02-03 02:21:14 - info - client ('172.21.168.1', 11261) send command GET / HTTP/1.1
+Cache-Control: no-cache
+Connection: Keep-Alive
+Pragma: no-cache
+User-Agent: Secur 
+2023-02-03 02:21:14 - info - command GET / HTTP/1.1
+Cache-Control: no-cache
+Connection: Keep-Alive
+Pragma: no-cache
+User-Agent: Secur function not found 
+2023-02-03 02:21:14 - info - client ('172.21.168.1', 11261) send command ityManagerAgent
+Host: 172.21.168.1:8888
+
+ 
+2023-02-03 02:21:14 - info - command ityManagerAgent
+Host: 172.21.168.1:8888
+
+ function not found 
+2023-02-03 02:21:18 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2023-02-03 02:21:18 - info - client ('172.21.168.1', 11268) connected 
+2023-02-03 02:21:18 - error - 'utf-8' codec can't decode byte 0xab in position 4: invalid start byte 
+2023-02-03 11:39:01 - info - client ('127.0.0.1', 7809) connected 
+2023-02-03 11:39:05 - info - client ('127.0.0.1', 7809) send command auth 
+2023-02-03 11:39:05 - info - client ('127.0.0.1', 7809) disconnected 
+2023-02-03 11:41:22 - info - client ('127.0.0.1', 7941) connected 
+2023-02-03 11:41:25 - info - client ('127.0.0.1', 7941) send command auth 
+2023-02-03 11:41:25 - info - client ('127.0.0.1', 7941) disconnected 
+2023-02-03 11:57:57 - info - client ('127.0.0.1', 9628) connected 
+2023-02-03 11:58:00 - info - client ('127.0.0.1', 9628) send command auth 
+2023-02-03 11:58:19 - info - client ('127.0.0.1', 9628) disconnected 
+2023-02-03 11:59:24 - info - client ('172.21.167.139', 9773) connected 
+2023-02-03 11:59:24 - info - client ('172.21.167.139', 9773) send command GET / HTTP/1.1
+Cache-Control: no-cache
+Connection: Keep-Alive
+Pragma: no-cache
+User-Agent: Secur 
+2023-02-03 11:59:24 - info - command GET / HTTP/1.1
+Cache-Control: no-cache
+Connection: Keep-Alive
+Pragma: no-cache
+User-Agent: Secur function not found 
+2023-02-03 11:59:24 - info - client ('172.21.167.139', 9773) send command ityManagerAgent
+Host: 172.21.167.139:8888
+
+ 
+2023-02-03 11:59:24 - info - command ityManagerAgent
+Host: 172.21.167.139:8888
+
+ function not found 
+2023-02-03 11:59:28 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2023-02-03 11:59:28 - info - client ('172.21.167.139', 9778) connected 
+2023-02-03 11:59:28 - error - 'utf-8' codec can't decode byte 0xab in position 4: invalid start byte 
+2023-02-03 12:07:43 - info - client ('127.0.0.1', 10538) connected 
+2023-02-03 12:07:46 - info - client ('127.0.0.1', 10538) send command auth 
+2023-02-03 12:09:20 - info - client ('127.0.0.1', 10538) disconnected 
+2023-02-03 12:09:20 - info - client ('127.0.0.1', 10621) connected 
+2023-02-03 12:09:23 - info - client ('127.0.0.1', 10621) send command auth 
+2023-02-03 14:44:27 - info - client ('127.0.0.1', 10621) disconnected 
+2023-02-03 14:44:27 - info - client ('127.0.0.1', 5242) connected 
+2023-02-03 14:44:31 - info - client ('127.0.0.1', 5242) send command auth 
+2023-02-03 14:51:12 - info - client ('127.0.0.1', 5242) disconnected 
+2023-02-03 14:51:12 - info - client ('127.0.0.1', 5610) connected 
+2023-02-03 14:51:15 - info - client ('127.0.0.1', 5610) send command auth 
+2023-02-03 18:00:21 - info - client ('127.0.0.1', 5610) disconnected 
+2023-02-03 18:00:21 - info - client ('127.0.0.1', 2963) connected 
+2023-02-03 18:00:35 - info - client ('127.0.0.1', 2975) connected 
+2023-02-03 18:00:39 - info - client ('127.0.0.1', 2975) send command auth 
+2023-02-04 13:36:39 - info - client ('192.168.2.103', 8156) connected 
+2023-02-04 13:36:39 - info - client ('192.168.2.103', 8156) send command GET / HTTP/1.1
+Cache-Control: no-cache
+Connection: Keep-Alive
+Pragma: no-cache
+User-Agent: Secur 
+2023-02-04 13:36:39 - info - command GET / HTTP/1.1
+Cache-Control: no-cache
+Connection: Keep-Alive
+Pragma: no-cache
+User-Agent: Secur function not found 
+2023-02-04 13:36:39 - info - client ('192.168.2.103', 8156) send command ityManagerAgent
+Host: 192.168.2.103:8888
+
+ 
+2023-02-04 13:36:39 - info - command ityManagerAgent
+Host: 192.168.2.103:8888
+
+ function not found 
+2023-02-04 13:36:43 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2023-02-04 13:36:43 - info - client ('192.168.2.103', 8164) connected 
+2023-02-04 13:36:43 - error - 'utf-8' codec can't decode byte 0xab in position 4: invalid start byte 
+2023-02-05 14:41:15 - info - client ('127.0.0.1', 4317) connected 
+2023-02-05 14:41:21 - info - client ('127.0.0.1', 4317) send command auth 
+2023-02-05 14:43:26 - info - client ('127.0.0.1', 4317) disconnected 
+2023-02-05 14:43:26 - info - client ('127.0.0.1', 4470) connected 
+2023-02-05 14:43:30 - info - client ('127.0.0.1', 4470) send command auth 
+2023-02-05 14:45:21 - info - client ('127.0.0.1', 4470) disconnected 
+2023-02-05 14:45:21 - info - client ('127.0.0.1', 4573) connected 
+2023-02-05 14:46:14 - info - client ('127.0.0.1', 4573) send command auth 
+2023-02-05 14:46:22 - info - client ('127.0.0.1', 4573) send command put 
+2023-02-05 14:46:22 - error - exec put error :invalid literal for int() with base 10: '2|556' 
+2023-02-05 14:46:22 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 14:49:23 - info - client ('127.0.0.1', 4810) connected 
+2023-02-05 14:49:27 - info - client ('127.0.0.1', 4810) send command auth 
+2023-02-05 14:49:52 - info - client ('127.0.0.1', 4862) connected 
+2023-02-05 14:49:55 - info - client ('127.0.0.1', 4862) send command auth 
+2023-02-05 14:49:58 - info - client ('127.0.0.1', 4862) send command put 
+2023-02-05 14:49:58 - error - exec put error :invalid literal for int() with base 10: '2|556' 
+2023-02-05 14:49:58 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 14:50:59 - info - client ('127.0.0.1', 4919) connected 
+2023-02-05 14:51:02 - info - client ('127.0.0.1', 4919) send command auth 
+2023-02-05 14:51:11 - info - client ('127.0.0.1', 4919) send command put 
+2023-02-05 14:51:11 - error - exec put error :invalid literal for int() with base 10: '2|556' 
+2023-02-05 14:51:11 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 14:54:58 - info - client ('127.0.0.1', 5199) connected 
+2023-02-05 14:55:02 - info - client ('127.0.0.1', 5199) send command auth 
+2023-02-05 14:55:03 - info - client ('127.0.0.1', 5199) send command put 
+2023-02-05 14:55:03 - error - exec put error :invalid literal for int() with base 10: '2|556' 
+2023-02-05 14:55:03 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 14:56:35 - info - client ('127.0.0.1', 5304) connected 
+2023-02-05 14:56:38 - info - client ('127.0.0.1', 5304) send command auth 
+2023-02-05 14:56:43 - info - client ('127.0.0.1', 5304) send command put 
+2023-02-05 14:56:43 - error - exec put error :invalid literal for int() with base 10: '2|556' 
+2023-02-05 14:56:43 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 14:57:02 - info - client ('127.0.0.1', 5357) connected 
+2023-02-05 14:57:04 - info - client ('127.0.0.1', 5357) send command auth 
+2023-02-05 14:57:06 - info - client ('127.0.0.1', 5357) send command put 
+2023-02-05 14:57:06 - error - exec put error :invalid literal for int() with base 10: '2|556' 
+2023-02-05 14:57:06 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 15:03:02 - info - client ('127.0.0.1', 5771) connected 
+2023-02-05 15:03:05 - info - client ('127.0.0.1', 5771) send command auth 
+2023-02-05 15:03:06 - info - client ('127.0.0.1', 5771) send command put 
+2023-02-05 15:03:06 - error - exec put error :invalid literal for int() with base 10: '2|556' 
+2023-02-05 15:03:06 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 15:04:09 - info - client ('127.0.0.1', 5833) connected 
+2023-02-05 15:04:12 - info - client ('127.0.0.1', 5833) send command auth 
+2023-02-05 15:04:16 - info - client ('127.0.0.1', 5833) send command put 
+2023-02-05 15:04:16 - error - exec put error :invalid literal for int() with base 10: '2|556' 
+2023-02-05 15:04:16 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 15:07:13 - info - client ('127.0.0.1', 6394) connected 
+2023-02-05 15:07:16 - info - client ('127.0.0.1', 6394) send command auth 
+2023-02-05 15:07:21 - info - client ('127.0.0.1', 6394) send command put 
+2023-02-05 15:07:21 - error - exec put error :invalid literal for int() with base 10: '2|556' 
+2023-02-05 15:07:21 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 15:07:56 - info - client ('127.0.0.1', 6430) connected 
+2023-02-05 15:07:59 - info - client ('127.0.0.1', 6430) send command auth 
+2023-02-05 15:08:00 - info - client ('127.0.0.1', 6430) send command put 
+2023-02-05 15:08:00 - error - exec put error :invalid literal for int() with base 10: '2|556' 
+2023-02-05 15:08:00 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 15:08:58 - info - client ('127.0.0.1', 6479) connected 
+2023-02-05 15:09:02 - info - client ('127.0.0.1', 6479) send command auth 
+2023-02-05 15:09:03 - info - client ('127.0.0.1', 6479) send command put 
+2023-02-05 15:09:03 - error - exec put error :invalid literal for int() with base 10: '2|556' 
+2023-02-05 15:09:03 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 15:11:53 - info - client ('127.0.0.1', 6762) connected 
+2023-02-05 15:11:57 - info - client ('127.0.0.1', 6762) send command auth 
+2023-02-05 15:12:04 - info - client ('127.0.0.1', 6762) send command put 
+2023-02-05 15:12:04 - error - exec put error :invalid literal for int() with base 10: '2|556' 
+2023-02-05 15:12:04 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 15:26:46 - info - client ('127.0.0.1', 4038) connected 
+2023-02-05 15:26:49 - info - client ('127.0.0.1', 4038) send command auth 
+2023-02-05 15:26:53 - info - client ('127.0.0.1', 4038) send command put 
+2023-02-05 15:26:53 - error - exec put error :invalid literal for int() with base 10: '2|556' 
+2023-02-05 15:26:53 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 15:28:27 - info - client ('127.0.0.1', 4267) connected 
+2023-02-05 15:28:30 - info - client ('127.0.0.1', 4267) send command auth 
+2023-02-05 15:28:33 - info - client ('127.0.0.1', 4267) send command auth 
+2023-02-05 15:28:37 - info - client ('127.0.0.1', 4267) send command put 
+2023-02-05 15:28:37 - error - exec put error :invalid literal for int() with base 10: '2|556' 
+2023-02-05 15:28:37 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 15:29:40 - info - client ('127.0.0.1', 4384) connected 
+2023-02-05 15:29:43 - info - client ('127.0.0.1', 4384) send command auth 
+2023-02-05 15:29:49 - info - client ('127.0.0.1', 4384) send command put 
+2023-02-05 15:29:49 - error - exec put error :invalid literal for int() with base 10: '2|556' 
+2023-02-05 15:29:49 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 15:30:10 - info - client ('127.0.0.1', 4428) connected 
+2023-02-05 15:30:13 - info - client ('127.0.0.1', 4428) send command auth 
+2023-02-05 15:30:19 - info - client ('127.0.0.1', 4428) send command put 
+2023-02-05 15:30:19 - error - exec put error :invalid literal for int() with base 10: '2|556' 
+2023-02-05 15:30:19 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 15:31:11 - info - client ('127.0.0.1', 4517) connected 
+2023-02-05 15:31:14 - info - client ('127.0.0.1', 4517) send command auth 
+2023-02-05 15:31:17 - info - client ('127.0.0.1', 4517) send command put 
+2023-02-05 15:31:17 - error - exec put error :module 'dbhelper.dbapi' has no attribute 'check_breakpoint' 
+2023-02-05 15:31:17 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 15:32:04 - info - client ('127.0.0.1', 4590) connected 
+2023-02-05 15:32:07 - info - client ('127.0.0.1', 4590) send command auth 
+2023-02-05 15:32:10 - info - client ('127.0.0.1', 4590) send command put 
+2023-02-05 15:32:10 - error - exec put error :module 'dbhelper.dbapi' has no attribute 'check_breakpoint' 
+2023-02-05 15:32:10 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 15:33:04 - info - client ('127.0.0.1', 4659) connected 
+2023-02-05 15:33:04 - error - local variable 'recv_client_data' referenced before assignment 
+2023-02-05 15:33:09 - info - client ('127.0.0.1', 4668) connected 
+2023-02-05 15:33:09 - error - local variable 'recv_client_data' referenced before assignment 
+2023-02-05 15:33:46 - info - client ('127.0.0.1', 4732) connected 
+2023-02-05 15:33:46 - error - local variable 'recv_client_data' referenced before assignment 
+2023-02-05 15:33:50 - info - client ('127.0.0.1', 4738) connected 
+2023-02-05 15:33:56 - info - client ('127.0.0.1', 4738) send command auth 
+2023-02-05 15:33:58 - info - client ('127.0.0.1', 4738) send command put 
+2023-02-05 15:33:58 - error - exec put error :module 'dbhelper.dbapi' has no attribute 'check_breakpoint' 
+2023-02-05 15:33:58 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 15:55:53 - info - client ('127.0.0.1', 6734) connected 
+2023-02-05 15:55:57 - info - client ('127.0.0.1', 6734) send command auth 
+2023-02-05 15:56:00 - info - client ('127.0.0.1', 6734) send command put 
+2023-02-05 15:56:00 - error - exec put error :module 'dbhelper.dbapi' has no attribute 'check_breakpoint' 
+2023-02-05 15:56:00 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 16:02:54 - info - client ('127.0.0.1', 7318) connected 
+2023-02-05 16:02:57 - info - client ('127.0.0.1', 7318) send command auth 
+2023-02-05 16:03:00 - info - client ('127.0.0.1', 7318) send command put 
+2023-02-05 16:03:00 - error - exec put error :module 'dbhelper.dbapi' has no attribute 'check_breakpoint' 
+2023-02-05 16:03:00 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 16:04:16 - info - client ('127.0.0.1', 7432) connected 
+2023-02-05 16:04:18 - info - client ('127.0.0.1', 7432) send command auth 
+2023-02-05 16:04:21 - info - client ('127.0.0.1', 7432) send command put 
+2023-02-05 16:04:21 - error - exec put error :module 'dbhelper.dbapi' has no attribute 'check_breakpoint' 
+2023-02-05 16:04:21 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 23:14:04 - info - client ('127.0.0.1', 1492) connected 
+2023-02-05 23:14:07 - info - client ('127.0.0.1', 1492) send command auth 
+2023-02-05 23:14:08 - info - client ('127.0.0.1', 1492) send command put 
+2023-02-05 23:14:08 - error - exec put error :module 'dbhelper.dbapi' has no attribute 'check_breakpoint' 
+2023-02-05 23:14:08 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 23:15:29 - info - client ('127.0.0.1', 1742) connected 
+2023-02-05 23:15:32 - info - client ('127.0.0.1', 1742) send command auth 
+2023-02-05 23:15:34 - info - client ('127.0.0.1', 1742) send command put 
+2023-02-05 23:15:34 - error - exec put error :module 'dbhelper.dbapi' has no attribute 'check_breakpoint' 
+2023-02-05 23:15:34 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 23:17:36 - info - client ('127.0.0.1', 2224) connected 
+2023-02-05 23:17:46 - info - client ('127.0.0.1', 2224) send command auth 
+2023-02-05 23:17:50 - info - client ('127.0.0.1', 2224) send command auth 
+2023-02-05 23:17:54 - info - client ('127.0.0.1', 2224) send command put 
+2023-02-05 23:17:54 - error - exec put error :module 'dbhelper.dbapi' has no attribute 'check_breakpoint' 
+2023-02-05 23:17:54 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 23:18:41 - info - client ('127.0.0.1', 2481) connected 
+2023-02-05 23:18:44 - info - client ('127.0.0.1', 2481) send command auth 
+2023-02-05 23:18:47 - info - client ('127.0.0.1', 2481) send command put 
+2023-02-05 23:18:47 - error - exec put error :module 'dbhelper.dbapi' has no attribute 'check_breakpoint' 
+2023-02-05 23:18:47 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 23:20:36 - info - client ('127.0.0.1', 2735) connected 
+2023-02-05 23:20:42 - info - client ('127.0.0.1', 2735) send command auth 
+2023-02-05 23:20:46 - info - client ('127.0.0.1', 2735) send command auth 
+2023-02-05 23:20:47 - info - client ('127.0.0.1', 2735) send command put 
+2023-02-05 23:20:47 - error - exec put error :module 'module.common' has no attribute 'write' 
+2023-02-05 23:20:47 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 23:21:29 - info - client ('127.0.0.1', 2795) connected 
+2023-02-05 23:21:33 - info - client ('127.0.0.1', 2795) send command auth 
+2023-02-05 23:21:36 - info - client ('127.0.0.1', 2795) send command put 
+2023-02-05 23:21:36 - error - exec put error :module 'module.common' has no attribute 'write' 
+2023-02-05 23:21:36 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 23:22:04 - info - client ('127.0.0.1', 2841) connected 
+2023-02-05 23:22:08 - info - client ('127.0.0.1', 2841) send command auth 
+2023-02-05 23:22:11 - info - client ('127.0.0.1', 2841) send command put 
+2023-02-05 23:22:11 - error - exec put error :module 'module.common' has no attribute 'write' 
+2023-02-05 23:22:11 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 23:23:15 - info - client ('127.0.0.1', 2959) connected 
+2023-02-05 23:23:18 - info - client ('127.0.0.1', 2959) send command auth 
+2023-02-05 23:23:21 - info - client ('127.0.0.1', 2959) send command put 
+2023-02-05 23:23:21 - error - exec put error :module 'module.common' has no attribute 'write' 
+2023-02-05 23:23:21 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 23:26:42 - info - client ('127.0.0.1', 3419) connected 
+2023-02-05 23:26:46 - info - client ('127.0.0.1', 3419) send command auth 
+2023-02-05 23:26:50 - info - client ('127.0.0.1', 3419) send command put 
+2023-02-05 23:26:50 - error - exec put error :module 'module.common' has no attribute 'write' 
+2023-02-05 23:26:50 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 23:27:35 - info - client ('127.0.0.1', 3557) connected 
+2023-02-05 23:27:39 - info - client ('127.0.0.1', 3557) send command auth 
+2023-02-05 23:27:44 - info - client ('127.0.0.1', 3557) send command put 
+2023-02-05 23:27:44 - error - exec put error :module 'module.common' has no attribute 'write' 
+2023-02-05 23:27:44 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 23:28:39 - info - client ('127.0.0.1', 3631) connected 
+2023-02-05 23:28:42 - info - client ('127.0.0.1', 3631) send command auth 
+2023-02-05 23:28:52 - info - client ('127.0.0.1', 3631) send command put 
+2023-02-05 23:28:52 - error - 'str' object has no attribute 'username' 
+2023-02-05 23:28:52 - error - exec put error :'NoneType' object is not subscriptable 
+2023-02-05 23:28:52 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 23:29:24 - info - client ('127.0.0.1', 3695) connected 
+2023-02-05 23:29:27 - info - client ('127.0.0.1', 3695) send command auth 
+2023-02-05 23:29:28 - info - client ('127.0.0.1', 3695) send command put 
+2023-02-05 23:29:28 - error - 'str' object has no attribute 'username' 
+2023-02-05 23:29:28 - error - exec put error :'NoneType' object is not subscriptable 
+2023-02-05 23:29:28 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 23:35:54 - info - client ('127.0.0.1', 4330) connected 
+2023-02-05 23:35:56 - info - client ('127.0.0.1', 4330) send command auth 
+2023-02-05 23:35:56 - error - 'str' object has no attribute '__dict__' 
+2023-02-05 23:36:34 - info - client ('127.0.0.1', 4380) connected 
+2023-02-05 23:36:37 - info - client ('127.0.0.1', 4380) send command auth 
+2023-02-05 23:36:37 - error - 'str' object has no attribute '__dict__' 
+2023-02-05 23:37:25 - info - client ('127.0.0.1', 4445) connected 
+2023-02-05 23:37:30 - info - client ('127.0.0.1', 4445) send command auth 
+2023-02-05 23:37:31 - info - client ('127.0.0.1', 4445) send command put 
+2023-02-05 23:37:31 - error - 'str' object has no attribute 'username' 
+2023-02-05 23:37:31 - error - exec put error :'NoneType' object is not subscriptable 
+2023-02-05 23:37:31 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-05 23:40:09 - info - client ('127.0.0.1', 4657) connected 
+2023-02-05 23:40:13 - info - client ('127.0.0.1', 4657) send command auth 
+2023-02-05 23:40:15 - info - client ('127.0.0.1', 4657) send command put 
+2023-02-05 23:41:06 - info - client ('127.0.0.1', 4657) send command put 
+2023-02-05 23:41:17 - info - client ('127.0.0.1', 4657) send command put 
+2023-02-05 23:41:54 - info - client ('127.0.0.1', 4657) disconnected 
+2023-02-05 23:41:55 - info - client ('127.0.0.1', 4782) connected 
+2023-02-06 01:28:45 - info - client ('127.0.0.1', 13711) connected 
+2023-02-06 01:28:48 - info - client ('127.0.0.1', 13711) send command auth 
+2023-02-06 01:28:50 - info - client ('127.0.0.1', 13711) send command show 
+2023-02-06 01:31:00 - info - client ('127.0.0.1', 13888) connected 
+2023-02-06 01:31:03 - info - client ('127.0.0.1', 13888) send command auth 
+2023-02-06 01:31:05 - info - client ('127.0.0.1', 13888) send command show 
+2023-02-06 01:32:11 - info - client ('127.0.0.1', 13888) disconnected 
+2023-02-06 01:32:11 - info - client ('127.0.0.1', 13985) connected 
+2023-02-06 01:32:17 - info - client ('127.0.0.1', 13992) connected 
+2023-02-06 01:32:20 - info - client ('127.0.0.1', 13992) send command auth 
+2023-02-06 01:32:22 - info - client ('127.0.0.1', 13992) send command show 
+2023-02-06 01:35:08 - info - client ('127.0.0.1', 13992) send command show 
+2023-02-06 01:35:33 - info - client ('127.0.0.1', 13992) send command show 
+2023-02-06 01:36:48 - info - client ('127.0.0.1', 13992) send command show 
+2023-02-06 01:37:15 - info - client ('127.0.0.1', 13992) disconnected 
+2023-02-06 01:37:16 - info - client ('127.0.0.1', 14374) connected 
+2023-02-06 01:37:19 - info - client ('127.0.0.1', 14374) send command auth 
+2023-02-06 01:37:20 - info - client ('127.0.0.1', 14374) send command show 
+2023-02-06 01:38:21 - info - client ('127.0.0.1', 14374) disconnected 
+2023-02-06 01:38:22 - info - client ('127.0.0.1', 14455) connected 
+2023-02-06 01:38:24 - info - client ('127.0.0.1', 14455) send command auth 
+2023-02-06 01:38:25 - info - client ('127.0.0.1', 14455) send command show 
+2023-02-06 01:39:36 - info - client ('127.0.0.1', 14455) disconnected 
+2023-02-06 01:39:37 - info - client ('127.0.0.1', 14558) connected 
+2023-02-06 01:39:40 - info - client ('127.0.0.1', 14558) send command auth 
+2023-02-06 01:39:41 - info - client ('127.0.0.1', 14558) send command show 
+2023-02-06 01:41:09 - info - client ('127.0.0.1', 14693) connected 
+2023-02-06 01:41:13 - info - client ('127.0.0.1', 14693) send command auth 
+2023-02-06 01:41:14 - info - client ('127.0.0.1', 14693) send command show 
+2023-02-06 01:41:20 - info - client ('127.0.0.1', 14693) send command cd 
+2023-02-06 01:41:24 - info - client ('127.0.0.1', 14693) send command show 
+2023-02-06 01:46:40 - info - client ('127.0.0.1', 1184) connected 
+2023-02-06 01:46:44 - info - client ('127.0.0.1', 1184) send command auth 
+2023-02-06 01:46:55 - info - client ('127.0.0.1', 1184) send command get 
+2023-02-06 01:46:55 - error - exec get error :module 'module.common' has no attribute 'encry_md5' 
+2023-02-06 01:46:55 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-06 01:47:22 - info - client ('127.0.0.1', 1250) connected 
+2023-02-06 01:47:25 - info - client ('127.0.0.1', 1250) send command auth 
+2023-02-06 01:47:28 - info - client ('127.0.0.1', 1250) send command get 
+2023-02-06 01:47:28 - error - exec get error :module 'module.common' has no attribute 'encry_md5' 
+2023-02-06 01:47:28 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-06 01:48:16 - info - client ('127.0.0.1', 1376) connected 
+2023-02-06 01:48:19 - info - client ('127.0.0.1', 1376) send command auth 
+2023-02-06 01:48:22 - info - client ('127.0.0.1', 1376) send command get 
+2023-02-06 01:48:22 - error - exec get error :module 'module.common' has no attribute 'encry_md5' 
+2023-02-06 01:48:22 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2023-02-06 01:49:29 - info - client ('127.0.0.1', 1496) connected 
+2023-02-06 01:49:32 - info - client ('127.0.0.1', 1496) send command auth 
+2023-02-06 01:49:35 - info - client ('127.0.0.1', 1496) send command get 
+2023-02-06 01:49:42 - info - client ('127.0.0.1', 1496) send command get 
+2023-02-06 01:57:52 - info - client ('127.0.0.1', 1496) disconnected 
+2023-02-06 01:57:52 - info - client ('127.0.0.1', 2253) connected 
+2023-02-06 01:57:55 - info - client ('127.0.0.1', 2253) send command auth 
+2023-02-06 01:57:58 - info - client ('127.0.0.1', 2253) send command get 
+2023-02-07 16:11:46 - info - client ('127.0.0.1', 4657) connected 
+2023-02-07 16:11:50 - info - client ('127.0.0.1', 4657) send command auth 
+2023-02-07 16:11:55 - info - client ('127.0.0.1', 4657) send command get 
+2023-02-07 16:12:22 - info - client ('127.0.0.1', 4657) send command get 
+2023-02-07 16:12:25 - info - client ('127.0.0.1', 4657) disconnected 
+2023-02-07 16:12:31 - info - client ('127.0.0.1', 4698) connected 
+2023-02-07 16:12:35 - info - client ('127.0.0.1', 4698) disconnected 
+2023-02-07 16:12:35 - info - client ('127.0.0.1', 4701) connected 
+2023-02-07 16:12:39 - info - client ('127.0.0.1', 4701) send command auth 
+2023-02-07 16:12:43 - info - client ('127.0.0.1', 4701) send command get 
+2023-02-07 16:13:23 - info - client ('127.0.0.1', 4701) send command get 
+2023-02-07 16:22:22 - info - client ('127.0.0.1', 4701) disconnected 
+2023-02-07 16:22:22 - info - client ('127.0.0.1', 5091) connected 
+2023-02-07 16:22:28 - info - client ('127.0.0.1', 5091) send command auth 
+2023-02-08 01:17:23 - info - client ('192.168.2.103', 4712) connected 
+2023-02-08 01:17:23 - info - client ('192.168.2.103', 4712) send command GET / HTTP/1.1
+Cache-Control: no-cache
+Connection: Keep-Alive
+Pragma: no-cache
+User-Agent: Secur 
+2023-02-08 01:17:23 - info - command GET / HTTP/1.1
+Cache-Control: no-cache
+Connection: Keep-Alive
+Pragma: no-cache
+User-Agent: Secur function not found 
+2023-02-08 01:17:23 - info - client ('192.168.2.103', 4712) send command ityManagerAgent
+Host: 192.168.2.103:8888
+
+ 
+2023-02-08 01:17:23 - info - command ityManagerAgent
+Host: 192.168.2.103:8888
+
+ function not found 
+2023-02-08 01:17:27 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2023-02-08 01:17:27 - info - client ('192.168.2.103', 4729) connected 
+2023-02-08 01:17:27 - error - 'utf-8' codec can't decode byte 0xab in position 4: invalid start byte 
+2023-02-13 01:37:03 - info - client ('127.0.0.1', 10436) connected 
+2023-02-13 01:37:07 - info - client ('127.0.0.1', 10436) send command auth 
+2023-02-13 01:38:19 - info - client ('127.0.0.1', 10436) send command put 
+2023-02-13 01:39:45 - info - client ('127.0.0.1', 10436) send command show 

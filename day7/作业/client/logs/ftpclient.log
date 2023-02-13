@@ -1,0 +1,174 @@
+
+2023-01-31 16:31:49 - error - 'str' object cannot be interpreted as an integer 
+2023-01-31 16:39:02 - error - 'str' object cannot be interpreted as an integer 
+2023-01-31 16:39:26 - error - 'str' object cannot be interpreted as an integer 
+2023-01-31 16:40:19 - error - 'str' object cannot be interpreted as an integer 
+2023-01-31 16:40:43 - error - 'str' object cannot be interpreted as an integer 
+2023-02-02 18:06:23 - error - 'str' object cannot be interpreted as an integer 
+2023-02-02 18:09:28 - error - 'str' object cannot be interpreted as an integer 
+2023-02-02 19:36:15 - error - 'str' object cannot be interpreted as an integer 
+2023-02-02 19:44:28 - error - 'str' object cannot be interpreted as an integer 
+2023-02-02 19:44:52 - error - 'str' object cannot be interpreted as an integer 
+2023-02-02 19:45:37 - error - 'str' object cannot be interpreted as an integer 
+2023-02-02 19:45:53 - error - 'str' object cannot be interpreted as an integer 
+2023-02-02 19:49:29 - error - [WinError 10056] 在一个已经连接的套接字上做了一个连接请求。 
+2023-02-02 19:50:47 - error - [WinError 10056] 在一个已经连接的套接字上做了一个连接请求。 
+2023-02-02 19:51:22 - error - [WinError 10056] 在一个已经连接的套接字上做了一个连接请求。 
+2023-02-02 20:33:20 - error - [WinError 10056] 在一个已经连接的套接字上做了一个连接请求。 
+2023-02-02 20:48:40 - error - [WinError 10056] 在一个已经连接的套接字上做了一个连接请求。 
+2023-02-02 20:49:27 - error - [WinError 10056] 在一个已经连接的套接字上做了一个连接请求。 
+2023-02-02 20:53:12 - error - [WinError 10056] 在一个已经连接的套接字上做了一个连接请求。 
+2023-02-02 20:59:46 - error - [WinError 10056] 在一个已经连接的套接字上做了一个连接请求。 
+2023-02-02 21:07:50 - error - [WinError 10056] 在一个已经连接的套接字上做了一个连接请求。 
+2023-02-02 21:08:08 - error - [WinError 10056] 在一个已经连接的套接字上做了一个连接请求。 
+2023-02-02 21:12:03 - error - [WinError 10056] 在一个已经连接的套接字上做了一个连接请求。 
+2023-02-02 21:39:49 - error - [WinError 10061] 由于目标计算机积极拒绝，无法连接。 
+2023-02-02 22:22:47 - error - [WinError 10061] 由于目标计算机积极拒绝，无法连接。 
+2023-02-03 11:58:03 - error - Client show| 未找到 
+2023-02-03 11:58:05 - error - Client show| 未找到 
+2023-02-03 11:58:06 - error - Client show| 未找到 
+2023-02-03 11:58:07 - error - Client show| 未找到 
+2023-02-03 11:58:08 - error - Client show| 未找到 
+2023-02-03 11:58:09 - error - Client show| 未找到 
+2023-02-03 12:07:48 - error - Client show| 未找到 
+2023-02-03 12:07:54 - error - Client show| 未找到 
+2023-02-03 12:07:55 - error - Client show| 未找到 
+2023-02-03 12:07:56 - error - Client show| 未找到 
+2023-02-03 12:07:56 - error - Client show| 未找到 
+2023-02-03 12:07:57 - error - Client show| 未找到 
+2023-02-03 12:07:58 - error - Client show| 未找到 
+2023-02-03 12:07:59 - error - Client show| 未找到 
+2023-02-03 12:09:25 - error - Client show| 未找到 
+2023-02-03 12:37:04 - error - Client show| 未找到 
+2023-02-03 14:55:51 - error - Client get|test 未找到 
+2023-02-03 14:56:00 - error - Client get| 未找到 
+2023-02-05 14:46:22 - error - module 'module.common' has no attribute 'writelog' 
+2023-02-05 14:47:12 - error - module 'module.common' has no attribute 'writelog' 
+2023-02-05 14:49:58 - error - module 'module.common' has no attribute 'writelog' 
+2023-02-05 14:51:11 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 14:51:11 - info - upload file, received from server: 
+2023-02-05 14:51:11 - error - list index out of range 
+2023-02-05 14:55:03 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 14:55:03 - info - upload file, received from server: 
+2023-02-05 14:55:03 - error - list index out of range 
+2023-02-05 14:56:43 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 14:56:43 - info - upload file, received from server: 
+2023-02-05 14:56:43 - error - list index out of range 
+2023-02-05 14:57:06 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 14:57:06 - info - upload file, received from server: 
+2023-02-05 14:57:06 - error - list index out of range 
+2023-02-05 15:03:06 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 15:03:06 - info - upload file, received from server: 
+2023-02-05 15:03:06 - error - list index out of range 
+2023-02-05 15:04:16 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 15:04:16 - info - upload file, received from server: 
+2023-02-05 15:04:16 - error - list index out of range 
+2023-02-05 15:07:21 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 15:07:21 - info - upload file, received from server: 
+2023-02-05 15:07:21 - error - list index out of range 
+2023-02-05 15:08:00 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 15:08:00 - info - upload file, received from server: 
+2023-02-05 15:08:00 - error - list index out of range 
+2023-02-05 15:09:03 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 15:09:03 - info - upload file, received from server: 
+2023-02-05 15:09:03 - error - list index out of range 
+2023-02-05 15:12:04 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 15:12:04 - info - upload file, received from server: 
+2023-02-05 15:12:04 - error - list index out of range 
+2023-02-05 15:26:53 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 15:26:53 - info - upload file, received from server: 
+2023-02-05 15:26:53 - error - list index out of range 
+2023-02-05 15:28:37 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 15:28:37 - info - upload file, received from server: 
+2023-02-05 15:28:37 - error - list index out of range 
+2023-02-05 15:29:49 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 15:29:49 - info - upload file, received from server: 
+2023-02-05 15:29:49 - error - list index out of range 
+2023-02-05 15:30:19 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 15:30:19 - info - upload file, received from server: 
+2023-02-05 15:30:19 - error - list index out of range 
+2023-02-05 15:31:17 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 15:31:17 - info - upload file, received from server: 
+2023-02-05 15:31:17 - error - list index out of range 
+2023-02-05 15:32:10 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 15:32:10 - info - upload file, received from server: 
+2023-02-05 15:32:10 - error - list index out of range 
+2023-02-05 15:33:58 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 15:33:58 - info - upload file, received from server: 
+2023-02-05 15:33:58 - error - list index out of range 
+2023-02-05 15:56:00 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 15:56:00 - info - upload file, received from server: 
+2023-02-05 15:56:00 - error - list index out of range 
+2023-02-05 16:03:00 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 16:03:00 - info - upload file, received from server: 
+2023-02-05 16:03:00 - error - list index out of range 
+2023-02-05 16:04:21 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 16:04:21 - info - upload file, received from server: 
+2023-02-05 16:04:21 - error - list index out of range 
+2023-02-05 23:13:55 - error - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2023-02-05 23:14:08 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:14:08 - info - upload file, received from server: 
+2023-02-05 23:14:08 - error - list index out of range 
+2023-02-05 23:15:21 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:15:21 - error - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2023-02-05 23:15:34 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:15:34 - info - upload file, received from server: 
+2023-02-05 23:15:34 - error - list index out of range 
+2023-02-05 23:17:54 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:17:54 - info - upload file, received from server: 
+2023-02-05 23:17:54 - error - list index out of range 
+2023-02-05 23:18:47 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:18:47 - info - upload file, received from server: 
+2023-02-05 23:18:47 - error - list index out of range 
+2023-02-05 23:20:47 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:20:47 - info - upload file, received from server: 
+2023-02-05 23:20:47 - error - list index out of range 
+2023-02-05 23:21:36 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:21:36 - info - upload file, received from server: 
+2023-02-05 23:21:36 - error - list index out of range 
+2023-02-05 23:22:11 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:22:11 - info - upload file, received from server: 
+2023-02-05 23:22:11 - error - list index out of range 
+2023-02-05 23:23:21 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:23:21 - info - upload file, received from server: 
+2023-02-05 23:23:21 - error - list index out of range 
+2023-02-05 23:26:50 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:26:50 - info - upload file, received from server: 
+2023-02-05 23:26:50 - error - list index out of range 
+2023-02-05 23:27:44 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:27:44 - info - upload file, received from server: 
+2023-02-05 23:27:44 - error - list index out of range 
+2023-02-05 23:28:52 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:28:52 - info - upload file, received from server: 
+2023-02-05 23:28:52 - error - list index out of range 
+2023-02-05 23:29:28 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:29:28 - info - upload file, received from server: 
+2023-02-05 23:29:28 - error - list index out of range 
+2023-02-05 23:36:00 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:36:00 - error - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2023-02-05 23:36:39 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:36:39 - error - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2023-02-05 23:37:31 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:37:31 - info - upload file, received from server: 
+2023-02-05 23:37:31 - error - list index out of range 
+2023-02-05 23:40:15 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:40:15 - info - upload file, received from server:0|0 
+2023-02-05 23:40:17 - info - upload file<D:\360Downloads\Software\360DesktopLite_zm000002.exe> successful 
+2023-02-05 23:41:06 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:41:06 - info - upload file, received from server:0|0 
+2023-02-05 23:41:07 - info - upload file<D:\360Downloads\Software\360DesktopLite_zm000002.exe> successful 
+2023-02-05 23:41:17 - info - send file basic info:put|360DesktopLite_zm000002.exe|17265712|55619847cf04ed956106f5b5d22b8de1 
+2023-02-05 23:41:17 - info - upload file, received from server:0|0 
+2023-02-05 23:41:19 - info - upload file<D:\360Downloads\Software\360DesktopLite_zm000002.exe> successful 
+2023-02-06 01:46:55 - error - module 'module.common' has no attribute 'writelog' 
+2023-02-06 01:47:28 - error - invalid literal for int() with base 10: '' 
+2023-02-06 01:48:01 - error - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2023-02-06 01:48:22 - error - invalid literal for int() with base 10: '' 
+2023-02-06 01:49:42 - error - module 'conf.settings' has no attribute 'DOWNLOAD_FILE_PATH' 
+2023-02-06 01:57:58 - error - division by zero 
+2023-02-07 16:11:55 - error - [Errno 2] No such file or directory: 'C:\\Users\\zexiong.li\\Desktop\\python3\\day7\\作业\\client\\download\\test.txt' 
+2023-02-07 16:12:43 - error - division by zero 
+2023-02-07 16:13:23 - error - division by zero 
+2023-02-13 01:38:19 - info - send file basic info:put|mysql-5.7.36-winx64.zip|387739034|5b4bdd1f255486cb51fe7988704b1ac1 
+2023-02-13 01:38:19 - info - upload file, received from server:0|0 
+2023-02-13 01:38:52 - info - upload file<D:\tools\mysql-5.7.36-winx64.zip> successful 
