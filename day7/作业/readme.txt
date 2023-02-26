@@ -1,6 +1,7 @@
 ﻿Day7: FTP-Socket
 """
-__author:李泽雄
+__author: lizexiong
+博客:https://www.cnblogs.com/lizexiong/
 """
 
 功能说明：

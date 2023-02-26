@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<USERS><USER UNAME="admin"><UPASS>25e3aa9b9d9d73b5b5384743d4dcefa39cd067e8</UPASS><GID>G01,G02,G03,G04</GID><UROLE>admin</UROLE><NAME>administrator</NAME></USER><USER UNAME="lizexiong"><UPASS>25e3aa9b9d9d73b5b5384743d4dcefa39cd067e8</UPASS><GID>G01,G02</GID><UROLE>user</UROLE><NAME>lizexiong</NAME></USER></USERS>
