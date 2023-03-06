@@ -22,6 +22,7 @@ monkey.patch_all()
 简单来说，这老师啥都没讲，就说这个monkey自动把阻塞的变成非阻塞了。。。
 '''
 
+
 def server(port):
     s = socket.socket()
     s.bind(('0.0.0.0', port))
