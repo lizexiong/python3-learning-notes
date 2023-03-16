@@ -1,0 +1,26 @@
+#172.21.161.149主机IP
+# -user 登录用户名
+# - auth_type:登录模式 1 用户名密码 2 密钥登录
+# - group: 服务器所属组
+# - port: 登录端口 默认22
+# - key：登录密码，若是密钥登录，则key为创建密钥时的密码
+172.21.161.149:
+  - user: 'root'
+  - auth_type: 2
+  - key: '12345'
+  - group: 'db_server'
+  - port: 22
+172.21.161.161:
+  - user: 'root'
+  - auth_type: 1
+  - key: 'huawei'
+  - group: 'web_server'
+  - port: 22
+
+
+
+
+
+
+
+
