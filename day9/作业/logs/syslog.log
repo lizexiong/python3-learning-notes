@@ -17,3 +17,8 @@
 2023-03-16 13:08:29,732 - ERROR - [Errno 2] No such file
 2023-03-16 18:19:18,071 - ERROR - [Errno 2] No such file or directory: 'C:\\Users\\zexiong.li\\Desktop\\python3\\day9\\作业\\sshkey\\id_rsa'
 2023-03-16 18:20:00,459 - ERROR - object of type 'NoneType' has no len()
+2023-03-16 22:57:07,599 - ERROR - Import module error
+2023-03-16 22:57:39,588 - ERROR - Unable to connect to 172.21.161.161: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2023-03-16 22:59:54,203 - ERROR - load() missing 1 required positional argument: 'Loader'
+2023-03-16 22:59:58,906 - ERROR - load() missing 1 required positional argument: 'Loader'
+2023-03-16 23:00:00,931 - ERROR - load() missing 1 required positional argument: 'Loader'
