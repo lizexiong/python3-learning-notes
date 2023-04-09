@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div style="height:48px;background-color:pink;">头部</div>
+  <div style="background-color: #ddd;">
+    <div style="width:20%;height:500px;float:left;background-color: aquamarine;">左边内容</div>
+    <div style="width:80%;height:500px;float:left;">
+      <h1>Form表单提交</h1>
+      <from action="10.0.0.1" enctype="multipart/form-data" method="post">
+          <p>
+              <input type="text" name="host" />
+              <input type="password" name="pwd" />
+          </p>
+
+          <div style="background-color: rosybrown;color: white;">
+              <h6>爱好</h6>
+              篮球:<input name="favor" type="checkbox" value="1" />
+              足球:<input name="favor" type="checkbox" value="2"/>
+              排球:<input name="favor" type="checkbox" value="3" />
+          </div>
+
+          <div>
+              <h6>性别</h6>
+              男:<input name="gender" type="radio" value="1" />
+              女:<input name="gender" type="radio" value="0" />
+          </div>
+
+          <div>
+              <h6>城市</h6>
+              <select name="city">
+                  <option value="888">上海</option>
+                  <option value="999">北京</option>
+              </select>
+          </div>
+
+          <div>
+              <textarea name="mono"></textarea>
+          </div>
+
+          <div>
+              <h4>文件</h4>
+              <input type="file" name="file_name" />
+          </div>
+          <input type="submit" value="提交" />
+      </from>
+  </div>
+</body>
+</html>
