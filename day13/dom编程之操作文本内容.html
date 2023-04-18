@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="n1">
+    <h1>n1</h1>
+</div>
+
+<!--特殊的value-->
+<input id="n2" type="text"/>
+<select id="n3">
+    <option value="1">上海</option>
+    <option value="2">北京</option>
+    <option value="3">深圳</option>
+</select>
+<textarea id="n4">n4</textarea>
+
+<input type="button" onclick="GetValue();" value="获取值" />
+
+<script type="text/javascript">
+    function GetValue(){
+        // var obj=document.getElementById('n1')
+        // alert(obj.innerText)        //获取n1 id的纯文本内容
+        // alert(obj.innerHTML)        //获取n1 id下面的包含html以及文本内容
+
+        var obj = document.getElementById('n3')
+        alert(obj.value)               //特殊的几个标签需要使用value来获取值
+        obj.value = 2                  //修改直接给这个value赋值即可
+    }
+</script>
+</body>
+</html>

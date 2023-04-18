@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎李总莅临指导</title>
+</head>
+<body>
+    <input type="button" onclick="StopInterval();" value="停下来" />
+    <script type="text/javascript">
+
+        obj1 = setInterval("Func()",1000)
+
+        function StopInterval(){            //点击，就把这个定时器给清除了，跑马灯就消失
+            clearInterval(obj1)
+        }
+
+        function Func(){
+            //清除定时器
+            var text = document.title;          //获取title的文本
+            var firstChar = text.charAt(0);     //获取文本的第一个字符
+            var subText = text.substring(1,text.length) //获取title除了1下标之后的所有字符
+            var newTitle = subText + firstChar; //把后面的+最前面的这样循环，这样在设置一个定时器，就是跑马灯效果了
+            document.title = newTitle;
+        }
+    </script>
+
+</body>
+</html>

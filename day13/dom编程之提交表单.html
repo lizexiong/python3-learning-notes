@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- 这里的get以及url是搜索引擎原本的搜索方式-->
+<form id="form1" action="https://www.sogou.com/web" method="get">
+    <input name="query" type="text" />
+<!--    div绑定一个submit事件-->
+    <div onclick="Submit();">提交</div>
+</form>
+
+<script type="text/javascript">
+    function Submit(){
+         // 这个事件就是提交表单
+        document.getElementById('form1').submit();
+    }
+</script>
+</body>
+</html>

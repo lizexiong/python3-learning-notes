@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery-3.6.4.js"></script>
+    <script>
+        $(function(){
+            $('#selectAll').click(function(){
+               $("#checklist :checkbox").prop('checked',true)
+            });
+            $('#unselectAll').click(function(){
+               $("#checklist :checkbox").prop('checked',false)
+            });
+            $("#reverseAll").click(function(){
+                $("#checklist :checkbox").each(function(){
+                    $(this).prop('checked',!$(this).prop('checked'))
+                })
+            })
+
+        })
+    </script>
+</head>
+<body>
+
+
+    <div id="checklist">
+        <table border="1">
+            <tr>
+                <th><input type="checkbox" value="1"/></th>
+                <th>篮球</th>
+                <th>和</th>
+                <th>鸡</th>
+            </tr>
+            <tr>
+                <th><input type="checkbox" value="2"/></th>
+                <th>篮球</th>
+                <th>和</th>
+                <th>鸡</th>
+            </tr>
+            <tr>
+                <th><input type="checkbox" value="3"/></th>
+                <th>篮球</th>
+                <th>和</th>
+                <th>鸡</th>
+            </tr>
+        </table>
+
+    </div>
+    <input type="button" value="全选" id="selectAll" />
+    <input type="button" value="不选" id="unselectAll" />
+    <input type="button" value="反选" id="reverseAll" />
+
+
+</body>
+</html>

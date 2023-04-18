@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <input type="text" id="search" value="请输入关键字" onfocus="Focus();" onblur="Blur();" />
+
+    <script type="text/javascript">
+        function Focus(){                           //点击到搜索框的时候,把搜索框的值给清空
+            var nid = document.getElementById('search')
+            var value = nid.value;
+            if(value == "请输入关键字"){
+                nid.value = "";
+            }
+        }
+
+        function Blur(){                            //不在搜索框的时候，如果搜索框里面没有值，那么就把值设置为请输入关键字
+            var nid = document.getElementById('search')
+            var value = nid.value;
+            if(!value.trim()){
+                nid.value = "请输入关键字"
+            }
+        }
+    </script>
+
+</body>
+</html>

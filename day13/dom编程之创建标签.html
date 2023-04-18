@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="container"></div>
+<!--这里有个a标签，如果onclick返回的不是false，onclick函数执行完成后就会执行a标签跳转网页，如果返回的是false，那么这个a标签跳转将不再执行-->
+<a href="http://www.baidu.com" onclick="return AddElement();">添加</a>
+
+<script type="text/javascript">
+  function AddElement(){
+      // 第一种方式
+    //   var nid = document.getElementById('container');     //获取id为container
+    //   var tag = "<input type='text' />";                  //这里是文字的方式需要添加的input标签
+    // // nid.innerHTML = tag;  //第一种方法中比较low的方式，每次都是清空这个id下面的所有然后添加，所有永远都只有一个input标签
+    //   container.insertAdjacentHTML("beforeBegin",tag)  //通过特定的函数每次都在这个标签前面自动添加,建议使用这种方式
+
+      //第二种方式，使用类的方式，dom已经给我们封装好了，推荐
+      var createObj = document.createElement('a');          //创建一个对象,然后创建a标签
+      createObj.href = "https:/www.baidu.com";              //设置a标签的属性
+      createObj.innerText = "百度";                          //设置a标签的值
+      var nid = document.getElementById('container');       //获取id为container的标签
+      //nid.innerHTML = createObj;                          //这里也是第二种方法中第一种比较low的方法，无法追加
+      nid.appendChild(createObj);                           //这里是类的方法，类已经把功能做好了，可以一直追加
+
+
+      return false;                                       //返回false，为了不让a标签跳转
+   }
+</script>
+
+</body>
+</html>

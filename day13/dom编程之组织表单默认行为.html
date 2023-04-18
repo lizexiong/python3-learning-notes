@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form id="form1" action="https://www.sogou.com/web" method="get">
+    <input name="query" type="text" />
+<!--    这里还是用submit，但是提交的时候onclick事件绑定的函数会判断是否为空-->
+<!--    函数如果有数据，会返回true，那么就回提交，如果没有数据，返回false，不会提交-->
+    <input type="submit" onclick="return MySubmit();" value="提交" />
+</form>
+
+<script type="text/javascript">
+    function MySubmit(){
+        var q = document.getElementsByName('query')[0]
+        if (q.value.trim()){
+            return true
+        }else{
+            alert("请输入内容")
+            return false
+        }
+    }
+</script>
+
+</body>
+</html>

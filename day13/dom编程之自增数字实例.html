@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <h1 id="num">1</h1>
+    <input type="button" value="+1" onclick="Add()" />
+</div>
+
+<script type="text/javascript">
+
+    function Add(){
+        // 1.找到num
+        // 2.获取内容
+        // 3.自增
+        var nid = document.getElementById('num');   //1.获取numid
+        var text = nid.innerText;                   //2.获取id为num的值
+        text = parseInt(text);                       //3.把字符串转换为int类型
+        text += 1;                                  //4.把获取到的id为num的值+1
+        nid.innerText = text;                       //5.把已经增加的数值复制给id为num的标签
+    }
+</script>
+</body>
+</html>

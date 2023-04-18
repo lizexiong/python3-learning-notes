@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="n1"></div>
+<div class="c1">第二个div</div>
+<div class="c1">第三个div</div>
+<a></a>
+<span id="n2"></span>
+
+<div id="n3">
+    <div>
+        <div class="c3">
+            <span>
+                <a>组合选择器1</a>
+            </span>
+        </div>
+    </div>
+    <span>第二个span标签</span>
+</div>
+
+
+<script src="jquery-3.6.4.min.js"></script>
+<script type="text/javascript">
+    // $("#n1").text('123')        //找到id为n1的，把内容修改为123
+    // $('div').text('所有div')     //找到所有div,把内容改称"所有div
+    // $('.c1').text("这里是类选择器测试")  //找到所有class=c1的标签，把值改称"这里是类选择器测试"
+    // $(".c1,a,#n2").text("这里是选择多个标签测试") //用逗号分隔，找到class=c1，所有a标签，id=n2的标签，把值改成"这里是选择多个标签测试"
+    // 这里就不做过多解释，就是按照层级一层一层的往下面去找。还是有点2点要注意
+    //1.上面的测试都已经注释，因为不注释，所有标签匹配的$('div')会直接把所有内容改成"所有div"
+    // //2. 这里是一层一层往下面找所有的，并不是n3下面的一个div，是n3下面的所有div，不过这种方式容易混乱，所以不建议这么用
+    $("#n3 div .c3 span a").text("这里是组合选择器测试")
+</script>
+</body>
+</html>
