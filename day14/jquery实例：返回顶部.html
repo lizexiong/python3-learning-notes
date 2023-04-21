@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .go-top {
+            position  :fixed;
+            right: 0;
+            bottom: 0;
+            width: 100px;
+            height: 100px;
+
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+
+
+    <div style="height: 2000px; background-color: #dddddd">
+        顶部
+    </div>
+
+<!--    默认滚动条是隐藏的，只有滚动条大于100的时候才会显示-->
+    <div class="go-top hide">
+        <a onclick="GoTop();">返回顶部</a>
+    </div>
+
+    <script src="jquery-3.6.4.js"></script>
+    <script>
+        window.onscroll = function(){
+            //获取当前scrooltop的值
+            var currentTop = $(window).scrollTop();
+            //默认滚动条是隐藏的，只有滚动条大于100的时候才会显示
+            if (currentTop > 100){
+                $('.go-top').removeClass('hide')
+            }else{
+                $('.go-top').addClass('hide')
+            }
+        }
+
+        //滚动条直接回到0的地方，也就是顶部
+        function GoTop(){
+            $(window).scrollTop(0);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .tab-box .box-menu {
+            background-color: #dddddd;
+            border: 1px solid #dddddd;
+            height: 33px;
+            line-height: 33px;
+        }
+
+        .box-menu a {
+            border-right: 1px solid #664747;
+            padding: 10px;
+        }
+
+        .tab-box .box-menu {
+            background-color: #dddddd;
+            border: 1px solid #dddddd;
+        }
+
+        .box-body {
+            border: 1px solid #dddddd;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .current {
+            background-color: white;
+            color: black;
+            border-top: 2px solid red;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="tab-box">
+        <div class="box-menu">
+            <a lizexiong="c1" onclick="ChangeTab(this)" class="current">菜单一</a>
+            <a lizexiong="c2" onclick="ChangeTab(this)">菜单二</a>
+            <a lizexiong="c3" onclick="ChangeTab(this)">菜单三</a>
+        </div>
+        <div class="box-body">
+            <div id="c1" >鸡</div>
+            <div id="c2" class="hide">和</div>
+            <div id="c3" class="hide">篮球</div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="jquery-3.6.4.js"></script>
+    <script>
+        function ChangeTab(ths) {
+            //点击到当前菜单上，增加该菜单的current类，但是其他菜单，就要删除这个类
+            $(ths).addClass('current').siblings().removeClass('current');
+            //获取当前标签的$(ths)
+            var contentId = $(ths).attr('lizexiong');
+            //把刚才获取的的属性拼接一下，如获取的 lizexiong=c1,那么  # + lizexiong
+            var temp = '#' + contentId;
+            //值$('#xx')显示，其他的内容隐藏
+            $(temp).removeClass('hide').siblings().addClass('hide');
+
+        }
+    </script>
+</body>
+</html>

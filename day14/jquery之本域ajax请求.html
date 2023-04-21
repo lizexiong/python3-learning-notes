@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <input id="n1" name="pp" />
+    <input type="button" value="提交" onclick="SubmitData()"; />
+
+    <form action="" method="post">
+        <p><input type="text" name="user"/></p>
+        <p><input type="password" name="pwd"/></p>
+        <input type="submit" />
+    </form>
+
+    <script src="jquery-3.6.4.js"></script>
+    <script>
+        function SubmitData(){
+            //获取值
+            var inpVal = $('#n1').val();
+            var inpName = $('#n1').attr('name');
+
+            $.ajax({
+                url: "http://127.0.0.1:8000/index/",
+                data: {'kk':123,inpName:inpVal},
+                type: 'POST',
+                success:function(arg){
+                    //当请求执行完成后，自动调用
+                    //arg是后端服务器返回的数据
+                    console.log(arg);
+                },
+                error:function(arg){
+                    //当请求错误之后，自动调用
+                }
+            })
+        }
+    </script>
+</body>
+</html>

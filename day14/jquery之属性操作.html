@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div>
+        <input type="button" value="全选" onclick="SelectAll()"; />
+        <input type="button" value="取消" onclick="ClearAll()"; />
+    </div>
+
+    <div>
+        <table border="1">
+            <tr>
+                <td> <input type="checkbox" /></td>
+                <td>篮球和鸡</td>
+                <td>篮球和鸡</td>
+            </tr>
+            <tr>
+                <td> <input type="checkbox" /></td>
+                <td>篮球和鸡</td>
+                <td>篮球和鸡</td>
+            </tr>
+            <tr>
+                <td> <input type="checkbox" /></td>
+                <td>篮球和鸡</td>
+                <td>篮球和鸡</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <script type="text/javascript" src="jquery-3.6.4.js"></script>
+    <script>
+        function SelectAll(){
+            $('table :checkbox').prop('checked', true);
+        };
+        function ClearAll(){
+            $('table :checkbox').prop('checked', false);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div>
+        <input type="button" value="全选" onclick="SelectAll()"; />
+        <input type="button" value="取消" onclick="ClearAll()"; />
+        <input type="button" value="反选" onclick="ReverseAll()" />
+    </div>
+
+    <div>
+        <table border="1">
+            <tr>
+                <td> <input type="checkbox" /></td>
+                <td>篮球和鸡</td>
+                <td>篮球和鸡</td>
+            </tr>
+            <tr>
+                <td> <input type="checkbox" /></td>
+                <td>篮球和鸡</td>
+                <td>篮球和鸡</td>
+            </tr>
+            <tr>
+                <td> <input type="checkbox" /></td>
+                <td>篮球和鸡</td>
+                <td>篮球和鸡</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <script type="text/javascript" src="jquery-3.6.4.js"></script>
+    <script>
+        function SelectAll(){
+            $('table :checkbox').prop('checked', true);
+        };
+        function ClearAll(){
+            $('table :checkbox').prop('checked', false);
+        };
+        function ReverseAll(){
+
+            //第一种for循环方式
+            var userList = [11,22,33,44]
+            $.each(userList,function(i,item){
+                console.log(i,item)
+            })
+
+
+            //第二种for循环方式
+            $("table :checkbox").each(function(){
+                //该方式在上一节课作业已经写了，并且更简单，这里算是一种复杂的，讲解原理的方式
+                //每一个循环都执行该函数体
+                //$(this)表示当前循环的元素
+                var isChecked = $(this).prop('checked');
+                if(isChecked){
+                    $(this).prop('checked',false);
+                }else{
+                    $(this).prop('checked',true);
+                }
+            })
+        };
+    </script>
+</body>
+</html>

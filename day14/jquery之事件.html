@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="添加" onclick="AddContent();" />
+    <div onclick="func()"></div>
+    <div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+
+    <script type="text/javascript" src="jquery-3.6.4.js"></script>
+    <script>
+        //1.文档加载完成马上执行函数，有2种代码书写方式
+        // $(function(){
+        //     alert("第一种")
+        // })
+        //
+        // $(document).ready(function(){
+        //     alert("第一种-2")
+        // })
+
+        //2.就是把一个类型的所有标签，比如li全部绑定一个事件函数。点击一下，就可以弹出警告框等
+        // $('li').bind('click',function(){
+        //     var temp = $(this).text();
+        //     alert(temp)
+        // })
+
+        // $('li').click(function(){
+        //     var temp = $(this).text();
+        //     alert(temp)
+        // })
+
+
+        // $(li:last).unbind('click')   //解除绑定，不过多解释
+
+        //3.叫做委托。假设现在有3个li，都绑定了事件，现在网页加载完成，突然新增一个li，这个li是没有绑定事件的，这时候可以通过这个方式将新增的li自动绑定一个事件。
+
+        function AddContent(){
+            $('ul').append('<li>4</li>')
+            //下面是不使用委托给新添加的标签绑定事件，比较low，不建议使用
+            // $('li:last').click(function (){
+            //     var temp = $(this).text();
+            //     alert(temp)
+            // })
+        }
+
+        $('ul').delegate('li','click',function(){
+            var temp = $(this).text();
+            alert(temp)
+        })
+
+    </script>
+</body>
+</html>
