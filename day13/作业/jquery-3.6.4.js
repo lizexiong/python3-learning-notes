@@ -2837,7 +2837,7 @@ compile = Sizzle.compile = function( selector, match /* Internal Use Only */ ) {
 
 	if ( !cached ) {
 
-		// Generate a function of recursive functions that can be used to check each element
+		// Generate a function of recursive controllers that can be used to check each element
 		if ( !match ) {
 			match = tokenize( selector );
 		}
@@ -2865,7 +2865,7 @@ compile = Sizzle.compile = function( selector, match /* Internal Use Only */ ) {
 
 /**
  * A low-level selection function that works with Sizzle's compiled
- *  selector functions
+ *  selector controllers
  * @param {String|Function} selector A selector or a pre-compiled
  *  selector function built with Sizzle.compile
  * @param {Element} context
@@ -3720,7 +3720,7 @@ function adoptValue( value, resolve, reject, noValue ) {
 	} catch ( value ) {
 
 		// Support: Android 4.0 only
-		// Strict mode functions invoked without .call/.apply get global-object context
+		// Strict mode controllers invoked without .call/.apply get global-object context
 		reject.apply( undefined, [ value ] );
 	}
 }
@@ -3815,7 +3815,7 @@ jQuery.extend( {
 
 										// Support: Promises/A+ section 2.3.4
 										// https://promisesaplus.com/#point-64
-										// Only check objects and functions for thenability
+										// Only check objects and controllers for thenability
 										( typeof returned === "object" ||
 											typeof returned === "function" ) &&
 										returned.then;
@@ -4142,7 +4142,7 @@ jQuery.extend( {
 			return;
 		}
 
-		// If there are functions bound, to execute
+		// If there are controllers bound, to execute
 		readyList.resolveWith( document, [ jQuery ] );
 	}
 } );
@@ -5220,7 +5220,7 @@ function on( elem, types, selector, data, fn, one ) {
 }
 
 /*
- * Helper functions for managing events -- not part of the public interface.
+ * Helper controllers for managing events -- not part of the public interface.
  * Props to Dean Edwards' addEvent library for many of the ideas.
  */
 jQuery.event = {

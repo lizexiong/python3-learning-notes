@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <style>
+    .c1 {
+      background-color: red;
+    }
+
+    .clearfix:after {
+      /*追加一个内容，比如点，然后让这个.给隐藏起来*/
+      content: ".";
+      visibility: hidden;
+      /*清除float的样式，那么就可以显示c1的颜色了，否则不显示*/
+      clear: both;
+
+    }
+  </style>
+
+  <div class="c1 clearfix">
+    <div style="float: left;">123</div>
+    <div style="float: left;">456</div>
+  </div>
+</body>
+</html>
