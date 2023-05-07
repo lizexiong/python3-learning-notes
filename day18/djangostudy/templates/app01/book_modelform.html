@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .form-control {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <form action="/payment/book_modelform/" method="post"> {% csrf_token %}
+        {{ book_form }}
+        <input type="submit" value="创建图书"/>
+    </form>
+
+</body>
+</html>

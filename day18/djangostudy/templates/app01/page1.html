@@ -1,0 +1,12 @@
+{% extends 'app01/index.html' %}
+
+
+
+{% block index-container %}
+    <h2>page1</h2>
+    {% include 'app01/register.html' %}
+
+    {% block page-container %}
+        page1_1
+    {% endblock %}
+{% endblock %}

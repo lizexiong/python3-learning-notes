@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <p> welcome to stud_orm</p>
+    {% if request.user.is_authenticated %}
+        <p>用户名： {{ request.user.userprofile.name }}</p>
+    {% endif %}
+
+    {% block page-container %}
+        welcom to 验证
+    {% endblock %}
+
+    <a href="/accounts/logout/">退出系统</a>
+
+</body>
+</html>

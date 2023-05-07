@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>index</h1>
+    {% include 'app01/register.html' %}
+
+    {% block index-container %}
+    <h1>djangotemplate动态显示数据测试</h1>
+
+    <ul>
+        {% for user in user_obj %}
+            {% if forloop.counter|divisibleby:"2" %}
+                <li style="background-color: red;">username:{{ user.username }},password:{{ user.password}}</li>
+            {% else %}
+                <li>username:{{ user.username }},password:{{ user.password}}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    {% endblock %}
+
+</body>
+</html>
