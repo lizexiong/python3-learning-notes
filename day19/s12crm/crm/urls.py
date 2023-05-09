@@ -16,5 +16,6 @@ from crm import views
 
 urlpatterns = [
     re_path('^index', views.dashboard),
-    re_path("^customers/$",views.customers)
+    re_path("^customers/$",views.customers,name="customers_list"),
+    re_path('customers/(\d+)/$', views.customer_detail,name="customer_detail"),
 ]

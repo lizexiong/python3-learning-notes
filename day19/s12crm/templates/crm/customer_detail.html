@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load custom_tags %}
+
+
+{% block page-header %}
+    客户信息列表
+{% endblock %}
+
+{% block page-content %}
+    <!--    {{ customer_form }}-->
+<!--    1.以下的前端都是来自bootstrap-->
+    <form class="form-horizontal" method="post" > {% csrf_token %}
+<!--        2.这个form循环就是把后台传来的数据进行渲染-->
+        {% for field in customer_form %}
+            <div class="form-group">
+
+<!--                4.如果是非必填字段，变细+变成绿色-->
+                {% if field.field.required %}
+                    <label class="col-sm-2 control-label text-left">{{ field.label }}</label>
+                {% else %}
+                    <label style="font-weight: normal;color:green" class="col-sm-2 control-label text-left">{{ field.label }}</label>
+                {% endif %}
+                <div class="col-sm-9">
+                    {{ field }}
+<!--                    3.如果有错误消息，那么就回加红色显示-->
+                    {% if field.errors %}
+                        <ul>
+                            {% for error in field.errors %}
+                                <li style="color:red">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="col-sm-11">
+            <input class="btn btn-success pull-right" type="submit" value="save">
+        </div>
+
+    </form>
+{% endblock %}

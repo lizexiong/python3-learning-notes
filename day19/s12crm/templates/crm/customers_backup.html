@@ -25,8 +25,7 @@
         <tbody>
             {% for customer in customer_list %}
                 <tr>
-<!--                    <td><a href="/crm/customers/{{ customer.id }}">{{ customer.id }}</a></td>-->
-                    <td><a href="{% url 'customer_detail' customer.id %}">{{ customer.id }}</a></td>
+                    <td>{{ customer.id }}</td>
                     <td>{{ customer.qq }}</td>
                     <td>{{ customer.name }}</td>
                     <td>{{ customer.source }}</td>
@@ -48,6 +47,9 @@
 
 
 
+
+
+
 <!--这里只是展示了页码下面的显示是多少-->
 <div class="pagination">
 
@@ -61,27 +63,14 @@
 <!--                    4.完善上一页下一页按钮功能-->
                     <li class="disabled"><a href="?page={{ customer_list.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
                 {% endif %}
-
-
-<!--                {% for page_num in customer_list.paginator.page_range %}-->
-<!--&lt;!&ndash;                    2.如 page.num==customer_list.number相同，那么代表是当前页，那么，就会加上class=active，给当前页加个颜色标识&ndash;&gt;-->
-<!--                    {% if page_num == customer_list.number %}-->
-<!--&lt;!&ndash;                    1.href连接到当前页，页面显示当前页&ndash;&gt;-->
-<!--                        <li class="active"><a href="?page={{ page_num }}">{{ page_num }} </a></li>-->
-<!--                    {% else %}-->
-<!--                        <li class=""><a href="?page={{ page_num }}">{{ page_num }} </a></li>-->
-<!--                    {% endif %}-->
-<!--                {% endfor %}-->
-
-
                 {% for page_num in customer_list.paginator.page_range %}
-<!--                    <p>page_num:{{ page_num }}</p>-->
-<!--                    <p>customer_list:{{ customer_list.number }}</p>-->
-<!--                customer_list.paginator.page_range = range(1,*)页-->
-<!--                page_num = 1-*页-->
-<!--                customer_list.number = 一共有多少个分页-->
-<!--                    把现在是第几页和一共有多少个分页传给后端自定义函数-->
-                    {% guess_page customer_list.number page_num %}
+<!--                    2.如 page.num==customer_list.number相同，那么代表是当前页，那么，就会加上class=active，给当前页加个颜色标识-->
+                    {% if page_num == customer_list.number %}
+<!--                    1.href连接到当前页，页面显示当前页-->
+                        <li class="active"><a href="?page={{ page_num }}">{{ page_num }} </a></li>
+                    {% else %}
+                        <li class=""><a href="?page={{ page_num }}">{{ page_num }} </a></li>
+                    {% endif %}
                 {% endfor %}
 
 <!--                3.如果没有下一页，那么就不显示下一页了-->

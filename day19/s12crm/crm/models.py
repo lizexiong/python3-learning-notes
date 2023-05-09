@@ -32,6 +32,13 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        permissions = (('view_customer_list',"可以查看客户列表"),
+                       ('view_customer_info',"可以查看客户详情"),
+                       ('edit_own_customer_info','可以修改自己的客户信息')
+
+        )
+
 class Customer(models.Model):
     qq = models.CharField(max_length=64,unique=True)
     name = models.CharField(max_length=32,blank=True,null=True)
