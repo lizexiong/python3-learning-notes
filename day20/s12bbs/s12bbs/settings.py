@@ -125,6 +125,7 @@ STATIC_URL = '/static/'
 #这里是静态文件的具体路径，写实际路径，按照顺序排列，第一个找不到，去找第二个，不管怎么写，访问的时候都是上面 static_url的别名
 STATICFILES_DIRS = [
     BASE_DIR / "statics",
+    BASE_DIR / "uploads",
     #'/var/www/static/',
 ]
 # Default primary key field type

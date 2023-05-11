@@ -15,6 +15,7 @@ from bbs import views
 
 
 urlpatterns = [
-    re_path('^index/',views.index),
+    re_path('^$',views.index),
+    re_path('^category/(\d+)/$',views.category)
 
 ]

@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,re_path
 from django.conf.urls import include
+from bbs import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path('^bbs/',include('bbs.urls'))
-
+    re_path('^bbs/',include('bbs.urls')),
+    re_path('^login/',views.acc_login,name='login'),
+    re_path('^logout/',views.acc_logout,name='logout')
 ]

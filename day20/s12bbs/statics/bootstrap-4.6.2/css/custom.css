@@ -1,0 +1,30 @@
+
+
+
+
+
+.page-container {
+    border: 1px dashed darkcyan;
+    padding-left: 150px;
+}
+
+.wrap-left {
+    width: 75%;
+    background-color: darkorange;
+    float: left;
+}
+
+.wrap-right {
+    width: 25%;
+    background-color: blueviolet;
+    float: left;
+}
+
+.clear-both {
+    clear:both;
+}
+
+.footer {
+    height: 300px;
+    background-color: black;
+}

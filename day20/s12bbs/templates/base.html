@@ -20,6 +20,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/bootstrap-4.6.2/css//navbar-fixed-top.css" rel="stylesheet">
+    <link href="/static/bootstrap-4.6.2/css//custom.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="/static/bootstrap-4.6.2/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -44,55 +45,54 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="https://v3.bootcss.com/examples/navbar-fixed-top/#">Project name</a>
+          <a class="navbar-brand" href="https://v3.bootcss.com/examples/navbar-fixed-top/#">酷狗音乐</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+
           <ul class="nav navbar-nav">
-            <li class="active"><a href="https://v3.bootcss.com/examples/navbar-fixed-top/#">Home</a></li>
-            <li><a href="https://v3.bootcss.com/examples/navbar-fixed-top/#">About</a></li>
-            <li><a href="https://v3.bootcss.com/examples/navbar-fixed-top/#">Contact</a></li>
-            <li class="dropdown">
-              <a href="https://v3.bootcss.com/examples/navbar-fixed-top/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="https://v3.bootcss.com/examples/navbar-fixed-top/#">Action</a></li>
-                <li><a href="https://v3.bootcss.com/examples/navbar-fixed-top/#">Another action</a></li>
-                <li><a href="https://v3.bootcss.com/examples/navbar-fixed-top/#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="https://v3.bootcss.com/examples/navbar-fixed-top/#">Separated link</a></li>
-                <li><a href="https://v3.bootcss.com/examples/navbar-fixed-top/#">One more separated link</a></li>
-              </ul>
-            </li>
+            {% for category in category_list %}
+<!--              2.如果后端返回的id等于这个前端的id，代表是当前版本，就加个active样式-->
+              {% if category.id == category_obj.id %}
+<!--              1.连接的是/bbs/category/id这个url，点击的时候会传入到后端，到后端做对比-->
+                <li class="active"><a href="/bbs/category/{{ category.id }}">{{ category.name }}</a></li>
+              {% else %}
+                <li class=""><a href="/bbs/category/{{ category.id }}">{{ category.name }}</a></li>
+              {% endif %}
+            {% endfor %}
           </ul>
+
+<!--          1.这里是登录注册还有注销的地方,就在base里面-->
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="https://v3.bootcss.com/examples/navbar/">Default</a></li>
-            <li><a href="https://v3.bootcss.com/examples/navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="https://v3.bootcss.com/examples/navbar-fixed-top/">Fixed top <span class="sr-only">(current)</span></a></li>
+            {% if request.user.is_authenticated %}
+              <li class=""><a href="#">{{ request.user.userprofile.name }}</a></li>
+              <li class=""><a href="{% url 'logout' %}">注销</a></li>
+            {% else %}
+              <li class=""><a href="{% url 'login' %}">登录/注册</a></li>
+            {% endif %}
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
-    <div class="container">
+<!--    2.这里是网页主体,到时候论坛的内容都在这个里面写-->
+    <div class="page-container">
 
-      <!-- Main component for a primary marketing message or call to action -->
+      {% block page-container %}
       <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference between static and fixed top navbars, just scroll.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="https://v3.bootcss.com/components/#navbar" role="button">View navbar docs »</a>
-        </p>
+        <h2>Your own stuff</h2>
       </div>
-
+      {% endblock %}
     </div> <!-- /container -->
 
+    <footer class="footer">
+        base里面的懒散的
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/static/bootstrap-4.6.2/js/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="/static/bootstrap-4.6.2/js/jquery.min.js"><\/script>')</script>
     <script src="/static/bootstrap-4.6.2/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/static/bootstrap-4.6.2/js/ie10-viewport-bug-workaround.js"></script>
