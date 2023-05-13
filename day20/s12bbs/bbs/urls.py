@@ -16,6 +16,9 @@ from bbs import views
 
 urlpatterns = [
     re_path('^$',views.index),
-    re_path('^category/(\d+)/$',views.category)
+    re_path('^category/(\d+)/$',views.category),
+    re_path('^detail/(\d+)/$',views.article_detail,name='article_detail'),
+    re_path('^comment/$',views.comment,name='post_comment'),
+    re_path('^comment_list/(\d+)/$',views.get_comments,name="get_comments")
 
 ]

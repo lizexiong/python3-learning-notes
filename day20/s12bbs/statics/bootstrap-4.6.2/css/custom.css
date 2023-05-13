@@ -10,7 +10,6 @@
 
 .wrap-left {
     width: 75%;
-    background-color: darkorange;
     float: left;
 }
 
@@ -25,6 +24,73 @@
 }
 
 .footer {
-    height: 300px;
+    height: 200px;
     background-color: black;
+}
+
+.article-head-img img{
+    weight: 220px;
+    height: 150px;
+}
+
+.article-box {
+    padding-bottom: 10px;
+}
+
+.article-brief {
+    margin-left: -15px;
+}
+
+.article-title {
+    font-size:20px;
+}
+
+a {
+    color: #333;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #337ab7;
+    text-decoration: none;
+
+}
+
+.article-brief-text {
+    margin-top: 10px;
+    color: #999;
+}
+
+.article-title-bg {
+    font-size: 30px;
+
+}
+
+.article-title-brief {
+    margin-top: 10px;
+    color: #999;
+}
+
+
+.article-detail-head-img {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.article-content {
+    line-height: 30px;
+}
+
+.comment-node {
+    border: 1px solid green;
+    padding: 5px;
+}
+
+.root-comment {
+    border:  1px solid red;
+    padding: 5px;
 }

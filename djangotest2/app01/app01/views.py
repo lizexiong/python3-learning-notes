@@ -276,3 +276,13 @@ from app01 import models
 
 # from django.contrib.auth.models import User
 # User.objects.create(username='lizexiong',password='123')
+
+
+def test(request):
+    ying = models.Author.objects.filter(name="任盈盈").first()
+    book = models.Book.objects.filter(title="冲灵剑法").first()
+    print (ying.book_set.all())
+    test = ying.all()
+    for i in test:
+        print (i.title)
+    return HttpResponse('ok')

@@ -25,8 +25,8 @@ from . import views
 
 from django.contrib import admin
 from django.urls import path
-from cookie import views
-from cookie import views as session_views
+# from cookie import views
+# from cookie import views as session_views
 urlpatterns = [
     # path('admin/', admin.site.urls),
     # path('login/', views.login),
@@ -34,10 +34,10 @@ urlpatterns = [
     # path('logout/', views.logout),
     # path('order/', views.order),
 
-    path('session_login/', session_views.login),
-    path('s_index/', session_views.s_index),
-    path('s_logout/', session_views.s_logout),
-
+    # path('session_login/', session_views.login),
+    # path('s_index/', session_views.s_index),
+    # path('s_logout/', session_views.s_logout),
+    path('test/',views.test)
 
     ]
 
