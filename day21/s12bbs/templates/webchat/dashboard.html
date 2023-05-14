@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block page-container %}
+    <h1>聊天专区</h1>
+    <div class="chat-container">
+        <div class="left-contact-panel">
+            contacts
+                      <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#contact-tab"  role="tab" data-toggle="tab">好友</a>
+            </li>
+            <li role="presentation">
+                <a href="#group-tab"  role="tab" data-toggle="tab">群组</a>
+            </li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="contact-tab">
+               <ul class="list-group">
+                {% for friend in request.user.userprofile.friends.select_related %}
+                    <li contact-type="single" contact-id="{{ friend.id }}" onclick="OpenChatWindow(this)" class="list-group-item">
+                        <span class="badge hide"></span>
+                        <span class="contact-name"> {{ friend.name }} </span>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="group-tab">
+                gropu
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="right-chat-panel">
+            <div class="chat-box-title" contact-type="" contact-id="">
+                title
+            </div>
+            <div class="chat-box-window">
+                window
+            </div>
+            <div class="chat-box-emoj">
+                emoj
+            </div>
+            <div class="chat-box-msg-box">
+                <textarea id="msg"></textarea>
+                <button class="btn btn-success">发送消息</button>
+            </div>
+        </div>
+        <div class="clear-both"></div>
+    </div>
+{% endblock %}
+
+
+{% block bottom-js %}
+    <script>
+        // $(document).ready(function(){
+        //     $("#navbar a[href='{{ request.path }}']").parent().addClass("active");
+        // })
+
+        $(document).ready(function(){
+
+            $("#navbar a[href='{{ request.path }}']").parent().addClass("active");
+
+            //send msg
+            //这里用实践委托来完成发送消息，注意，主要是使用回车，点网页上哪个发送按钮是没用的
+            //delegate是事件委托，keydown是键盘按下去的时间 ，e.which=13代表enter键按下去了
+            $("body").delegate("textarea", "keydown",function(e){
+                console.log("e:",e.which)
+                if(e.which == 13) {//Enter key down
+                    //send msg button clicked
+                    //如果确认键按下去了，那么就获取textarea里面的值，也就是我们输入的值
+                    var msg_text = $("textarea").val();
+                    if ($.trim(msg_text).length > 0){
+                        // SendMsg(msg_text);
+                    }
+                    //no wait the send_msg's call confirm msg
+                    //发送消息到聊天框显示
+                    AddSentMsgIntoBox(msg_text);
+                    //发送消息后，清空聊天框
+                    $("textarea").val('');
+                }
+            })
+        });//end doc ready
+
+
+//         在python中使用的是json,load
+// 在JS中使用的是JSON.stringify() = dumps; JSON.parse() = loads
+
+
+
+        function AddSentMsgIntoBox(msg_text){
+            //这里也是使用的拼接
+            var new_msg_ele = "<div class='msg-item'>" +
+                                "<span>" + "{{ request.user.userprofile.name }}"  + "</span>" +
+                                "<span>"  + new Date().toLocaleTimeString() +"</span>" +
+                                "<div class='msg-text'>" + msg_text +"</div>" +
+                              "</div>"
+            $(".chat-box-window").append(new_msg_ele);
+
+            //一个动画效果，好看的
+            $('.chat-box-window').animate({
+                scrollTop: $('.chat-box-window')[0].scrollHeight}, 500);
+
+        }
+
+
+
+        //实现联系人之间切换
+        function OpenChatWindow(ele){
+            // console.log($(ele));
+            //点击的时候这个标签加上active，他的兄弟删除这个标签，这个标签就是一个选择的样式
+            $(ele).addClass("active");
+            $(ele).siblings().removeClass("active");
+            //获取好友id
+            var contact_id = $(ele).attr("contact-id");
+            //获取好友的名字
+            var contact_name = $(ele).find(".contact-name").text();
+            //获取聊天的类型
+            var contact_type = $(ele).attr("contact-type");
+
+            var chat_box_title_content = "正在跟" +contact_name +"聊天";
+            //把上面拼接的变量放在聊天框的头部
+            $(".chat-box-title").html(chat_box_title_content);
+            $(".chat-box-title").attr("contact-id",contact_id);
+            $(".chat-box-title").attr("contact-type",contact_type);
+        }
+
+    </script>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load custom %}
+
+{% block page-container %}
+    <div class="wrap-left">
+<!--        这个div就是埋的新消息提示，只有有新消息的时候才会显示-->
+        <div class="new-article-notify hide" >
+            <a href="{{ request.path }}">有<span></span>条新消息</a>
+        </div>
+        {% for article in article_list reversed %}
+<!--            文章id要埋一下，不然不知道通过什么判断是最新的文章-->
+            <div article_id="{{ article.id }}" class="article-box row">
+                <div class="article-head-img col-md-4">
+                    <img src="/static/{{ article.head_img|truncate_url }}">
+                </div>
+                <div class="article-brief col-md-8">
+<!--                    #title的超链接需要把文章的id传到后台-->
+                    <a  class="article-title" href="{% url 'article_detail' article.id %}">{{ article.title }}</a>
+
+                    <div class="article-brief-info">
+                        <span>
+                            {{ article.author.name }}
+                        </span>
+                        <span>
+                            {{ article.pub_date }}
+                        </span>
+                        <span>
+                            {% filter_comment article as comments %}
+                        </span>
+                        <span class="glyphicon glyphicon-comment" aria-hidden="true">{{ comments.comment_count }}</span>
+                        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">{{ comments.thumb_count }}</span>
+                    </div>
+                    <div class="article-brief-text">
+                        <span>
+                            {{ article.brief }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+        {% endfor %}
+    </div>
+    <div class="wrap-right">
+            right
+    </div>
+    <div class="clear-both">
+
+    </div>
+{% endblock %}
+
+
+{% block bottom-js %}
+<script>
+    $(document).ready(function(){
+
+        //设置一个定时器，没3秒执行一次
+        var new_article_refresh = setInterval(function(){
+            //这里的逻辑其实并不正确，因为这里是获取left下面的第一个儿子，如果有了分页，那么获取的文章id就不准确了，但是这里懒得优化了
+            //优化方法是把最新的文章id埋到其他任何一个固定地方即可，不要埋在可以变动的地方
+            //$($())是吧一个元素变成js对象，不然没有办法使用attr方法
+            var latest_article_id = $( $(".wrap-left").children()[1] ).attr("article_id");
+            //请求url把文章id传到后端去判断有没有新文章
+            $.getJSON("{% url 'get_latest_article_count' %}",{latest_id:latest_article_id},function(callback){
+                console.log(callback);
+
+                if (callback.new_article_count >0){
+
+                    //如果有新文章，那么就把消息提示div显示出来
+                    //$(".new-article-notify").toggleClass("hide");
+                    if ($(".new-article-notify").hasClass("hide")){
+                        $(".new-article-notify").removeClass("hide");
+                    }
+                    $(".new-article-notify span").html(callback.new_article_count );
+                }//end if callback.new_article_count >0
+
+            });//end get
+            //console.log(latest_article_id);
+
+        },3000);//end setInterval
+    });//end doc ready
+
+
+</script>
+
+{% endblock %}
