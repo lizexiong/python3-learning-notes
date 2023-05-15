@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load custom %}
+{% block page-container %}
+    <div class="wrap-left">
+<!--        multipart/form-data,只要是图片或者文件的form表单，一定要加上这个-->
+        <form method="post" enctype="multipart/form-data" >{% csrf_token %}
+
+            {{ article_form }}
+
+            <input type="submit" class="btn btn-success pull-right" value="发贴">
+        </form>
+
+        <hr/>
+        <form method="post"  enctype="multipart/form-data" action="{% url 'file_upload' %}">
+            <input name="filename"  type="file" >{% csrf_token %}
+            <input type="submit" value="上传">
+        </form>
+
+    </div>
+    <div class="wrap-right">
+    right
+    </div>
+    <div class="clear-both"></div>
+
+{% endblock %}
+
+{% block bottom-js %}
+<script src="/static/plugins/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+    //替换的这个id_content,是4的固定格式，没事别乱动
+    CKEDITOR.replace('id_content');
+
+</script>
+{% endblock %}
+

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://v3.bootcss.com/examples/navbar-fixed-top/# -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://v3.bootcss.com/favicon.ico">
+    <link rel="canonical" href="https://getbootstrap.com/docs/3.4/examples/navbar-fixed-top/">
+
+    <title>Fixed Top Navbar Example for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap-4.6.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/static/bootstrap-4.6.2/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/bootstrap-4.6.2/css//navbar-fixed-top.css" rel="stylesheet">
+    <link href="/static/bootstrap-4.6.2/css//custom.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="/static/bootstrap-4.6.2/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/static/bootstrap-4.6.2/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>    {% csrf_token %}
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://v3.bootcss.com/examples/navbar-fixed-top/#">酷狗音乐</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+          <ul class="nav navbar-nav">
+            {% for category in category_list %}
+<!--              2.如果后端返回的id等于这个前端的id，代表是当前版本，就加个active样式-->
+              {% if category.id == category_obj.id %}
+<!--              1.连接的是/bbs/category/id这个url，点击的时候会传入到后端，到后端做对比-->
+                <li class="active"><a href="/bbs/category/{{ category.id }}">{{ category.name }}</a></li>
+              {% else %}
+                <li class=""><a href="/bbs/category/{{ category.id }}">{{ category.name }}</a></li>
+              {% endif %}
+            {% endfor %}
+
+
+
+              <li class=""><a href="{% url 'chat_dashboard' %}">聊天专区</a></li>
+          </ul>
+
+
+
+
+
+<!--          1.这里是登录注册还有注销的地方,就在base里面-->
+          <ul class="nav navbar-nav navbar-right">
+            {% if request.user.is_authenticated %}
+              <li class=""><a href="#">{{ request.user.userprofile.name }}</a></li>
+              <li class=""><a href="{% url 'logout' %}">注销</a></li>
+            {% else %}
+              <li class=""><a href="{% url 'login' %}">登录/注册</a></li>
+            {% endif %}
+              <li class=""><a href="{% url 'new-article' %}">发帖</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<!--    2.这里是网页主体,到时候论坛的内容都在这个里面写-->
+    <div class="page-container">
+
+      {% block page-container %}
+      <div class="jumbotron">
+        <h2>Your own stuff</h2>
+      </div>
+      {% endblock %}
+    </div> <!-- /container -->
+
+    <footer class="footer">
+        base里面的懒散的
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/bootstrap-4.6.2/js/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="/static/bootstrap-4.6.2/js/jquery.min.js"><\/script>')</script>
+    <script src="/static/bootstrap-4.6.2/js/bootstrap.min.js"></script>
+
+    {% block bottom-js %}
+
+    {% endblock %}
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/static/bootstrap-4.6.2/js/ie10-viewport-bug-workaround.js"></script>
+  
+
+</body></html>
