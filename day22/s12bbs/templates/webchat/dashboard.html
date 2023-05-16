@@ -51,7 +51,12 @@
                 window
             </div>
             <div class="chat-box-emoj">
-                emoj
+                <div class="col-md-3">
+                    <input id="file_upload" type="file"/>
+                </div>
+                <div class="col-md-2">
+                    <span class="glyphicon glyphicon-upload" onclick="FileUpload()"></span>
+                </div>
             </div>
             <div class="chat-box-msg-box">
                 <textarea id="msg"></textarea>
@@ -155,6 +160,24 @@
             }//end if
 
             }
+
+
+        function FileUpload(){
+            var formData = new FormData();
+            console.log($('#file_upload')[0].files[0])
+            formData.append('file',$('#file_upload')[0].files[0]);
+
+            $.ajax({
+                url: "{% url 'chat_file_upload' %}",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(data){
+                    console.log(data)
+                }
+            });//end ajax
+        }
 
         function AddSentMsgIntoBox(msg_text){
             //这里也是使用的拼接

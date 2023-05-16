@@ -16,4 +16,5 @@ urlpatterns = [
     url(r'^$', views.dashboard,name='chat_dashboard'),
     url(r'^msg_send/$', views.send_msg, name='send_msg'),
     url(r'^new_msgs/$', views.get_new_msgs, name='get_new_msgs'),
+    url(r'^chat_file_upload/$', views.chat_file_upload, name='chat_file_upload'),
 ]

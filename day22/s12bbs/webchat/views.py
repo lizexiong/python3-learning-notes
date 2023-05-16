@@ -75,3 +75,12 @@ def get_new_msgs(request):
         except queue.Empty:
             print("\033[41;1mno msg for [%s][%s] ,timeout\033[0m" %(request.user.userprofile.id,request.user))
     return HttpResponse(json.dumps(msg_list))
+
+def chat_file_upload(request):
+    print (request.POST,request.FILES)
+    file_obj = request.FILES.get('file')
+    new_file_name = 'uploads/%s' %file_obj.name
+    with open(new_file_name,'wb') as new_file_obj:
+        for chunk in file_obj.chunks():
+            new_file_obj.write(chunk)
+        return HttpResponse("upload success")
