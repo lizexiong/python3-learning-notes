@@ -28,6 +28,9 @@ class BaseSaltModule(object):
         self.fetch_hosts()
         self.config_data_dic = self.get_selected_os_types()
 
+    def require(self,*args,**kwargs):
+        pass
+
     def fetch_hosts(self):
         print('--fetching hosts---')
         #如果有-h和-g在参数里面，才会执行下面的内容
@@ -66,3 +69,13 @@ class BaseSaltModule(object):
 
     def syntax_parser(self,section_name,mod_name,mod_data):
         print("-going to parser state data:",section_name,mod_name)
+
+        for state_item in mod_data:
+            print("\t",state_item)
+            for key,val in state_item.items():
+                #简单来比如，group里面有没有 处理gid的函数，没有，就提示没有这个模块
+                if hasattr(self,key):
+                    state_func = getattr(self,key)
+                    state_func(val)
+                else:
+                    exit("Error:module [%s] has no argument [%s]" %( mod_name,key ))

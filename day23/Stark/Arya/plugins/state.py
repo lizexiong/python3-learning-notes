@@ -13,6 +13,7 @@ from Arya.backends.base_module import  BaseSaltModule
 import os
 
 class State(BaseSaltModule):
+    print ("State")
     def load_state_files(self, state_filename):
         '''
             这个函数就是读取yaml文件，解析之后return，没什么特别的
@@ -80,10 +81,9 @@ class State(BaseSaltModule):
                                 module_obj = module_instance(self.sys_argvs,self.db_models,self.settings)
                                 module_obj.syntax_parser(section_name,mod_name,mod_data )
                             else:
-                                exit("module [%s] is not exist" % base_mod_name)
-                            print("  ",mod_name)
-                            for state_item in mod_data:
-                               print("\t",state_item)
+                                print ("module [%s] is not exist" % base_mod_name)
+                            # for state_item in mod_data:
+                            #    print("\t",state_item)
 
             except IndexError as e:
                 exit("state file must be provided after -f")
