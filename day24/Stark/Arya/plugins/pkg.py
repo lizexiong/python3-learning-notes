@@ -7,3 +7,6 @@ from Arya.backends.base_module import BaseSaltModule
 class Pkg(BaseSaltModule):
 
     pass
+
+    def is_required(self,*args,**kwargs):
+        pass

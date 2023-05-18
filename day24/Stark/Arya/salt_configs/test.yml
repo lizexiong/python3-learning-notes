@@ -7,11 +7,13 @@ apache:
   user.present:
     - uid: 87
     #- username: alex
+    - password: huawei
     - gid: 87
     - home: /var/www/html
     - shell: /bin/nologin
     - require:
       - group: apache
+      - file: /etc/httpd/conf/httpd.conf
   group.present:
     - gid: 87
     - require:

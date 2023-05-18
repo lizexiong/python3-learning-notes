@@ -60,30 +60,13 @@ class State(BaseSaltModule):
                         for mod_name,mod_data in section_data.items():
                             #mod-name一般是字符串user.present
                             base_mod_name = mod_name.split(".")[0]
-                            #然后找到模块名（模块路径要提前在settings里面设置）
-                            plugin_file_path = "%s/%s.py" % (self.settings.SALT_PLUGINS_DIR,base_mod_name)
-                            #如果存在这个模块名
-                            if os.path.isfile(plugin_file_path):
-                                #导入 模块
+                            module_obj = self.get_module_instance(base_mod_name=base_mod_name,os_type=os_type)
+                            module_parse_result = module_obj.syntax_parser(section_name,mod_name,mod_data,os_type)
+                            self.config_data_dic[os_type].append(module_parse_result)
 
-                                module_plugin = __import__('plugins.%s' %base_mod_name)
-                                special_os_module_name = "%s%s" %(os_type.capitalize(),base_mod_name.capitalize())
-                                #print('dir module plugin:',module_plugin,base_mod_name)
-                                #getattr(module_plugin,base_mod_name)
-                                module_file= getattr(module_plugin, base_mod_name) # 这里才是真正导入模块
-                                #在这个模块里面判断，有没有专门基于这个操作系统的特殊方法，如果没有，那么就用默认的方法
-                                if hasattr(module_file, special_os_module_name): #判断有没有根据操作系统的类型进行特殊解析 的类，在这个文件里
-                                    module_instance = getattr(module_file, special_os_module_name)
-                                else:
-                                    module_instance = getattr(module_file, base_mod_name.capitalize())
-
-                                #开始调用 此module 进行配置解析
-                                module_obj = module_instance(self.sys_argvs,self.db_models,self.settings)
-                                module_obj.syntax_parser(section_name,mod_name,mod_data )
-                            else:
-                                print ("module [%s] is not exist" % base_mod_name)
-                            # for state_item in mod_data:
-                            #    print("\t",state_item)
+                #代表上面所有的数据解析已经完成，接下来生成一个任务，并把任务放入队列
+                print ("config_data_dic".center(60,"*"))
+                print (self.config_data_dic)
 
             except IndexError as e:
                 exit("state file must be provided after -f")
