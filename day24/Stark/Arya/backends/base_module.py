@@ -129,12 +129,15 @@ class BaseSaltModule(object):
                 base_mod_name,mod_action = mod_name.split('.')
                 if hasattr(self,mod_action):
                     mod_action_func = getattr(self,mod_action)
-                    cmd_list = mod_action_func(section=section_name)
-
+                    cmd_list = mod_action_func(section=section_name,mod_data=mod_data)
+                    print (self.require_list)
                     data = {
                         'cmd_list':cmd_list,
                         'required_list': self.require_list,
                     }
+
+                    if type(cmd_list) is dict:
+                        data['file_module'] = True
                     return data
                     #上面代表一个section里的具体的一个module已经解析完毕了
                 else:

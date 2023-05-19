@@ -11,6 +11,7 @@
 
 from Arya.backends.base_module import  BaseSaltModule
 import os
+from Arya.backends import tasks
 
 class State(BaseSaltModule):
     print ("State")
@@ -67,6 +68,10 @@ class State(BaseSaltModule):
                 #代表上面所有的数据解析已经完成，接下来生成一个任务，并把任务放入队列
                 print ("config_data_dic".center(60,"*"))
                 print (self.config_data_dic)
+
+                #生成新任务
+                new_task_obj = tasks.TaskHandle(self.db_models,self.config_data_dic,self.settings,self)
+                new_task_obj.dispatch_task()
 
             except IndexError as e:
                 exit("state file must be provided after -f")
