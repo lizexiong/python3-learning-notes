@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'Arya.apps.AryaConfig',
+    'Wolf',
     'Arya',
+    'Sansa'
+
 ]
 
 MIDDLEWARE = [
@@ -135,3 +138,5 @@ MQ_CONN = {
     'port': 5672,
     'password': ''
 }
+
+AUTH_USER_MODEL = 'Wolf.UserProfile'
