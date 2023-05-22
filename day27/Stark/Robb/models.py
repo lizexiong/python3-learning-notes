@@ -1,5 +1,5 @@
 from django.db import models
-
+from Wolf.models import UserProfile
 # Create your models here.
 
 
@@ -73,9 +73,9 @@ class Template(models.Model):
 
 
 class TriggerExpression(models.Model):
-    trigger = models.ForeignKey('Trigger',verbose_name=u"所属触发器")
-    service = models.ForeignKey(Service,verbose_name=u"关联服务")
-    service_index = models.ForeignKey(ServiceIndex,verbose_name=u"关联服务指标")
+    trigger = models.ForeignKey('Trigger',verbose_name=u"所属触发器",on_delete=models.CASCADE)
+    service = models.ForeignKey(Service,verbose_name=u"关联服务",on_delete=models.CASCADE)
+    service_index = models.ForeignKey(ServiceIndex,verbose_name=u"关联服务指标",on_delete=models.CASCADE)
     specified_index_key = models.CharField(verbose_name=u"只监控专门指定的指标key",max_length=64,blank=True,null=True)
     operator_type_choices = (('eq','='),('lt','<'),('gt','>'))
     operator_type = models.CharField(u"运算符",choices=operator_type_choices,max_length=32)
@@ -141,7 +141,7 @@ class ActionOperation(models.Model):
         ('script','RunScript'),
     )
     action_type = models.CharField(u"动作类型",choices=action_type_choices,default='email',max_length=64)
-    notifiers= models.ManyToManyField('UserProfile',verbose_name=u"通知对象",blank=True)
+    notifiers= models.ManyToManyField(UserProfile,verbose_name=u"通知对象",blank=True)
     _msg_format = '''Host({hostname},{ip}) service({service_name}) has issue,msg:{msg}'''
 
     msg_format = models.TextField(u"消息格式",default=_msg_format)
@@ -165,8 +165,8 @@ class EventLog(models.Model):
     """存储报警及其它事件日志"""
     event_type_choices = ((0,'报警事件'),(1,'维护事件'))
     event_type = models.SmallIntegerField(choices=event_type_choices,default=0)
-    host = models.ForeignKey("Host")
-    trigger = models.ForeignKey("Trigger",blank=True,null=True)
+    host = models.ForeignKey("Host",on_delete=models.CASCADE)
+    trigger = models.ForeignKey("Trigger",blank=True,null=True,on_delete=models.CASCADE)
     log = models.TextField(blank=True,null=True)
     date = models.DateTimeField(auto_now_add=True)
 

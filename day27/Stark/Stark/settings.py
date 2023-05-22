@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     # 'Arya.apps.AryaConfig',
     'Wolf',
     'Arya',
-    'Sansa'
+    'Sansa',
+    'Robb'
 
 ]
 
