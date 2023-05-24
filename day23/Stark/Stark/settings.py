@@ -129,3 +129,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SALT_CONFIG_FILES_DIR = "%s/Arya/salt_configs" % BASE_DIR
 
 SALT_PLUGINS_DIR = "%s/Arya/plugins" % BASE_DIR
+
+
+REDIS_CONN = {
+    'HOST': 'localhost',
+    'PORT': 6379,
+    'PASSWD':''
+}
+
+STATUS_DATA_OPTIMIZATION = {
+    'latest':[0,600], #0 存储真实数据,600个点
+    '10mins':[600,600], #4days, 每600s进行一次优化，存最大600个点
+    '30mins':[1800,600],#14days
+    '60mins':[3600,600], #25days
+}

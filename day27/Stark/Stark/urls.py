@@ -25,5 +25,6 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     url('asset/',include('Sansa.urls')),
+    url('monitor/',include("Robb.urls"))
 
 ]

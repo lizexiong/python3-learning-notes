@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)bvyix7sj%$lb08nru4#3d)4e@#&8wtz@9!@1+&p#o6@q!q$ys
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -141,3 +141,18 @@ MQ_CONN = {
 }
 
 AUTH_USER_MODEL = 'Wolf.UserProfile'
+
+REDIS_CONN = {
+    'HOST': 'localhost',
+    'PORT': 6379,
+    'PASSWD':''
+}
+
+STATUS_DATA_OPTIMIZATION = {
+    'latest':[0,600], #0 存储真实数据,600个点
+    '10mins':[600,600], #4days, 每600s进行一次优化，存最大600个点
+    '30mins':[1800,600],#14days
+    '60mins':[3600,600], #25days
+}
+
+TRIGGER_CHAN = 'trigger_event_channel'
