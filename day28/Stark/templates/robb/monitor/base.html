@@ -89,8 +89,23 @@
     sniffer.site_id = 1; //这是在服务器端帮这个站点分配的站点id
     sniffer.bandwith_test_img_size = 2500; //写清楚你要测试下载的图片大小，不测试带宽的话不需要
 
-    sniffer.collect(sniffer); //开始收集数据并向服务器端汇报
+    //sniffer.collect(sniffer); //开始收集数据并向服务器端汇报
     </script>
+
+
+    <script type="text/javascript">
+    var localHandler = function(data){
+        alert('我是本地函数，可以被跨域的remote.js文件调用，远程js带来的数据是：' + data.result);
+    };
+    // 提供jsonp服务的url地址（不管是什么类型的地址，最终生成的返回值都是一段javascript代码）
+    var url = "http://127.0.0.1:9000/api/data/report/?test=huawei&name=lizexiong";
+    // 创建script标签，设置其属性
+    var script = document.createElement('script');
+    script.setAttribute('src', url);
+    // 把script标签加入head，此时调用开始
+    document.getElementsByTagName('head')[0].appendChild(script);
+    </script>
+<!--    <script src="http://localhost:9000/static/js/remote.js"></script>-->
 
     {% block bottom-js %}
 

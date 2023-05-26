@@ -214,5 +214,5 @@ function PerformanceCollect(configs){
     PerformanceData.site_id = configs.site_id; //汇报前带上站点id
     console.log(PerformanceData);
     //doPost(configs.report_url,{'data':'test'})
-    //do_jsonp(configs.report_url,PerformanceData);
+    do_jsonp(configs.report_url,PerformanceData);
 }

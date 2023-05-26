@@ -119,8 +119,28 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    "%s/%s" %(BASE_DIR, "statics"),
+)
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REDIS_CONN = {
+    'HOST': '192.168.11.170',
+    'PORT': 6379,
+    'DB'   : 0,
+    'PASSWD':''
+}
+
+
+IP_DB_FILE = "%s/app01/backends/src/ipdb-20140902-99884.txt" %BASE_DIR
+
+
+REPORT_ITEMS = ('firstPaint','domReadyTime','lookupDomainTime',
+                      'requestTime','loadTime','redirectTime',
+                      )
