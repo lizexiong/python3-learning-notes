@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# @Time     : 2023/5/30 18:52
+# @Author   : 李泽雄
+# @BoKeYuan : 小家电维修
+# @File     : base.py
+# @Version  : Python 3.10.10
+# @Project  : python3
+# @Software : PyCharm
+
+
+import sys
+import tornado.web
+from settings import template_variables, COOKIE_NAME
+
+sys.path.append("..")
+from model.user import UserSqlOperation
+
+class BaseHandler(tornado.web.RequestHandler):
+    def get_current_user(self):
+        template_variables["username"] = self.get_secure_cookie(COOKIE_NAME)
+        return self.get_secure_cookie(COOKIE_NAME)
+
+    def check_authenticated(self):
+        user_name = self.get_secure_cookie(COOKIE_NAME)
+        mysql_adm_password = UserSqlOperation.check_adm_login(user_name)
+        user_group = mysql_adm_password[0][2]
+        if user_group != 'admin':
+            self.redirect("/")

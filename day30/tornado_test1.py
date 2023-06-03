@@ -42,7 +42,7 @@ urls = [(r"/", IndexHandler),]
 
 # 定义服务器
 def main():
-    # 解析命令行参数
+    # 解析命令行参数:p
     tornado.options.parse_command_line()
     # 创建应用实例
     app = tornado.web.Application(urls)
